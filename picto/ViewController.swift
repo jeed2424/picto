@@ -1,8 +1,9 @@
 //
 //  ViewController.swift
-//  picto
+//  InstagramFirestoreTutorial
 //
-//  Created by Jay on 2023-04-26.
+//  Created by Stephen Dowless on 5/27/20.
+//  Copyright © 2020 Stephan Dowless. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        view.backgroundColor = .blue
     }
 
 

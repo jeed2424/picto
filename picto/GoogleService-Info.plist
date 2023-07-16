@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>387771868606-n0ksidn43rkmvn0s1hqigsf4us393m3q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.387771868606-n0ksidn43rkmvn0s1hqigsf4us393m3q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCPt7xcM1_RhAJIYZVCX-pM8reJZVXHU2I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>387771868606</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.pictogram.picto</string>
+	<key>PROJECT_ID</key>
+	<string>picto-ce462</string>
+	<key>STORAGE_BUCKET</key>
+	<string>picto-ce462.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:387771868606:ios:0c45493f798dde09a945ef</string>
+	<key>DATABASE_URL</key>
+	<string>https://picto-ce462-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
