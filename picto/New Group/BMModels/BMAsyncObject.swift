@@ -297,7 +297,10 @@ class BMListTransform<T: BMSerializedObjectType>: TransformType {
         print("GOT ARRAY FOR TRANSFORM")
         var list = [T]()
         for id in ids {
-            list.append(contentsOf: BMSerializer<T>.from(id: id) as? BMListTransform<T>.Object)
+            if let content = BMSerializer<T>.from(id: id) as? BMListTransform<T>.Object {
+                list.append(contentsOf: content)
+            }
+//            list.append(contentsOf: )
         }
         return list
 //        if let JSONArray = value as? [[String: Any]] {

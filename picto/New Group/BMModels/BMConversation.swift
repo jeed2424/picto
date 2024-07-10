@@ -103,7 +103,7 @@ class BMMessage: BMSerializedObject, Comparable {
     init(body: String, convoId: UInt) {
         super.init()
         self.body = body
-        self.senderId = me.id!
+        self.senderId = 0// me.id!
         self.convoId = convoId
         self.unread = true
         self.createdAt = Date()

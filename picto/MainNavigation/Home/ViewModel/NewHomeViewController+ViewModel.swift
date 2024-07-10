@@ -9,6 +9,7 @@ extension NewHomeViewController {
             case register
             case google
             case email
+            case username
         }
 
         @Published private(set) var currentPage: CurrentPage = .home

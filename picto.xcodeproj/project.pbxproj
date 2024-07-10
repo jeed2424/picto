@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69BAD9812BB5EE8A00F28E31 /* SupabaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = 69BAD9802BB5EE8A00F28E31 /* SupabaseManager */; };
 		69C99CB329F9F79200912E5A /* pictoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CB229F9F79200912E5A /* pictoTests.swift */; };
 		69C99CBD29F9F79200912E5A /* pictoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CBC29F9F79200912E5A /* pictoUITests.swift */; };
 		69C99CBF29F9F79200912E5A /* pictoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CBE29F9F79200912E5A /* pictoUITestsLaunchTests.swift */; };
@@ -216,6 +217,7 @@
 		69C99F8229FA019F00912E5A /* JHSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C99E2929F9F9F300912E5A /* JHSpinnerView.xib */; };
 		69C99F8329FA01A400912E5A /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69C99D3429F9F9F200912E5A /* UserProfile.storyboard */; };
 		69C99F8829FA169700912E5A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99F8729FA169700912E5A /* R.generated.swift */; };
+		69EC89B72BB65A3900DA6E74 /* UsernameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */; };
 		701FF4AB27B6AFBE0E59506D /* Pods_pictoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05ABB2B9727810DA1F2581A2 /* Pods_pictoTests.framework */; };
 		9F69E29A1247F516F529322F /* Pods_picto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD98C8CD8A07BD26A15AF87 /* Pods_picto.framework */; };
 		FD96A34F5A9D447246A1EFC9 /* Pods_picto_pictoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B80B2DF092E6FB6ED8A44AC /* Pods_picto_pictoUITests.framework */; };
@@ -464,6 +466,7 @@
 		69C99E4E29F9F9F300912E5A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		69C99F7229F9FEEF00912E5A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69C99F8729FA169700912E5A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationView.swift; sourceTree = "<group>"; };
 		6C4F49FAB179A95B653DB6D2 /* Pods-picto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto.release.xcconfig"; path = "Target Support Files/Pods-picto/Pods-picto.release.xcconfig"; sourceTree = "<group>"; };
 		A1862CBC0C4F987C752BBF28 /* Pods-pictoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pictoTests.debug.xcconfig"; path = "Target Support Files/Pods-pictoTests/Pods-pictoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A85E7C122A86999B6F40F0B1 /* Pods-pictoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pictoTests.release.xcconfig"; path = "Target Support Files/Pods-pictoTests/Pods-pictoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -476,6 +479,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69BAD9812BB5EE8A00F28E31 /* SupabaseManager in Frameworks */,
 				9F69E29A1247F516F529322F /* Pods_picto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,6 +769,7 @@
 				69C99D1929F9F9F200912E5A /* EmailLoginView.swift */,
 				69C99D1A29F9F9F200912E5A /* GoogleLoginView.swift */,
 				69C99D1B29F9F9F200912E5A /* RegisterView.swift */,
+				69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1239,19 +1244,21 @@
 			buildConfigurationList = 69C99CC229F9F79200912E5A /* Build configuration list for PBXNativeTarget "picto" */;
 			buildPhases = (
 				E79296ADAD697A3352A42D2F /* [CP] Check Pods Manifest.lock */,
-				69C99F7029F9FB1200912E5A /* R.Swift Script */,
+				69BAD97F2BB5CA1400F28E31 /* ShellScript */,
 				69C99F7129F9FB6F00912E5A /* SwiftLint Script */,
 				69C99C9429F9F79000912E5A /* Sources */,
 				69C99C9529F9F79000912E5A /* Frameworks */,
 				69C99C9629F9F79000912E5A /* Resources */,
 				CAA408AD5AB7EDF3F19CD81D /* [CP] Embed Pods Frameworks */,
-				2DC3D82C7B0AF3007A4DEA4D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = picto;
+			packageProductDependencies = (
+				69BAD9802BB5EE8A00F28E31 /* SupabaseManager */,
+			);
 			productName = picto;
 			productReference = 69C99C9829F9F79000912E5A /* picto.app */;
 			productType = "com.apple.product-type.application";
@@ -1284,7 +1291,6 @@
 				69C99CB529F9F79200912E5A /* Frameworks */,
 				69C99CB629F9F79200912E5A /* Resources */,
 				34488F9AA27FEAFD086D3424 /* [CP] Embed Pods Frameworks */,
-				A01813B82320D109F476E073 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1328,6 +1334,9 @@
 				Base,
 			);
 			mainGroup = 69C99C8F29F9F79000912E5A;
+			packageReferences = (
+				69BAD9852BB5F2F000F28E31 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
 			productRefGroup = 69C99C9929F9F79000912E5A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1378,23 +1387,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2DC3D82C7B0AF3007A4DEA4D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-picto/Pods-picto-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-picto/Pods-picto-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-picto/Pods-picto-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		34488F9AA27FEAFD086D3424 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1412,7 +1404,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-picto-pictoUITests/Pods-picto-pictoUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		69C99F7029F9FB1200912E5A /* R.Swift Script */ = {
+		69BAD97F2BB5CA1400F28E31 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1422,15 +1414,14 @@
 			);
 			inputPaths = (
 			);
-			name = "R.Swift Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Generated/R.generated.swift,
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Generated/R.generated.swift\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 		69C99F7129F9FB6F00912E5A /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1450,23 +1441,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# \"${PODS_ROOT}/SwiftLint/swiftlint\"\n\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: Swiftlint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		A01813B82320D109F476E073 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-picto-pictoUITests/Pods-picto-pictoUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-picto-pictoUITests/Pods-picto-pictoUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-picto-pictoUITests/Pods-picto-pictoUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		A53DE009EDAB202B4A3990FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1675,6 +1649,7 @@
 				69C99F5529F9F9F300912E5A /* DismissalAnimator.swift in Sources */,
 				69C99ECB29F9F9F300912E5A /* BBLoaderHelpers.swift in Sources */,
 				69C99F3929F9F9F300912E5A /* UIScrollView+Ext.swift in Sources */,
+				69EC89B72BB65A3900DA6E74 /* UsernameCreationView.swift in Sources */,
 				69C99EBC29F9F9F300912E5A /* PushService.swift in Sources */,
 				69C99E6B29F9F9F300912E5A /* FeedCell.swift in Sources */,
 				69C99EAD29F9F9F300912E5A /* FirebasePostService.swift in Sources */,
@@ -1855,7 +1830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1909,7 +1884,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1932,10 +1907,18 @@
 				INFOPLIST_FILE = picto/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Picto;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Picto needs access to this to allow you to take photos or videos for posts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Picto needs access to this to allow you to include audio in videos you take for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Picto needs access to this to allow you to upload photos and videos for posts and avatars.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Picto requests access to track usage only when you sign up so we can determine if our social media ads are working effectively.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1962,10 +1945,18 @@
 				INFOPLIST_FILE = picto/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Picto;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Picto needs access to this to allow you to take photos or videos for posts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Picto needs access to this to allow you to include audio in videos you take for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Picto needs access to this to allow you to upload photos and videos for posts and avatars.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Picto requests access to track usage only when you sign up so we can determine if our social media ads are working effectively.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2099,6 +2090,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		69BAD9852BB5F2F000F28E31 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase-community/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		69BAD9802BB5EE8A00F28E31 /* SupabaseManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SupabaseManager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 69C99C9029F9F79000912E5A /* Project object */;
 }

@@ -40,9 +40,9 @@ class PostCommentTableViewCell: UITableViewCell {
     
     func setNoComments(leading: CGFloat = 20) {
         self.avatarLeading.constant = leading
-        self.avatar.setImage(string: me.avatar!)
+//        self.avatar.setImage(string: me.avatar!)
         self.avatar.round()
-        self.usernameLbl.text = me.username!
+        self.usernameLbl.text = "Username appears here"
         self.usernameLbl.textColor = .clear
         self.setNoMessage()
         self.nameReplyLbl.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -118,7 +118,7 @@ class PostCommentTableViewCell: UITableViewCell {
         let firstAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label, .font: BaseFont.get(.bold, 15), .kern: 0.2]
         let secondAttributes = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel, .font: BaseFont.get(.regular, 15)]
 
-        let attrString = NSMutableAttributedString(string: "\(me.username!)", attributes: firstAttributes)
+        let attrString = NSMutableAttributedString(string: "Username appears hhere", attributes: firstAttributes)
         let secondString = NSAttributedString(string: "  Be the first to comment on this post!", attributes: secondAttributes)
 
         attrString.append(secondString)

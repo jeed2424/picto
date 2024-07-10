@@ -219,12 +219,12 @@ class CardCollectionViewCell: CardCell {
     }
     
     func setFollow(user: BMUser) {
-        if user.id! == BMUser.me().id! {
+        if user.identifier == BMUser.me()?.identifier {
             self.followBtn.alpha = 0
             self.followBtn.setTitle("", for: [])
         } else {
             self.followBtn.alpha = 0
-            if BMUser.me().checkFollow(user: user) {
+            if BMUser.me()?.checkFollow(user: user) ?? false {
                 self.followBtn.setTitle("•  Following", for: [])
             } else {
                 self.followBtn.setTitle("•  Follow", for: [])
@@ -234,7 +234,7 @@ class CardCollectionViewCell: CardCell {
     
     @IBAction func tappedFollow() {
         addHaptic(style: .medium)
-        BMUser.me().followUser(user: self.post!.user!)
+        BMUser.me()?.followUser(user: self.post!.user!)
         self.setFollow(user: self.post!.user!)
         BMUser.save(user: &self.post!.user!)
 //        ProfileService.make().followUser(user: self.post!.user!) { (response, u) in
@@ -388,9 +388,9 @@ class CardCollectionViewCell: CardCell {
             self.likeBtn.setImage(.get(name: "heart", tint: .white), for: [])
             self.likeBtn.tintColor = .white
             self.likeCountLbl.text = "\(self.post!.likeCount!)"
-            if let ind = me.postLikes.firstIndex(where: {$0.postId ?? UInt(555555) == self.post!.id!}) {
-                me.postLikes.remove(at: ind)
-            }
+//            if let ind = me.postLikes.firstIndex(where: {$0.postId ?? UInt(555555) == self.post!.id!}) {
+//                me.postLikes.remove(at: ind)
+//            }
         }
         BMPostService.make().likePost(post: self.post!) { (response, u) in
             if let user = u {
@@ -402,7 +402,7 @@ class CardCollectionViewCell: CardCell {
     
     func checkLikeBtn(fill: Bool = true) {
         self.likeCountLbl.text = "\(self.post!.likeCount!)"
-        if BMUser.me().checkLike(post: self.post!) || fill == true {
+        if BMUser.me()?.checkLike(post: self.post!) ?? false || fill == true {
             self.likeBtn.setImage(.get(name: "heartfill", tint: .systemRed), for: [])
             self.likeBtn.tintColor = .systemRed
         } else {
@@ -418,7 +418,7 @@ extension CardCollectionViewCell: VideoViewDelegate {
     func addViewCount(post: BMPost?) {
         if var p = post {
             if let video = URL(string: p.medias.first!.videoUrl ?? "") {
-                if p.user!.id! != BMUser.me().id! && self.videoPlayer.currentItem() != nil {
+                if p.user.identifier != BMUser.me()?.identifier && self.videoPlayer.currentItem() != nil {
                     p.viewCount += 1
                     print("increased view count to: \(p.viewCount!.countText(text: "view"))")
                     self.dateLbl.text = "\(p.createdAtText())  •  \(p.viewCount!.countText(text: "view"))"

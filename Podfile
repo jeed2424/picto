@@ -8,8 +8,8 @@ target 'picto' do
     pod 'Firebase/Auth'
     pod 'Firebase/Messaging'
     pod 'Firebase/Storage'
-    pod 'GoogleSignIn', '~> 5.0.2'
-    pod 'FirebaseFirestore'
+    pod 'GoogleSignIn'
+  # pod 'FirebaseFirestore'
     
     pod 'ActiveLabel'
     pod 'SDWebImage'
@@ -22,9 +22,9 @@ target 'picto' do
     pod 'UITextView+Placeholder'
     pod 'CDAlertView'
     pod 'SkyFloatingLabelTextField'
-    pod 'Delighted'
+  # pod 'Delighted'
     pod 'SwiftLint'
-    pod 'Foil', '~> 3.0.0'
+    pod 'Foil'
     pod 'R.swift'
     pod 'Alamofire'
     pod 'SwifterSwift'
@@ -37,9 +37,6 @@ target 'picto' do
     pod 'PanModal'
     pod 'YPImagePicker'
     pod 'SwiftyStoreKit'
-    pod 'FacebookCore'
-    pod 'FacebookLogin'
-    pod 'FacebookShare'
 
   # Pods for picto
 
@@ -53,3 +50,22 @@ target 'picto' do
   end
 
 end
+
+post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          target.build_configurations.each do |config|
+          xcconfig_path = config.base_configuration_reference.real_path
+          xcconfig = File.read(xcconfig_path)
+          xcconfig_mod = xcconfig.gsub(/DT_TOOLCHAIN_DIR/, "TOOLCHAIN_DIR")
+          File.open(xcconfig_path, "w") { |file| file << xcconfig_mod }
+          end
+          target.build_configurations.each do |config|
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+          end
+
+		installer.pods_project.build_configurations.each do |config|
+    config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
+    config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
+  end
+      end
+  end

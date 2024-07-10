@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 import SDWebImage
 import Firebase
-import FirebaseFirestore
+//import FirebaseFirestore
 import FirebaseAuth
 import CoreMedia
 
@@ -23,8 +23,9 @@ enum LoginResponseCode {
 
 class AuthenticationService: BaseService {
 
-    let db = Firestore.firestore()
-    
+//    let db = Firestore.firestore()
+    let sharedInstance = AuthenticationService(api: ClientAPI.sharedInstance)
+
     override init(api: ClientAPI) {
         super.init(api: api)
     }
@@ -166,16 +167,16 @@ class AuthenticationService: BaseService {
     }
 
     func getEmail(user: User) {
-        let docRef = db.collection("users").document(user.uid)
-
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-
-                print("Document data: \(dataDescription)")
-            } else {
-                print("Document does not exist")
-            }
-        }
+//        let docRef = db.collection("users").document(user.uid)
+//
+//        docRef.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//
+//                print("Document data: \(dataDescription)")
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
     }
 }

@@ -8,6 +8,14 @@
 
 import Firebase
 
+class Timestamp {
+    let date: Date
+
+    init(date: Date) {
+        self.date = date
+    }
+}
+
 struct Post {
     var caption: String
     var likes: Int

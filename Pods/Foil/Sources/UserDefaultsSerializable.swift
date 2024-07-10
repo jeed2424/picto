@@ -29,6 +29,7 @@ import Foundation
 ///    - `Set`
 ///    - `Dictionary`
 ///    - `RawRepresentable` types
+///    - `Codable` types
 public protocol UserDefaultsSerializable {
 
     /// The type of the value that is stored in `UserDefaults`.
@@ -37,10 +38,10 @@ public protocol UserDefaultsSerializable {
     /// The value to store in `UserDefaults`.
     var storedValue: StoredValue { get }
 
-    /// Initializes the object using the provided value.
+    /// Initializes the object using the provided value, or returns `nil` if initialization fails.
     ///
     /// - Parameter storedValue: The previously store value fetched from `UserDefaults`.
-    init(storedValue: StoredValue)
+    init?(storedValue: StoredValue)
 }
 
 /// :nodoc:
@@ -124,17 +125,23 @@ extension Data: UserDefaultsSerializable {
     }
 }
 
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 /// :nodoc:
 extension Array: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
-        self.map { $0.storedValue }
+        self.compactMap { $0.storedValue }
     }
 
     public init(storedValue: [Element.StoredValue]) {
-        self = storedValue.map { Element(storedValue: $0) }
+        self = storedValue.compactMap { Element(storedValue: $0) }
     }
 }
 
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 /// :nodoc:
 extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable {
     public var storedValue: [Element.StoredValue] {
@@ -142,18 +149,21 @@ extension Set: UserDefaultsSerializable where Element: UserDefaultsSerializable 
     }
 
     public init(storedValue: [Element.StoredValue]) {
-        self = Set(storedValue.map { Element(storedValue: $0) })
+        self = Set(storedValue.compactMap { Element(storedValue: $0) })
     }
 }
 
+// Note: yes, compactMap will remove nil values, but collections of optionals are not valid plist types.
+// If a value is nil, it simply gets removed from UserDefaults.
+// Thus, this will never happen. For example, you cannot store [Int?], only [Int].
 /// :nodoc:
 extension Dictionary: UserDefaultsSerializable where Key == String, Value: UserDefaultsSerializable {
     public var storedValue: [String: Value.StoredValue] {
-        self.mapValues { $0.storedValue }
+        self.compactMapValues { $0.storedValue }
     }
 
     public init(storedValue: [String: Value.StoredValue]) {
-        self = storedValue.mapValues { Value(storedValue: $0) }
+        self = storedValue.compactMapValues { Value(storedValue: $0) }
     }
 }
 
@@ -161,7 +171,33 @@ extension Dictionary: UserDefaultsSerializable where Key == String, Value: UserD
 extension UserDefaultsSerializable where Self: RawRepresentable, Self.RawValue: UserDefaultsSerializable {
     public var storedValue: RawValue.StoredValue { self.rawValue.storedValue }
 
-    public init(storedValue: RawValue.StoredValue) {
-        self = Self(rawValue: Self.RawValue(storedValue: storedValue))!
+    public init?(storedValue: RawValue.StoredValue) {
+        guard let rawValue = Self.RawValue(storedValue: storedValue),
+              let value = Self(rawValue: rawValue) else {
+            assertionFailure("[Foil] RawRepresentable error: found unexpected stored value: \(storedValue)")
+            return nil
+        }
+        self = value
+    }
+}
+
+/// :nodoc:
+extension UserDefaultsSerializable where Self: Codable {
+    public var storedValue: Data? {
+        do {
+            return try JSONEncoder().encode(self)
+        } catch {
+            assertionFailure("[Foil] Encoding error: \(error)")
+            return nil
+        }
+    }
+
+    public init?(storedValue: Data?) {
+        do {
+            self = try JSONDecoder().decode(Self.self, from: storedValue ?? Data())
+        } catch {
+            assertionFailure("[Foil] Decoding error: \(error)")
+            return nil
+        }
     }
 }

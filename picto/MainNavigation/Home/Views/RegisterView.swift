@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import Combine
 import SkyFloatingLabelTextField
+import SupabaseManager
 
 class RegisterView: UIView {
 
@@ -171,7 +172,7 @@ extension RegisterView {
 
         NSLayoutConstraint.activate([
             btnExit.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            btnExit.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            btnExit.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             vStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             vStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -100),
@@ -294,28 +295,49 @@ extension RegisterView {
     }
     
     private func registerUser() {
-        auth.registerUser(email: emailField.text!.noSpaces(), password: passwordField.text!, firstName: firstNameField.text!.noSpaces(), lastName: lastNameField.text!.noSpaces(), appleId: nil) { (response, u) in
-            Timer.schedule(delay: 0.3) { (t) in
-                switch response {
-                case .Success:
-                    guard let usr = u else { return }
-                    self.auth.authenticationSuccess(user: usr)
-                    NotificationCenter.default.post(name: NotificationNames.didRegister, object: usr)
-                case .Error:
-                    self.errorLbl.text = "Error creating acount, please try again later."
-                case .InvalidName:
-                    self.errorLbl.text = "Invalid Name"
-                case .InvalidNumber:
-                    return
-                case .InvalidPassword:
-                    self.errorLbl.text = "Invalid Password"
-                case .UnavaliableNumber:
-                    return
-                }
 
+        guard let email = emailField.text?.noSpaces(), let password = passwordField.text else { return }
+
+    let firstName = firstNameField.text?.noSpaces()
+    let lastName = lastNameField.text?.noSpaces()
+//        auth.registerUser(email: emailField.text!.noSpaces(), password: passwordField.text!, firstName: firstNameField.text!.noSpaces(), lastName: lastNameField.text!.noSpaces(), appleId: nil) { (response, u) in
+//            Timer.schedule(delay: 0.3) { (t) in
+//                switch response {
+//                case .Success:
+//                    guard let usr = u else { return }
+//                    self.auth.authenticationSuccess(user: usr)
+//                    NotificationCenter.default.post(name: NotificationNames.didRegister, object: usr)
+//                case .Error:
+//                    self.errorLbl.text = "Error creating acount, please try again later."
+//                case .InvalidName:
+//                    self.errorLbl.text = "Invalid Name"
+//                case .InvalidNumber:
+//                    return
+//                case .InvalidPassword:
+//                    self.errorLbl.text = "Invalid Password"
+//                case .UnavaliableNumber:
+//                    return
+//                }
+//
+//            }
+//
+//        }
+        let manager = SupabaseAuthenticationManager.sharedInstance
+
+        manager.authenticate(.email, .signup, AuthObject(email: email, password: password), completion: { response, user in
+            switch response {
+            case .success:
+                guard let id = user?.id else { return }
+                print("")
+                let user = BMUser(id: id, username: "", firstName: firstName ?? "", lastName: lastName ?? "", email: email)
+                NotificationCenter.default.post(name: NotificationNames.willShowUsernameSelection, object: user)
+            case .error:
+                print("")
             }
+        })
 
-        }
+        //                    self.auth.authenticationSuccess(user: usr)
+        //                    NotificationCenter.default.post(name: NotificationNames.didRegister, object: usr)
 
     }
 

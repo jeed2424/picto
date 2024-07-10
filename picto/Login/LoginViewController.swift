@@ -95,9 +95,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //            let search = SearchController(config: .all)
             let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
             let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
-            let profile = UserProfileViewController.makeVC(user: BMUser.me(), fromTab: true)
-            let base4 = self.createVC(vc: profile, icon: UIImage(named: "profileicon")!.withTintColor(.systemGray), selected: UIImage(named: "profileicon-selected")!)
-            tabBarController.viewControllers = [base1, base2, base3, base4]
+            if let user = BMUser.me() {
+                let profile = UserProfileViewController.makeVC(user: user, fromTab: true)
+                let base4 = self.createVC(vc: profile, icon: UIImage(systemName: "pencil.circle")!.withTintColor(.systemGray), selected: UIImage(systemName: "pencil.circle.fill")!)
+                tabBarController.viewControllers = [base1, base2, base3, base4]
+            } else {
+                tabBarController.viewControllers = [base1, base2, base3]
+            }
             tabBarController.tabBar.tintColor = .label
             tabBarController.tabBar.barTintColor = .systemBackground
             tabBarController.tabBar.isTranslucent = false

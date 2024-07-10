@@ -104,12 +104,12 @@ extension UIViewController {
         var starBtn = UIBarButtonItem(image: .get(name: "staricon", tint: .white), style: .done, target: self, action: shareAction)
         starBtn.tintColor = .white
         if let p = post {
-            if BMUser.me().checkSaved(post: p) == true {
+            if BMUser.me()?.checkSaved(post: p) == true {
 //                saveBtn = UIBarButtonItem(image: UIImage(systemName: "bookmark.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold))!, style: .done, target: self, action: saveAction)
                 saveBtn = UIBarButtonItem(image: .get(name: "bookmarkfill", tint: .white), style: .done, target: self, action: saveAction)
                 saveBtn.tintColor = .white
             }
-            if BMUser.me().checkCollection(post: p) == true {
+            if BMUser.me()?.checkCollection(post: p) == true {
                 starBtn = UIBarButtonItem(image: .get(name: "starfill", tint: .white), style: .done, target: self, action: shareAction)
                 starBtn.tintColor = .white
             }
@@ -306,6 +306,7 @@ extension UIViewController: EditControllerDelegate, CameraControllerDelegate {
     }
     
     public func editController(_ editController: EditController, didFinishEditing session: Session) {
+        guard let user = BMUser.me() else { return }
         editController.presentLoadingAlertModal(animated: true, completion: nil)
         if let vid = session.video {
             VideoExporter.shared.export(video: vid, progress: { progress in
@@ -320,7 +321,7 @@ extension UIViewController: EditControllerDelegate, CameraControllerDelegate {
                 
                 print("Finished video export at URL: \(vid.exportedVideoURL)")
                 session.video!.videoSegments.first!.requestThumbnail(boundingSize: session.video!.videoSegments.first!.naturalSize, contentMode: .contentAspectFill, filter: session.video!.videoSegments.first!.filters.first) { (img) in
-                    let uploadVC = PostUploadViewController.makeVC(user: BMUser.me(), delegate: self, image: img, videoURL: vid.exportedVideoURL, video: session.video!)
+                    let uploadVC = PostUploadViewController.makeVC(user: user, delegate: self, image: img, videoURL: vid.exportedVideoURL, video: session.video!)
                     editController.dismissLoadingAlertModal(animated: true) {
                         editController.push(vc: uploadVC)
                         return
@@ -329,7 +330,7 @@ extension UIViewController: EditControllerDelegate, CameraControllerDelegate {
             })
         } else {
             ImageExporter.shared.export(image: session.image!, compressionQuality: 0.75) { (error, img) in
-                let uploadVC = PostUploadViewController.makeVC(user: BMUser.me(), delegate: self, image: img, videoURL: nil)
+                let uploadVC = PostUploadViewController.makeVC(user: user, delegate: self, image: img, videoURL: nil)
                 editController.dismissLoadingAlertModal(animated: true) {
                     editController.push(vc: uploadVC)
                 }

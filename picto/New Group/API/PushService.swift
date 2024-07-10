@@ -25,14 +25,14 @@ class PushService: BaseService {
     }
     
     func updateFCMToken(token: String, completion: ((ResponseCode) -> Swift.Void)?) {
-
-        let parameters: Parameters = ["user_id": BMUser.me().id!, "token": token]
-        APIService.requestAPIJson(url:URL(string: "https://api.warbly.net/user/update/fcm")!, method: .post, parameters: parameters, success: { responseDict in
-            completion?(ResponseCode.Success)
-        }, failure: { errorString in
-            log.error(errorString)
-            completion?(ResponseCode.Error)
-        })
+//
+//        let parameters: Parameters = ["user_id": BMUser.me().id!, "token": token]
+//        APIService.requestAPIJson(url:URL(string: "https://api.warbly.net/user/update/fcm")!, method: .post, parameters: parameters, success: { responseDict in
+//            completion?(ResponseCode.Success)
+//        }, failure: { errorString in
+//            log.error(errorString)
+//            completion?(ResponseCode.Error)
+//        })
     }
     
 }

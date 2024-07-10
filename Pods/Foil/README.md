@@ -19,20 +19,20 @@ Foil, as in "let me quickly and easily **wrap** and **store** this leftover food
 
 ## Usage
 
-You can use `@WrappedDefault` for non-optional values and `@WrappedDefaultOptional` for optional ones.
+You can use `@FoilDefaultStorage` for non-optional values and `@FoilDefaultStorageOptional` for optional ones.
 You may wish to store all your user defaults in one place, however, that is not necessary. **Any** property on **any type** can use this wrapper.
 
 ```swift
 final class AppSettings {
     static let shared = AppSettings()
 
-    @WrappedDefault(key: "flagEnabled")
+    @FoilDefaultStorage(key: "flagEnabled")
     var flagEnabled = true
 
-    @WrappedDefault(key: "totalCount")
+    @FoilDefaultStorage(key: "totalCount")
     var totalCount = 0
 
-    @WrappedDefaultOptional(key: "timestamp")
+    @FoilDefaultStorageOptional(key: "timestamp")
     var timestamp: Date?
 }
 
@@ -47,7 +47,7 @@ There is also an included example app project.
 
 ### Using `enum` keys
 
-If you prefer using an `enum` for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unneccessary.
+If you prefer using an `enum` for the keys, writing an extension specific to your app is easy. However, this is not required. In fact, unless you have a specific reason to reference the keys, this is completely unnecessary.
 
 ```swift
 enum AppSettingsKey: String, CaseIterable {
@@ -56,13 +56,13 @@ enum AppSettingsKey: String, CaseIterable {
     case timestamp
 }
 
-extension WrappedDefault {
+extension FoilDefaultStorage {
     init(wrappedValue: T, _ key: AppSettingsKey) {
         self.init(wrappedValue: wrappedValue, key: key.rawValue)
     }
 }
 
-extension WrappedDefaultOptional {
+extension FoilDefaultStorageOptional {
     init(_ key: AppSettingsKey) {
         self.init(key: key.rawValue)
     }
@@ -77,10 +77,10 @@ There are [many ways to observe property changes](https://www.jessesquires.com/b
 final class AppSettings: NSObject {
     static let shared = AppSettings()
 
-    @WrappedDefaultOptional(key: "userId")
+    @FoilDefaultStorageOptional(key: "userId")
     @objc dynamic var userId: String?
 
-    @WrappedDefaultOptional(key: "average")
+    @FoilDefaultStorageOptional(key: "average")
     var average: Double?
 }
 ```
@@ -95,7 +95,8 @@ let observer = AppSettings.shared.observe(\.userId, options: [.new]) { settings,
 
 #### Using Combine
 
-**Note:** that `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
+> [!NOTE]
+> The `average` does not need the `@objc dynamic` annotation, `.receiveValue` will fire immediately with the current value of `average` and on every change after.
 
 ```swift
 AppSettings.shared.$average
@@ -107,7 +108,8 @@ AppSettings.shared.$average
 
 #### Combine Alternative with KVO
 
-**Note:** in this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
+> [!NOTE]
+> In this case, `userId` needs the `@objc dynamic` annotation and `AppSettings` needs to inherit from `NSObject`. Then `receiveValue` will fire only on changes to wrapped object's value. It will not publish the initial value as in the example above.
 
 ```swift
 AppSettings.shared
@@ -120,9 +122,17 @@ AppSettings.shared
 
 ### Supported types
 
-The following types are supported by default for use with `@WrappedDefault`.
+The following types are supported by default for use with `@FoilDefaultStorage`.
 
-Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged**. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
+> [!NOTE]
+> While the `UserDefaultsSerializable` protocol defines a _failable_ initializer, `init?(storedValue:)`, it is possible to provide a custom implementation with a **non-failable** initializer, which still satisfies the protocol requirements.
+>
+> For all of Swift's built-in types (`Bool`, `Int`, `Double`, `String`, etc.), the default implementation of `UserDefaultsSerializable` is **non-failable**.
+
+> [!IMPORTANT]
+> Adding support for custom types is possible by conforming to `UserDefaultsSerializable`. However, **this is highly discouraged** as all `plist` types are supported by default. `UserDefaults` is not intended for storing complex data structures and object graphs. You should probably be using a proper database (or serializing to disk via `Codable`) instead.
+>
+> While `Foil` supports storing `Codable` types by default, you should **use this sparingly** and _only_ for small objects with few properties.
 
 - `Bool`
 - `Int`
@@ -137,6 +147,52 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 - `Set`
 - `Dictionary`
 - `RawRepresentable` types
+- `Codable` types
+
+#### Notes on [`Codable`](https://developer.apple.com/documentation/swift/codable) types
+
+> [!WARNING]
+> If you are storing custom `Codable` types and using the default implementation of `UserDefaultsSerializable` provided by `Foil`, then **you must use the optional variant of the property wrapper**, `@FoilDefaultStorageOptional`. This will allow you to make breaking changes to your `Codable` type (e.g., adding or removing a property). Alternatively, you can provide a custom implementation of `Codable` that supports migration, or provide a custom implementation of `UserDefaultsSerializable` that handles encoding/decoding failures. See the example below.
+
+**Codable Example:**
+```swift
+// Note: uses the default implementation of UserDefaultsSerializable
+struct User: Codable, UserDefaultsSerializable {
+    let id: UUID
+    let name: String
+}
+
+// Yes, do this
+@FoilDefaultStorageOptional(key: "user")
+var user: User?
+
+// NO, do NOT this
+// This will crash if you change User by adding/removing properties
+@FoilDefaultStorage(key: "user")
+var user = User()
+```
+
+#### Notes on [`RawRepresentable`](https://developer.apple.com/documentation/swift/rawrepresentable) types
+
+Using `RawRepresentable` types, especially as properties of a `Codable` type require special considerations. As mentioned above, `Codable` types must use `@FoilDefaultStorageOptional` out-of-the-box, unless you provide a custom implementation of `UserDefaultsSerializable`. The same is true for `RawRepresentable` types.
+
+> [!WARNING]
+> `RawRepresentable` types must use `@FoilDefaultStorageOptional` in case you modify the cases of your `enum` (or otherwise modify your `RawRepresentable` with a breaking change). Additionally, `RawRepresentable` types have a designated initializer that is failable, `init?(rawValue:)`, and thus could return `nil`.
+>
+> Or, if you are storing a `Codable` type that has `RawRepresentable` properties, by default those properties should be optional to accommodate the optionality described above.
+
+If you wish to avoid these edge cases with `RawRepresentable` types, you can provide a non-failable initializer:
+
+```swift
+extension MyStringEnum: UserDefaultsSerializable {
+    // Default init provided by Foil
+    // public init?(storedValue: RawValue.StoredValue) { ... }
+
+    // New, non-failable init using force-unwrap.
+    // Only do this if you know you will not make breaking changes.
+    public init(storedValue: String) { self.init(rawValue: storedValue)! }
+}
+```
 
 ## Additional Resources
 
@@ -154,8 +210,8 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 
 ## Requirements
 
-- Swift 5.5+
-- Xcode 13.0+
+- Swift 5.9+
+- Xcode 15.0+
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
@@ -163,14 +219,14 @@ Adding support for custom types is possible by conforming to `UserDefaultsSerial
 ### [CocoaPods](http://cocoapods.org)
 
 ````ruby
-pod 'Foil', '~> 3.0.0'
+pod 'Foil', '~> 5.0.0'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/jessesquires/Foil.git", from: "3.0.0")
+    .package(url: "https://github.com/jessesquires/Foil.git", from: "5.0.0")
 ]
 ```
 

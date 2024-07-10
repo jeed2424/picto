@@ -4,6 +4,7 @@ import Foil
 import Combine
 import SkyFloatingLabelTextField
 import Firebase
+import SupabaseManager
 
 class NewHomeViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class NewHomeViewController: UIViewController {
     private lazy var googleLogin = GoogleLoginView()
     private lazy var emailLogin = EmailLoginView()
     private lazy var registerView = RegisterView()
+    private lazy var usernameView = UsernameCreationView()
 
     private lazy var vStack: UIStackView = {
         let stack = UIStackView()
@@ -220,6 +222,16 @@ extension NewHomeViewController {
                 }
             }
             addNewView(emailLogin)
+
+        case .username:
+            if !view.subviews.isEmpty {
+                for view in self.view.subviews {
+                    if view != vStack {
+                        view.removeFromSuperview()
+                    }
+                }
+            }
+            addNewView(usernameView)
         }
     }
 
@@ -237,17 +249,21 @@ extension NewHomeViewController {
 
     func presentMain() {
         let feed = FeedService.make()
-        feed.getFeed(all: true) { (response, posts) in
-            feed.posts = posts
+//        feed.getFeed(all: true) { (response, posts) in
+//            feed.posts = posts
             let tabBarController = CustomTabBarController()
             let home = HomeTestViewController.makeVC()
             let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
             //            let search = SearchController(config: .all)
             let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
             let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
-            let profile = UserProfileViewController.makeVC(user: BMUser.me(), fromTab: true)
-            let base4 = self.createVC(vc: profile, icon: UIImage(named: "profileicon")!.withTintColor(.systemGray), selected: UIImage(named: "profileicon-selected")!)
+        if let user = BMUser.me() {
+            let profile = UserProfileViewController.makeVC(user: user, fromTab: true)
+            let base4 = self.createVC(vc: profile, icon: UIImage(systemName: "pencil.circle")!.withTintColor(.systemGray), selected: UIImage(systemName: "pencil.circle.fill")!)
             tabBarController.viewControllers = [base1, base2, base3, base4]
+        } else {
+            tabBarController.viewControllers = [base1, base2, base3]
+        }
             tabBarController.tabBar.tintColor = .label
             tabBarController.tabBar.barTintColor = .systemBackground
             tabBarController.tabBar.isTranslucent = false
@@ -258,7 +274,7 @@ extension NewHomeViewController {
             tabBarController.modalTransitionStyle = .crossDissolve
             ProfileService.make().tabController = tabBarController
             self.present(tabBarController, animated: true, completion: nil)
-        }
+//        }
     }
 
     private func createVC(vc: UIViewController, icon: UIImage, selected: UIImage) -> BaseNC {
@@ -301,11 +317,22 @@ extension NewHomeViewController {
                     }
                     .store(in: &subscriptions)
 
+        NotificationCenter.default.publisher(for: NotificationNames.willShowUsernameSelection)
+                    .receiveOnMain()
+                    .sink { [weak self] newUser in
+                        guard let self = self, let newUser = newUser.object as? BMUser, let identifier = newUser.identifier else { return }
+
+                        self.usernameView.setValues(userId: identifier, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email)
+                        self.viewModel.loadPageSelection(selection: .username)
+                    }
+                    .store(in: &subscriptions)
+
         NotificationCenter.default.publisher(for: NotificationNames.didRegister)
                     .receiveOnMain()
                     .sink { [weak self] usr in
+                        print("\(usr.object)")
                         guard let self = self else { return }
-                        guard let user = usr.object as? BMUser else { return }
+                        guard let newUser = usr.object as? BMUser else { return }
 
                         self.viewModel.resetPaging()
                         self.view.layoutIfNeeded()
@@ -315,9 +342,11 @@ extension NewHomeViewController {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.activityIndicator.stopAnimating()
                             self.activityIndicator.alpha = 0
-                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: user))
+                            
+                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: newUser))
                             base.modalPresentationStyle = .overFullScreen
                             self.present(base, animated: true, completion: nil)
+//                            self.presentMain()
                         }
                     }
                     .store(in: &subscriptions)

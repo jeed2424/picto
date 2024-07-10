@@ -127,12 +127,12 @@ class MainTabController: CustomTabBarController {
 
 // MARK: - AuthenticationDelegate
 
-extension MainTabController: AuthenticationDelegate {
-    func authenticationDidComplete() {
-//        fetchUser()
-        self.dismiss(animated: true, completion: nil)
-    }
-}
+//extension MainTabController: AuthenticationDelegate {
+//    func authenticationDidComplete() {
+////        fetchUser()
+//        self.dismiss(animated: true, completion: nil)
+//    }
+//}
 
 // MARK: - UITabBarControllerDelegate
 
@@ -175,13 +175,13 @@ extension MainTabController: AuthenticationDelegate {
 //    }
 //}
 
-extension CustomTabBarController: UploadPostControllerDelegate {
-    func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
-        selectedIndex = 0
-        controller.dismiss(animated: true, completion: nil)
-        
-        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
-        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
-        feed.handleRefresh()
-    }
-}
+//extension CustomTabBarController: UploadPostControllerDelegate {
+//    func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
+//        selectedIndex = 0
+//        controller.dismiss(animated: true, completion: nil)
+//        
+//        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
+//        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
+//        feed.handleRefresh()
+//    }
+//}

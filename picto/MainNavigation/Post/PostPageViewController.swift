@@ -135,10 +135,11 @@ class PostPageViewController: UIViewController {
     }
     
     @objc func sharePostAction() {
+        guard let user = BMUser.me() else { return }
         print("should save post \(self.currentPost!.caption!)")
         addHaptic(style: .medium)
-        let title = BMUser.me().checkCollection(post: self.currentPost!) == true ? "Removed from Collection" : "Added to Collection"
-        let message = BMUser.me().checkCollection(post: self.currentPost!) == true ? "\(self.currentPost!.user!.username!)'s post has been removed from your Collection. To view your Collection, go to your profile page." : "\(self.currentPost!.user!.username!)'s post has been added to your Collection. To view your Collection, go to your profile page."
+        let title = user.checkCollection(post: self.currentPost!) == true ? "Removed from Collection" : "Added to Collection"
+        let message = user.checkCollection(post: self.currentPost!) == true ? "\(self.currentPost!.user!.username!)'s post has been removed from your Collection. To view your Collection, go to your profile page." : "\(self.currentPost!.user!.username!)'s post has been added to your Collection. To view your Collection, go to your profile page."
         showAlertPopup(title: title, message: message, image: .get(name: "staricon", tint: .white))
         BMPostService.make().addToCollection(post: self.currentPost!) { (response, u) in
             self.setPostNavItems(saveAction: #selector(self.savePostAction), shareAction: #selector(self.sharePostAction), post: self.currentPost!)

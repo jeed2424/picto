@@ -16,9 +16,10 @@ import AVFoundation
 import SwiftyBeaver
 import ObjectMapper
 import PixelSDK
-import Delighted
+//import Delighted
 import GoogleSignIn
 import AppTrackingTransparency
+import SupabaseManager
 
 let log = SwiftyBeaver.self
 
@@ -31,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let gcmMessageIDKey = NSUUID().uuidString
     
     var showMessageNoti: Bool = true
+
+    var supabaseManager = SupabaseManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -60,13 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        Delighted.initializeSDK()
 
+
         setupRootViewController()
         
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        Delighted.initializeSDK()
+//        Delighted.initializeSDK()
       }
         
     func attemptToRegisterForNotifications(application: UIApplication) {
@@ -153,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
 
       // Print full message.
-        print("PUSH INFO HASH: ", self.parseMessage(userInfo: userInfo))
+//        print("PUSH INFO HASH: ", self.parseMessage(userInfo: userInfo))
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -171,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
 
       // Print full message.
-        print("PUSH INFO FETCH COMPLETION: ", self.parseMessage(userInfo: userInfo))
+//        print("PUSH INFO FETCH COMPLETION: ", self.parseMessage(userInfo: userInfo))
 
       completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -185,10 +189,10 @@ extension AppDelegate: MessagingDelegate {
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("DEBUG: Registered with FCM Token: ", fcmToken)
+//        print("DEBUG: Registered with FCM Token: ", fcmToken)
         Messaging.messaging().retrieveFCMToken(forSenderID: "1033756784306") { (tok, error) in
-            print("FCM ERROR: ", error)
-            print("GOOD TOKEN: ", tok)
+//            print("FCM ERROR: ", error)
+//            print("GOOD TOKEN: ", tok)
             if let t = tok {
                 UserDefaults.standard.setValue(t, forKey: "userDeviceFCMToken")
             }
@@ -196,17 +200,18 @@ extension AppDelegate: MessagingDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        return GIDSignIn.sharedInstance.handle(url)
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
       // ...
       if let error = error {
         // ...
+          print("\(error.localizedDescription)")
         return
       }
 
-       let authentication = user //.authentication
+//       let authentication = user //.authentication
     //    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken ?? "",
     //                                                    accessToken: authentication.accessToken)
       // ...
@@ -236,28 +241,28 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
     }
 
     // Print full message.
-    print("PUSH INFO WILL PRESENT: ", self.parseMessage(userInfo: userInfo))
+//    print("PUSH INFO WILL PRESENT: ", self.parseMessage(userInfo: userInfo))
 
 //    // Change this to your preferred presentation option
-    if var message = self.parseMessage(userInfo: userInfo) {
-        if var convo = me.conversations.first(where: {$0.id! == message.convoId!}) {
-            convo.messages.append(message)
-            convo.lastMessage = message
-            BMConversation.save(convo: &convo)
-            BMMessage.save(message: &message)
-            NotificationCenter.default.post(name: NSNotification.Name("newMessageReceived"), object: nil)
-        } else {
-            print("this is from a new convo you don't have yet")
-            completionHandler([[.alert, .sound]])
-        }
-        if self.showMessageNoti == true {
-            completionHandler([[.alert, .sound]])
-        } else {
-            completionHandler([[]])
-        }
-        completionHandler([[]])
-    } else {
-        completionHandler([[.alert, .sound]])
+      if self.parseMessage(userInfo: userInfo) != nil {
+//        if var convo = me.conversations.first(where: {$0.id! == message.convoId!}) {
+//            convo.messages.append(message)
+//            convo.lastMessage = message
+//            BMConversation.save(convo: &convo)
+//            BMMessage.save(message: &message)
+//            NotificationCenter.default.post(name: NSNotification.Name("newMessageReceived"), object: nil)
+//        } else {
+//            print("this is from a new convo you don't have yet")
+//            completionHandler([[.alert, .sound]])
+//        }
+//        if self.showMessageNoti == true {
+//            completionHandler([[.alert, .sound]])
+//        } else {
+//            completionHandler([[]])
+//        }
+//        completionHandler([[]])
+//    } else {
+        completionHandler([[.sound]])
     }
   }
 

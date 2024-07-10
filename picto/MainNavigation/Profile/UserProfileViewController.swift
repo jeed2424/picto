@@ -185,7 +185,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
 //        self.posts = p.sorted(by: {$0.createdAt! < $1.createdAt!})
 //        self.user!.posts = self.posts.sorted(by: {$0.createdAt! < $1.createdAt!})
 //        Timer.schedule(delay: 0.3) { (t) in
-//            if self.user!.id! == BMUser.me().id! {
+//            if self.user.identifier == BMUser.me()?.identifier {
 //              //  self.user = nil// ProfileService.make().user!
 //            }
 //        }
@@ -211,7 +211,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
             self.usernameLbl.text = self.user?.username
         }
 //        usernameLbl.text = "\(self.user!.firstName!) \(self.user!.lastName!)"
-        if self.user?.id == BMUser.me().id {
+        if self.user?.identifier == BMUser.me()?.identifier {
             self.user = BMUser.me()
         }
         let t = self.contentType
@@ -263,7 +263,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         self.loadPosts(user: self.user!)
 //        ProfileService.make().loadUser(user: self.user!) { (response, u) in
 //            if let usr = u {
-//                if usr.id! == BMUser.me().id! {
+//                if usr.id! == BMUser.me()?.identifier {
 //                    ProfileService.make().user = usr
 //                }
 //                self.user = usr
@@ -280,7 +280,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     func addAvatarTap(user: BMUser) {
-        if user.id! == BMUser.me().id! {
+        if user.identifier == BMUser.me()?.identifier {
             let tap = UITapGestureRecognizer(target: self, action: #selector(self.editAvatar))
             self.avatar.addGestureRecognizer(tap)
             self.avatar.isUserInteractionEnabled = true
@@ -298,7 +298,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
             self.setBackBtn(color: .label, animated: false)
             self.setNavTitle(text: "\(user.username!)", font: BaseFont.get(.medium, 15))
         }
-        if user.id! == BMUser.me().id! {
+        if user.identifier == BMUser.me()?.identifier {
             let menuBtn = UIBarButtonItem(image: UIImage(named: "menuicon")!, style: .done, target: self, action: #selector(self.showMenu))
             menuBtn.tintColor = .label
             self.navigationItem.setRightBarButton(menuBtn, animated: false)
@@ -319,11 +319,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     func checkUser(user: BMUser) {
-        if BMUser.me().id! == user.id! {
+        if BMUser.me()?.identifier == user.identifier {
             self.followBtn.setTitle("Edit Profile", for: [])
             self.followBtn.setTitleColor(.systemBlue, for: [])
         } else {
-            if BMUser.me().checkFollow(user: user) == true {
+            if BMUser.me()?.checkFollow(user: user) == true {
                 self.followBtn.setTitle("Following", for: [])
             } else {
                 self.followBtn.setTitle("Follow", for: [])
@@ -375,20 +375,21 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func followAction(_ sender: Any) {
+        guard let user = BMUser.me(), let uid = user.identifier else { return }
         addHaptic(style: .medium)
-        if BMUser.me().id! == self.user!.id! {
+        if BMUser.me()?.identifier == self.user.identifier {
 //            self.showUserList(users: FeedService.make().posts.map({$0.user!}))
-            let vc = NewEditProfileViewController.makeVC(user: BMUser.me())
+            let vc = NewEditProfileViewController.makeVC(user: user)
             self.push(vc: vc)
         } else {
-            if BMUser.me().checkFollow(user: self.user!) == true {
+            if BMUser.me()?.checkFollow(user: self.user!) == true {
                 self.followBtn.setTitle("Follow", for: [])
-                if let index = self.user!.followers.index(of: BMUser.me().id!) {
+                if let index = self.user!.followers.firstIndex(of: uid) {
                     self.user!.followers.remove(at: index)
                 }
             } else {
                 self.followBtn.setTitle("Following", for: [])
-                self.user!.followers.append(BMUser.me().id!)
+                self.user!.followers.append(uid)
             }
             self.followersBtn.setTitle(self.user!.followers.count.countText(text: "Follower"), for: [])
             self.followersLbl.text = self.user!.followers.count.countText(text: "Follower")
@@ -406,9 +407,9 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func viewFollowers(_ sender: Any) {
-        let vc = UserFollowersViewController.makeVC(user: self.user!)
-        vc.forSearch = self.fromSearch
-        self.push(vc: vc)
+//        let vc = UserFollowersViewController.makeVC(user: self.user!)
+//        vc.forSearch = self.fromSearch
+//        self.push(vc: vc)
     }
     
     @IBAction func viewWebsite(_ sender: Any) {
@@ -425,16 +426,16 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc func viewFollowing() {
-        let vc = UserFollowersViewController.makeVC(user: self.user!, following: true)
-//        vc.forSearch = self.fromSearch
-        self.push(vc: vc)
+//        let vc = UserFollowersViewController.makeVC(user: self.user!, following: true)
+////        vc.forSearch = self.fromSearch
+//        self.push(vc: vc)
     }
     
     @objc func showMenu() {
         // Action Sheet
         let actionSheet = ATActionSheet()
-        let nb = self.user!.id! == BMUser.me().id! ? "Community Guidelines" : "Enable Notifications"
-        let noti = ATAction(title: self.user!.id! == BMUser.me().id! ? "Community Guidelines" : "Enable Notifications", image: nil) {
+        let nb = self.user.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications"
+        let noti = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications", image: nil) {
             print("Notifications")
             actionSheet.dismissAlertAnim {
                 if nb == "Community Guidelines" {
@@ -461,8 +462,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         let follows = ATAction(title: "People I Follow  👋", image: nil, style: .default) {
             print("Following")
             actionSheet.dismissAlertAnim {
-                let vc = UserFollowersViewController.makeVC(user: me, following: true)
-                self.push(vc: vc)
+//                let vc = UserFollowersViewController.makeVC(user: me, following: true)
+//                self.push(vc: vc)
             }
         }
         
@@ -478,19 +479,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
             }
         }
         
-        if me.showName! == false {
-            showName = ATAction(title: "Show My Name", image: nil, style: .default) {
-                print("show name")
-                actionSheet.dismissAlertAnim {
-//                    ProfileService.make().toggleName(user: me) { (response, u) in
-//                        if let usr = u {
-//                            ProfileService.make().user = usr
-//                            BMUser.save(user: &ProfileService.make().user!)
-//                        }
-//                    }
-                }
-            }
-        }
+//        if me.showName! == false {
+//            showName = ATAction(title: "Show My Name", image: nil, style: .default) {
+//                print("show name")
+//                actionSheet.dismissAlertAnim {
+////                    ProfileService.make().toggleName(user: me) { (response, u) in
+////                        if let usr = u {
+////                            ProfileService.make().user = usr
+////                            BMUser.save(user: &ProfileService.make().user!)
+////                        }
+////                    }
+//                }
+//            }
+//        }
         
         let likes = ATAction(title: "Posts I've Liked  ❤️", image: nil, style: .default) {
             print("Posts")
@@ -504,8 +505,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
                 }
             }
         }
-        let tb = self.user!.id! == BMUser.me().id! ? "Terms of Service" : "Block \(self.user!.username!)"
-        let block = ATAction(title: self.user!.id! == BMUser.me().id! ? "Terms of Service" : "Block \(self.user!.username!)", image: nil, style: self.user!.id! == BMUser.me().id! ? .default : .destructive) {
+        let tb = self.user.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)"
+        let block = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)", image: nil, style: self.user.identifier == BMUser.me()?.identifier ? .default : .destructive) {
             print("block")
 //            actionSheet.dismissAlert()
             actionSheet.dismissAlertAnim {
@@ -520,7 +521,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
 //                showAlertPopup(title: "Coming Soon", message: "We're currently working on this feature and will have it available soon!", image: .get(name: "notificationbell", tint: .white))
             }
         }
-        let logout = ATAction(title: self.user!.id! == BMUser.me().id! ? "Log out" : "Report Activity", image: nil, style: .default) {
+        let logout = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Log out" : "Report Activity", image: nil, style: .default) {
             print("logged out")
             actionSheet.dismiss(animated: false) {
                 AuthenticationService.make().logout {
@@ -542,13 +543,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         let i = self.user!.instagram ?? ""
         if i != "" {
 //            actionSheet.addActions([noti, insta, block, logout])
-            if self.user!.id! == BMUser.me().id! {
+            if self.user.identifier == BMUser.me()?.identifier {
                 actionSheet.addActions([showName, likes, follows, insta, noti, block, donate, logout])
             } else {
                 actionSheet.addActions([insta, noti, block, logout])
             }
         } else {
-            if self.user!.id! == BMUser.me().id! {
+            if self.user.identifier == BMUser.me()?.identifier {
                 actionSheet.addActions([showName, likes, follows, noti, block, donate, logout])
             } else {
                 actionSheet.addActions([noti, block, logout])

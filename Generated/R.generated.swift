@@ -618,13 +618,13 @@ struct _R {
 
       let name = "UserProfile"
 
-      var editProfileViewController: RswiftResources.StoryboardViewControllerIdentifier<EditProfileViewController> { .init(identifier: "EditProfileViewController", storyboard: name, bundle: bundle) }
+//      var editProfileViewController: RswiftResources.StoryboardViewControllerIdentifier<OldEditProfileViewController> { .init(identifier: "EditProfileViewController", storyboard: name, bundle: bundle) }
       var userFollowersViewController: RswiftResources.StoryboardViewControllerIdentifier<UserFollowersViewController> { .init(identifier: "UserFollowersViewController", storyboard: name, bundle: bundle) }
       var userProfileViewController: RswiftResources.StoryboardViewControllerIdentifier<UserProfileViewController> { .init(identifier: "UserProfileViewController", storyboard: name, bundle: bundle) }
 
       func validate() throws {
         if UIKit.UIImage(named: "videoicon", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'videoicon' is used in storyboard 'UserProfile', but couldn't be loaded.") }
-        if editProfileViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'editProfileViewController' could not be loaded from storyboard 'UserProfile' as 'EditProfileViewController'.") }
+//        if editProfileViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'editProfileViewController' could not be loaded from storyboard 'UserProfile' as 'OldEditProfileViewController'.") }
         if userFollowersViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'userFollowersViewController' could not be loaded from storyboard 'UserProfile' as 'UserFollowersViewController'.") }
         if userProfileViewController() == nil { throw RswiftResources.ValidationError("[R.swift] ViewController with identifier 'userProfileViewController' could not be loaded from storyboard 'UserProfile' as 'UserProfileViewController'.") }
       }

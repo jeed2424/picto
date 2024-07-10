@@ -7,6 +7,7 @@ import FirebaseAuth
 public class BMUser: BMSerializedObject, Comparable {
     override class var identifier: String { return "_BMUser" }
     
+    var identifier: UUID?
     var username: String!
     var firstName: String!
     var lastName: String!
@@ -42,8 +43,8 @@ public class BMUser: BMSerializedObject, Comparable {
         return links.filter({$0 != "none"})
     }
     
-    var following = [UInt]()
-    var followers = [UInt]()
+    var following = [UUID]()
+    var followers = [UUID]()
     
     var collection: BMCollection!
     var posts = [BMPost]()
@@ -52,14 +53,23 @@ public class BMUser: BMSerializedObject, Comparable {
     var savedPosts = [BMSavedPost]()
     var postLikes = [BMPostLike]()
     
-    static public func me() -> BMUser {
-        let u = ProfileService.make().user!
-        return u as! BMUser
+    static public func me() -> BMUser? {
+        return ProfileService.sharedInstance.user
     }
     
     init(avatar: String) {
         super.init()
         self.avatar = avatar
+    }
+
+    init(id: UUID, username: String, firstName: String, lastName: String, email: String) {
+        self.identifier = id
+        self.username = username
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+
+        super.init()
     }
 
     // Mappable
@@ -96,9 +106,9 @@ public class BMUser: BMSerializedObject, Comparable {
     }
     
     func checkFollow(user: BMUser) -> Bool {
-        if let follows = self.following.first(where: {$0 == user.id!}) {
+        if let follows = self.following.first(where: {$0 == user.identifier}) {
             return true
-        } else if let otherFollows = user.followers.first(where: {$0 == self.id!}) {
+        } else if let otherFollows = user.followers.first(where: {$0 == self.identifier}) {
             return true
         } else {
             return false
@@ -174,14 +184,16 @@ public class BMUser: BMSerializedObject, Comparable {
     }
     
     func followUser(user: BMUser) {
-        if let index = self.following.index(of: user.id!) {
+        if let uid = self.identifier, let index = self.following.firstIndex(of: uid) {
             self.following.remove(at: index)
-            if let ind = user.followers.index(of: self.id!) {
+            if let ind = user.followers.firstIndex(of: uid) {
                 user.followers.remove(at: ind)
             }
         } else {
-            self.following.append(user.id!)
-            user.followers.append(user.id!)
+            if let uuid = user.identifier {
+                self.following.append(uuid)
+                user.followers.append(uuid)
+            }
         }
         
     }

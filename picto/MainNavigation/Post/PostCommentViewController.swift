@@ -86,7 +86,9 @@ class PostCommentViewController: UIViewController {
         setPost(post: self.post!)
         NotificationCenter.default.addObserver(self, selector: #selector(PostCommentViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(PostCommentViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.textContainerImg.setImage(string: BMUser.me().avatar!)
+        if let user = BMUser.me() {
+            self.textContainerImg.setImage(string: user.avatar)
+        }
         self.textContainerImg.round()
         self.tableView.reloadData()
         self.navigationController?.navigationBar.alpha = 1
@@ -205,12 +207,13 @@ class PostCommentViewController: UIViewController {
     }
     
     func setFollow(user: BMUser) {
-        if user.id! == BMUser.me().id! {
+//        guard let authUser = BMUser.me() else { return }
+        if user.identifier == BMUser.me()?.identifier {
             self.followBtn.alpha = 0
             self.followBtn.setTitle("", for: [])
         } else {
             self.followBtn.alpha = 1
-            if BMUser.me().checkFollow(user: user) {
+            if BMUser.me()?.checkFollow(user: user) ?? false {
                 self.followBtn.setTitle("•  Following", for: [])
             } else {
                 self.followBtn.setTitle("•  Follow", for: [])
@@ -219,10 +222,11 @@ class PostCommentViewController: UIViewController {
     }
     
     @IBAction func tappedFollow() {
+        guard let user = BMUser.me() else { return }
         addHaptic(style: .medium)
-        BMUser.me().followUser(user: self.post!.user!)
-        self.setFollow(user: self.post!.user!)
-        BMUser.save(user: &self.post!.user!)
+        user.followUser(user: self.post.user)
+        self.setFollow(user: self.post.user)
+        BMUser.save(user: &self.post.user)
 //        ProfileService.make().followUser(user: self.post!.user!) { (response, u) in
 //            BMUser.save(user: &ProfileService.make().user!)
 //        }
@@ -435,9 +439,9 @@ class PostCommentViewController: UIViewController {
             self.likeBtn.setImage(.get(name: "heart", tint: .white), for: [])
             self.likeBtn.tintColor = .white
             self.likeCountLbl.text = "\(self.post!.likeCount!)"
-            if let ind = me.postLikes.firstIndex(where: {$0.postId ?? UInt(555555) == self.post!.id!}) {
-                me.postLikes.remove(at: ind)
-            }
+//            if let ind = me.postLikes.firstIndex(where: {$0.postId ?? UInt(555555) == self.post!.id!}) {
+//                me.postLikes.remove(at: ind)
+//            }
         }
         
         BMPostService.make().likePost(post: self.post!) { (response, u) in
@@ -450,7 +454,7 @@ class PostCommentViewController: UIViewController {
     
     func checkLikeBtn(fill: Bool = false) {
         self.likeCountLbl.text = "\(self.post!.likeCount!)"
-        if BMUser.me().checkLike(post: self.post!) || fill == true {
+        if BMUser.me()?.checkLike(post: self.post!) ?? false || fill == true {
 //            self.likeBtn.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold))!, for: [])
             self.likeBtn.setImage(.get(name: "heartfill", tint: .systemRed), for: [])
             self.likeBtn.tintColor = .systemRed
@@ -541,9 +545,10 @@ class PostCommentViewController: UIViewController {
     }
     
     @IBAction func addPost(_ sender: UIButton) {
+        guard let user = BMUser.me() else { return }
         addHaptic(style: .medium)
         if let comment = self.commentForReply {
-            let reply = BMPostSubComment(user: BMUser.me(), message: self.textView.text!)
+            let reply = BMPostSubComment(user: user, message: self.textView.text!)
             if let index = self.post!.comments.index(of: comment) {
                 self.post!.comments[index].replies.append(reply)
                 self.post!.comments[index].replyCount.append(1)
@@ -567,7 +572,7 @@ class PostCommentViewController: UIViewController {
                 }
             }
         } else {
-            let comment = BMPostComment(user: BMUser.me(), message: self.textView.text!)
+            let comment = BMPostComment(user: user, message: self.textView.text!)
             self.post!.comments.append(comment)
             self.post!.commentCount! += 1
             self.tableView.reloadData()
@@ -590,7 +595,7 @@ extension PostCommentViewController: VideoViewDelegate {
     func addViewCount(post: BMPost?) {
 //        self.dateLbl.text = "\(post.createdAtText())  •  \(post.viewCount!.countText(text: "view"))"
         if var p = post {
-            if p.user!.id! != BMUser.me().id! {
+            if p.user!.identifier != BMUser.me()?.identifier {
                 p.viewCount += 1
                 print("increased view count to: \(p.viewCount!.countText(text: "view"))")
                 self.dateLbl.text = "\(p.createdAtText())  •  \(p.viewCount!.countText(text: "view"))"
@@ -944,7 +949,7 @@ extension PostCommentViewController: ImageScrollViewDelegate {
             UIView.animate(withDuration: 0.2) {
                 self.userAvatar.alpha = alpha
                 self.menuBtn.alpha = alpha
-                self.followBtn.alpha = self.post!.user!.id! != BMUser.me().id! ? alpha : 0
+                self.followBtn.alpha = self.post.user.identifier != BMUser.me()?.identifier ? alpha : 0
                 self.usernameLbl.alpha = alpha
                 self.captionLbl.alpha = alpha
                 self.gradientView.alpha = alpha

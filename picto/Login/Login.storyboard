@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="att-SR-e5u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="att-SR-e5u">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,9 +12,9 @@
         <!--BaseNC-->
         <scene sceneID="vhe-Z1-8Y2">
             <objects>
-                <navigationController id="att-SR-e5u" customClass="BaseNC" customModule="Gala" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="att-SR-e5u" customClass="BaseNC" customModule="picto" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DyB-bH-qcU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -28,7 +28,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="LBn-0Q-A5L">
             <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PKf-qJ-N3t" customClass="WelcomeViewController" customModule="Gala" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PKf-qJ-N3t" customClass="WelcomeViewController" customModule="picto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t0S-Db-1TW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
         <!--Register View Controller-->
         <scene sceneID="wYh-fb-7el">
             <objects>
-                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zqj-of-n0x" customClass="RegisterViewController" customModule="Gala" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zqj-of-n0x" customClass="RegisterViewController" customModule="picto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZaZ-jV-wdb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-UG-aCX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="94" width="344" height="60"/>
+                                <rect key="frame" x="35" y="98" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="mVi-XE-TGy"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-fq-njv" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="189" width="344" height="60"/>
+                                <rect key="frame" x="35" y="193" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="M7L-os-j6g"/>
                                 </constraints>
@@ -220,7 +220,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRi-5P-kW1" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="284" width="344" height="60"/>
+                                <rect key="frame" x="35" y="288" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2oh-Be-Bbd"/>
                                 </constraints>
@@ -260,7 +260,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AHb-PK-nwn" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="379" width="344" height="60"/>
+                                <rect key="frame" x="35" y="383" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9dT-zf-GFt"/>
                                 </constraints>
@@ -337,7 +337,7 @@
         <!--Register Profile View Controller-->
         <scene sceneID="Zv5-aO-jCf">
             <objects>
-                <viewController storyboardIdentifier="RegisterProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G8l-0m-Vlg" customClass="RegisterProfileViewController" customModule="Gala" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G8l-0m-Vlg" customClass="RegisterProfileViewController" customModule="picto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xt8-O0-mHE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xN-2P-1k8" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="30" y="234" width="354" height="60"/>
+                                <rect key="frame" x="30" y="238" width="354" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="S2o-c7-64R"/>
                                 </constraints>
@@ -400,12 +400,9 @@
                                         <color key="value" systemColor="systemGrayColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="textFieldChanged:" destination="G8l-0m-Vlg" eventType="editingChanged" id="Ptm-Wv-ScX"/>
-                                </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3se-Lk-t7y">
-                                <rect key="frame" x="147" y="84" width="120" height="120"/>
+                                <rect key="frame" x="147" y="88" width="120" height="120"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="288-Qe-7A4"/>
@@ -440,7 +437,7 @@
         <!--Login View Controller-->
         <scene sceneID="zTT-Cj-Vdd">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55Q-Q8-MdU" customClass="LoginViewController" customModule="Gala" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55Q-Q8-MdU" customClass="LoginViewController" customModule="picto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zzo-21-ae1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -465,7 +462,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tQT-ZM-Gsq" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="84" width="344" height="60"/>
+                                <rect key="frame" x="35" y="88" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Dey-2M-Hzl"/>
                                 </constraints>
@@ -508,7 +505,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC9-yH-wRq" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="35" y="179" width="344" height="60"/>
+                                <rect key="frame" x="35" y="183" width="344" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="V3e-37-lwE"/>
                                 </constraints>
@@ -707,7 +704,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="applelogo" catalog="system" width="103" height="128"/>
+        <image name="applelogo" catalog="system" width="105" height="128"/>
         <image name="googleicon" width="50" height="51"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -716,16 +713,16 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

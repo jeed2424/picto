@@ -9,7 +9,11 @@
 import UIKit
 import PixelSDK
 
-class DiscoverViewController: UIViewController, UITableViewDelegate {
+class DiscoverViewController: UIViewController, UITableViewDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
 
     enum Sections: CaseIterable {
         case top
@@ -75,12 +79,12 @@ class DiscoverViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let vc = UserFollowersViewController.makeVC(user: me, following: false, forSearch: true, del: self)
-        searchController = UISearchController(searchResultsController: vc)
-        searchController.searchResultsUpdater = self
-//        searchController.searchResultsController = UserFollowersViewController.makeVC(user: me, following: false, forSearch: true)
-        searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.delegate = self
+//        let vc = UserFollowersViewController.makeVC(user: me, following: false, forSearch: true, del: self)
+//        searchController = UISearchController(searchResultsController: vc)
+//        searchController.searchResultsUpdater = self
+////        searchController.searchResultsController = UserFollowersViewController.makeVC(user: me, following: false, forSearch: true)
+//        searchController.searchBar.placeholder = "Search"
+//        searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         
         self.setNavBar(title: "")
@@ -90,9 +94,9 @@ class DiscoverViewController: UIViewController, UITableViewDelegate {
         self.collectionView1Height.constant = CGFloat(CGFloat(ProfileService.make().categories.chunked(into: 2).count) * h) + 330
         self.tableView.reloadData()
         self.tableView.sizeHeaderToFit(preferredWidth: screenWidth)
-        ProfileService.make().getFollowing(user: me, discover: true) { (res, usrs) in
-            self.users = usrs
-        }
+//        ProfileService.make().getFollowing(user: me, discover: true) { (res, usrs) in
+//            self.users = usrs
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,35 +173,35 @@ class DiscoverViewController: UIViewController, UITableViewDelegate {
 
 // MARK: - UISearchResultsUpdating
 
-extension DiscoverViewController: UISearchResultsUpdating, UserSearchDelegate {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        print("Searching: ", searchText)
-        if searchText != "" {
-            ProfileService.make().searchUsers(search: searchText) { (res, usrs) in
-                if let resultsController = searchController.searchResultsController as? UserFollowersViewController {
-                    resultsController.search(text: searchText, users: usrs)
-                }
-            }
-        } else {
-            if let resultsController = searchController.searchResultsController as? UserFollowersViewController {
-                if !resultsController.origUsers.isEmpty {
-                    resultsController.search(text: searchText, users: [BMUser]())
-                }
-            }
-        }
-    }
-    
-    func goToProfile(user: BMUser) {
-        let vc = UserProfileViewController.makeVC(user: user)
-        vc.hidesBottomBarWhenPushed = true
-        vc.view.superview?.layoutIfNeeded()
-        vc.view.layoutIfNeeded()
-        vc.fromSearch = true
-        self.push(vc: vc)
-    }
-}
+//extension DiscoverViewController: UserSearchDelegate {
+//    
+//    func updateSearchResults(for searchController: UISearchController) {
+//        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
+//        print("Searching: ", searchText)
+//        if searchText != "" {
+//            ProfileService.make().searchUsers(search: searchText) { (res, usrs) in
+//                if let resultsController = searchController.searchResultsController as? UserFollowersViewController {
+//                    resultsController.search(text: searchText, users: usrs)
+//                }
+//            }
+//        } else {
+//            if let resultsController = searchController.searchResultsController as? UserFollowersViewController {
+//                if !resultsController.origUsers.isEmpty {
+//                    resultsController.search(text: searchText, users: [BMUser]())
+//                }
+//            }
+//        }
+//    }
+//    
+//    func goToProfile(user: BMUser) {
+//        let vc = UserProfileViewController.makeVC(user: user)
+//        vc.hidesBottomBarWhenPushed = true
+//        vc.view.superview?.layoutIfNeeded()
+//        vc.view.layoutIfNeeded()
+//        vc.fromSearch = true
+//        self.push(vc: vc)
+//    }
+//}
 
 // MARK: - UISearchBarDelegate
 
@@ -289,13 +293,17 @@ class CategoryViewController: UICollectionViewController {
         self.presentLoadingAlertModal(animated: false, completion: nil)
         if self.category!.title! == "Liked Posts" {
             BMPostService.make().selectedCat = nil
-            BMPostService.make().getLikedPosts(user: BMUser.me()) { (response, p) in
-                self.posts = p
-                self.collectionView.fadeReload()
-                self.dismissLoadingAlertModal(animated: true, completion: {
+
+            if let user = BMUser.me() {
+                BMPostService.make().getLikedPosts(user: user) { (response, p) in
+                    self.posts = p
                     self.collectionView.fadeReload()
-                })
+                    self.dismissLoadingAlertModal(animated: true, completion: {
+                        self.collectionView.fadeReload()
+                    })
+                }
             }
+
         } else {
             BMPostService.make().getRelated(search: self.category!.title!, count: 10) { (response, p) in
                 self.posts = p

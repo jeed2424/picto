@@ -9,18 +9,20 @@
 import Foundation
 import Alamofire
 import Firebase
-import FirebaseFirestore
+//import FirebaseFirestore
 
 class ProfileService: BaseService {
-    
+
+    public static let sharedInstance = ProfileService(api: ClientAPI.sharedInstance)
+
     override init(api: ClientAPI) {
         super.init(api: api)
     }
 
-    let db = Firestore.firestore()
+//    let db = Firestore.firestore()
     var following = [BMUser]()
     var categories = [BMCategory]()
-    var user: BMUser!
+    var user: BMUser?
     var tabController: CustomTabBarController!
     var videoRef = Storage.storage().reference().child("videos")
     var imageRef = Storage.storage().reference().child("images")
@@ -29,7 +31,11 @@ class ProfileService: BaseService {
         let profile = ClientAPI.sharedInstance.profileService
         return profile
     }
-    
+
+    func saveUser(user: BMUser) {
+        self.user = user
+    }
+
     func updateAvatar(user: BMUser, completion: @escaping (ResponseCode, BMUser?) -> Swift.Void) {
         let params: Parameters = ["avatar": user.avatar!]
         APIService.requestAPIJson(url:"https://api.warbly.net/user/update/avatar", method: .post, parameters: params, success: { userDict in
@@ -164,37 +170,37 @@ class ProfileService: BaseService {
     }
     
     func toggleName(user: BMUser, completion: @escaping (ResponseCode, BMUser?) -> Swift.Void) {
-        me.showName = !me.showName!
-        APIService.requestAPIJson(url:"https://api.warbly.net/user/show_name", method: .post, parameters: nil, success: { userDict in
-            let user: BMUser = UserSerializer.unserialize(JSON: userDict)
+//        me.showName = !me.showName!
+//        APIService.requestAPIJson(url:"https://api.warbly.net/user/show_name", method: .post, parameters: nil, success: { userDict in
+//            let user: BMUser = UserSerializer.unserialize(JSON: userDict)
             completion(ResponseCode.Success, user)
-        }, failure: { errorString in
-            completion(ResponseCode.Error, nil)
-        })
+//        }, failure: { errorString in
+//            completion(ResponseCode.Error, nil)
+//        })
     }
     
     func uploadToFirebaseImage(user: BMUser, image: UIImage, success : @escaping (String) -> Void, failure : @escaping (Error) -> Void) {
         
-        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).jpeg"
-        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
-
-        if let uploadData = image.jpegData(compressionQuality: 0.5) {
-            let meta = StorageMetadata()
-            meta.contentType = "image/jpeg"
-            
-            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
-                if let error = error {
-                    failure(error)
-                }else{
-                    if let m = metadata {
-                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
-                    } else {
-                        success("metadata path not found")
-                    }
-                }
-                
-            }
-        }
+//        let name = "\(BMUser.me().id)_\(Int(Date().timeIntervalSince1970)).jpeg"
+//        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
+//
+//        if let uploadData = image.jpegData(compressionQuality: 0.5) {
+//            let meta = StorageMetadata()
+//            meta.contentType = "image/jpeg"
+//            
+//            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
+//                if let error = error {
+//                    failure(error)
+//                }else{
+//                    if let m = metadata {
+//                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
+//                    } else {
+//                        success("metadata path not found")
+//                    }
+//                }
+//                
+//            }
+//        }
 
     }
 

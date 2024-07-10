@@ -52,7 +52,9 @@ final class BaseNC: UINavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         duringPushAnimation = true
 
-        super.pushViewController(viewController, animated: animated)
+        DispatchQueue.main.async {
+            super.pushViewController(viewController, animated: animated)
+        }
     }
 
     // MARK: - Private Properties

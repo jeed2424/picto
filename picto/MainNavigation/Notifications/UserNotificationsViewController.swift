@@ -72,7 +72,7 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
     func setNavBar(title: String) {
         self.setNavTitle(text: title, font: BaseFont.get(.bold, 18), letterSpacing: 0.1, color: .label)
 //        self.setRightNavBtn(image: UIImage(named: "cameraadd")!, color: .label, action: #selector(self.openCamera), animated: false)
-        self.setRightNavBtnInbox(hasUnread: me.unreadMessages() > 0 ? true : false, image: UIImage(named: "fi_send")!, color: .label, action: #selector(self.openDMs), animated: false)
+        self.setRightNavBtnInbox(hasUnread: false, image: UIImage(named: "fi_send")!, color: .label, action: #selector(self.openDMs), animated: false)
         self.setInviteEmoji()
     }
     
@@ -93,9 +93,9 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-        cell.setNoti(noti: BMUser.me().notifications[indexPath.row])
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+//        cell.setNoti(noti: BMUser.me().notifications[indexPath.row])
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -220,15 +220,15 @@ class ConversationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-        cell.setConvo(convo: BMUser.me().conversations[indexPath.row])
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+//        cell.setConvo(convo: BMUser.me().conversations[indexPath.row])
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let convo = BMUser.me().conversations[indexPath.row]
         var otherUser = convo.sender!
-        if convo.sender!.id! == me.id! {
+        if convo.sender!.id! == 0 {
             otherUser = convo.receiver!
         }
         let vc = ConversationViewController.makeVC(convo: BMUser.me().conversations[indexPath.row], user: otherUser)
@@ -406,7 +406,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     // Do all navigation setup here
     func setNavBar() {
         if let c = self.conversation {
-            if self.conversation!.sender!.id! == me.id! {
+            if self.conversation!.sender!.id! == 0 {
                 self.setNavTitle(text: self.conversation!.receiver!.username!, font: BaseFont.get(.bold, 16), letterSpacing: 0.1, color: .label)
                 self.setRightAvatar(user: self.conversation!.receiver!)
             } else {
@@ -478,16 +478,16 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let c = self.conversation {
             let message = self.conversation!.messages[indexPath.row]
-            if message.senderId! == me.id! {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "SenderMessageCell", for: indexPath) as! SenderMessageCell
-                cell.conversation = self.conversation!
-                cell.setMessage(message: message)
-                return cell
+            if message.senderId! == 0 {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "SenderMessageCell", for: indexPath) as! SenderMessageCell
+//                cell.conversation = self.conversation!
+//                cell.setMessage(message: message)
+                return UITableViewCell()
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiverMessageCell", for: indexPath) as! ReceiverMessageCell
-                cell.conversation = self.conversation!
-                cell.setMessage(message: message)
-                return cell
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "ReceiverMessageCell", for: indexPath) as! ReceiverMessageCell
+//                cell.conversation = self.conversation!
+//                cell.setMessage(message: message)
+                return UITableViewCell()
             }
         }
         return UITableViewCell()

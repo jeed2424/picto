@@ -55,9 +55,9 @@ class HomeTestViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadingInd.startAnimating()
-        Analytics.logEvent(AnalyticsEventLogin, parameters: [
-            AnalyticsParameterItemID: "\(me.id!)"
-        ])
+//        Analytics.logEvent(AnalyticsEventLogin, parameters: [
+//            AnalyticsParameterItemID: "\(me.id!)"
+//        ])
         self.cardSwiper.alpha = 0
         setNavBar(title: "Feed")
         if feedService.posts.isEmpty {
@@ -92,12 +92,12 @@ class HomeTestViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         }
         
-        ProfileService.make().getCategories(user: me) { (response, cats) in
-            ProfileService.make().categories = cats
-        }
+//        ProfileService.make().getCategories(user: me) { (response, cats) in
+//            ProfileService.make().categories = cats
+//        }
         
         self.updateFCMToken()
-        if !BMUser.me().notifications.isEmpty {
+        if !(BMUser.me()?.notifications.isEmpty ?? true) {
             self.addRedDotAtTabBarItemIndex(index: 2)
         }
 //        SKStoreReviewController.requestReview()
@@ -105,7 +105,8 @@ class HomeTestViewController: UIViewController, UIImagePickerControllerDelegate,
             if var pview = UserDefaults.standard.value(forKey: "home_view") as? Int {
                 if pview == 20 {
                     addHaptic(style: .soft)
-                    showAlertPopupVeryLong(title: "Create a Post on Gala", message: "\nWelcome to the Gala  👋\n\nHey \(me.firstName!), our community is super excited to have you on the app! Create your first post by tapping on the + icon in the top right.\n", image: .get(name: "cameraadd", tint: .systemBackground))
+//                    showAlertPopupVeryLong(title: "Create a Post on Gala", message: "\nWelcome to the Gala  👋\n\nHey \(me.firstName!), our community is super excited to have you on the app! Create your first post by tapping on the + icon in the top right.\n", image: .get(name: "cameraadd", tint: .systemBackground))
+                    showAlertPopupVeryLong(title: "Create a Post on Gala", message: "\nWelcome to the Gala  👋\n\nHey Unknown Person, our community is super excited to have you on the app! Create your first post by tapping on the + icon in the top right.\n", image: .get(name: "cameraadd", tint: .systemBackground))
                 }
                 if pview == 10 || pview == 40 || pview == 70 {
                     SKStoreReviewController.requestReview()
@@ -380,11 +381,12 @@ extension HomeTestViewController: FeedCardDelegate {
 import CDAlertView
 
 func getMenu(post: BMPost, vc: UINavigationController?, completion: (() -> Void)?) {
+    guard let user = BMUser.me() else { return }
     let actionSheet = ATActionSheet()
-    let collection = ATAction(title: BMUser.me().checkCollection(post: post) == true ? "Remove from Collection" : "Add to Collection", image: nil) {
+    let collection = ATAction(title: user.checkCollection(post: post) == true ? "Remove from Collection" : "Add to Collection", image: nil) {
         print("Collections")
-        let title = BMUser.me().checkCollection(post: post) == true ? "Removed from Collection" : "Added to Collection"
-        let message = BMUser.me().checkCollection(post: post) == true ? "\(post.user!.username!)'s post has been removed from your Collection. To view your Collection, go to your profile page." : "\(post.user!.username!)'s post has been added to your Collection. To view your Collection, go to your profile page."
+        let title = user.checkCollection(post: post) == true ? "Removed from Collection" : "Added to Collection"
+        let message = user.checkCollection(post: post) == true ? "\(post.user!.username!)'s post has been removed from your Collection. To view your Collection, go to your profile page." : "\(post.user!.username!)'s post has been added to your Collection. To view your Collection, go to your profile page."
         actionSheet.dismissAlertAnim(completed: {
             showAlertPopup(title: title, message: message, image: .get(name: "staricon", tint: .systemBackground))
         })
@@ -439,20 +441,20 @@ func getMenu(post: BMPost, vc: UINavigationController?, completion: (() -> Void)
     })
     if let l = post.location {
         if !l.isEmpty {
-            if post.user!.id! == BMUser.me().id! {
+            if post.user.identifier == user.identifier {
                 actionSheet.addActions([place, profile, share, delete])
             } else {
                 actionSheet.addActions([place, collection, profile, share, report])
             }
         } else {
-            if post.user!.id! == BMUser.me().id! {
+            if post.user.identifier == user.identifier {
                 actionSheet.addActions([profile, share, delete])
             } else {
                 actionSheet.addActions([collection, profile, share, report])
             }
         }
     } else {
-        if post.user!.id! == BMUser.me().id! {
+        if post.user.identifier == user.identifier {
             actionSheet.addActions([profile, share, delete])
         } else {
             actionSheet.addActions([collection, profile, share, report])

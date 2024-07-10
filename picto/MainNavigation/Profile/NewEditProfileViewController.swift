@@ -3,7 +3,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import SafariServices
 import PixelSDK
-import Delighted
+//import Delighted
 import Combine
 import SwiftUI
 

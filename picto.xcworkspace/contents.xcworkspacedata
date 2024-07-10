@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../SupabaseManager">
+   </FileRef>
+   <FileRef
       location = "group:picto.xcodeproj">
    </FileRef>
    <FileRef

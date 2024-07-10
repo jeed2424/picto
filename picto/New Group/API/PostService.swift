@@ -60,15 +60,15 @@ class BMPostService: BaseService {
 //            let l = BMPostLike(post: post)
 //            me.postLikes.append(l)
 //        }
-        completion(ResponseCode.Success, me)
-        let params: Parameters = ["post_id": post.id!]
-        APIService.requestAPIJson(url:"https://api.warbly.net/post/like", method: .post, parameters: params, success: { userDict in
-//            let user: BMUser = UserSerializer.unserialize(JSON: userDict)
-//            ProfileService.make().user = user
-//            completion(ResponseCode.Success, user)
-        }, failure: { errorString in
+//        completion(ResponseCode.Success, me)
+//        let params: Parameters = ["post_id": post.id!]
+//        APIService.requestAPIJson(url:"https://api.warbly.net/post/like", method: .post, parameters: params, success: { userDict in
+////            let user: BMUser = UserSerializer.unserialize(JSON: userDict)
+////            ProfileService.make().user = user
+////            completion(ResponseCode.Success, user)
+//        }, failure: { errorString in
             completion(ResponseCode.Error, nil)
-        })
+//        })
     }
     
     func likeComment(comment: BMPostComment, completion: @escaping (ResponseCode, BMUser?) -> Swift.Void) {
@@ -295,117 +295,117 @@ class BMPostService: BaseService {
 
     func uploadToFirebaseVideo(url: URL, success : @escaping (String) -> Void, failure : @escaping (Error) -> Void) {
         
-        do {
-            let videoData = try  Data.init(contentsOf: url)
-//            print(asset.url)
-//            self.orginalVideo = asset.url
-            print("File size before compression: \(Double(videoData.count / 1048576)) mb")
-            let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".MP4")
-            print(compressedURL)
-            self.compressVideo(inputURL: url, outputURL: compressedURL) { (exportSession) in
-                guard let session = exportSession else {
-                    return
-                }
-                switch session.status {
-                case .unknown:
-                    print("unknown")
-                    break
-                case .waiting:
-                    print("waiting")
-                    break
-                case .exporting:
-                    print("exporting")
-                    break
-                case .completed:
-                    do {
-                        let compressedData = try  Data.init(contentsOf: compressedURL)
-//                        self.compressVideo = compressedURL
-//                        print(compressedData)
-                        print("File size AFTER compression: \(Double(compressedData.count / 1048576)) mb")
-                        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).mp4"
-                        self.videoRef = Storage.storage().reference().child("videos").child("\(name)")
-                //        Data(contentsOf: URL()
-//                        let data = NSData(contentsOf: url)!
-//                        print("File size before compression: \(Double(data.length / 1048576)) mb")
-                        let meta = StorageMetadata()
-                        meta.contentType = "video/mp4"
-                        
-                        let uploadTask = self.videoRef.putData(compressedData, metadata: meta) { metadata, error in
-                            if let error = error {
-                                failure(error)
-                            }else{
-                                if let m = metadata {
-                                    let newVid = "https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/videos%2F\(m.name!)?alt=media"
-                                    success(newVid)
-                                    
-                                } else {
-                                    success("error")
-                                }
-                            }
-                            
-                        }
-                        
-                        // Listen for state changes, errors, and completion of the upload.
-                        uploadTask.observe(.resume) { snapshot in
-                            // Upload resumed, also fires when the upload starts
-                        }
-                        
-                        uploadTask.observe(.pause) { snapshot in
-                            // Upload paused
-                        }
-                        
-                        uploadTask.observe(.progress) { snapshot in
-                            // Upload reported progress
-                        }
-                        
-                        uploadTask.observe(.success) { snapshot in
-                            // Upload completed successfully
-                            print("UPLOAD SUCCESFUL")
-                        }
-                        
-                        uploadTask.observe(.failure) { snapshot in
-                            if let error = snapshot.error as? NSError {
-                                switch (StorageErrorCode(rawValue: error.code)!) {
-                                case .objectNotFound:
-                                    print("UPLOAD OBJECT NOT FOUND")
-                                case .unauthorized:
-                                    // User doesn't have permission to access file
-                                    //                      break
-                                    print("UPLOAD UNAUTHORIZED")
-                                case .cancelled:
-                                    // User canceled the upload
-                                    //                      break
-                                    print("UPLOAD CANCELLED")
-                                /* ... */
-                                
-                                case .unknown:
-                                    // Unknown error occurred, inspect the server response
-                                    //                      break
-                                    print("UPLOAD RESPONSE UNKNOWN")
-                                default:
-                                    // A separate error occurred. This is a good place to retry the upload.
-                                    break
-                                }
-                            }
-                        }
-                    }
-                    catch{
-                        print(error)
-                    }
-                    
-                    
-                case .failed:
-                    print("failed")
-                    break
-                case .cancelled:
-                    print("cancelled")
-                    break
-                }
-            }
-        } catch {
-            print(error)
-            //return
-        }
+//        do {
+//            let videoData = try  Data.init(contentsOf: url)
+////            print(asset.url)
+////            self.orginalVideo = asset.url
+//            print("File size before compression: \(Double(videoData.count / 1048576)) mb")
+//            let compressedURL = NSURL.fileURL(withPath: NSTemporaryDirectory() + NSUUID().uuidString + ".MP4")
+//            print(compressedURL)
+//            self.compressVideo(inputURL: url, outputURL: compressedURL) { (exportSession) in
+//                guard let session = exportSession else {
+//                    return
+//                }
+//                switch session.status {
+//                case .unknown:
+//                    print("unknown")
+//                    break
+//                case .waiting:
+//                    print("waiting")
+//                    break
+//                case .exporting:
+//                    print("exporting")
+//                    break
+//                case .completed:
+//                    do {
+//                        let compressedData = try  Data.init(contentsOf: compressedURL)
+////                        self.compressVideo = compressedURL
+////                        print(compressedData)
+//                        print("File size AFTER compression: \(Double(compressedData.count / 1048576)) mb")
+//                        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).mp4"
+//                        self.videoRef = Storage.storage().reference().child("videos").child("\(name)")
+//                //        Data(contentsOf: URL()
+////                        let data = NSData(contentsOf: url)!
+////                        print("File size before compression: \(Double(data.length / 1048576)) mb")
+//                        let meta = StorageMetadata()
+//                        meta.contentType = "video/mp4"
+//                        
+//                        let uploadTask = self.videoRef.putData(compressedData, metadata: meta) { metadata, error in
+//                            if let error = error {
+//                                failure(error)
+//                            }else{
+//                                if let m = metadata {
+//                                    let newVid = "https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/videos%2F\(m.name!)?alt=media"
+//                                    success(newVid)
+//                                    
+//                                } else {
+//                                    success("error")
+//                                }
+//                            }
+//                            
+//                        }
+//                        
+//                        // Listen for state changes, errors, and completion of the upload.
+//                        uploadTask.observe(.resume) { snapshot in
+//                            // Upload resumed, also fires when the upload starts
+//                        }
+//                        
+//                        uploadTask.observe(.pause) { snapshot in
+//                            // Upload paused
+//                        }
+//                        
+//                        uploadTask.observe(.progress) { snapshot in
+//                            // Upload reported progress
+//                        }
+//                        
+//                        uploadTask.observe(.success) { snapshot in
+//                            // Upload completed successfully
+//                            print("UPLOAD SUCCESFUL")
+//                        }
+//                        
+//                        uploadTask.observe(.failure) { snapshot in
+//                            if let error = snapshot.error as? NSError {
+//                                switch (StorageErrorCode(rawValue: error.code)!) {
+//                                case .objectNotFound:
+//                                    print("UPLOAD OBJECT NOT FOUND")
+//                                case .unauthorized:
+//                                    // User doesn't have permission to access file
+//                                    //                      break
+//                                    print("UPLOAD UNAUTHORIZED")
+//                                case .cancelled:
+//                                    // User canceled the upload
+//                                    //                      break
+//                                    print("UPLOAD CANCELLED")
+//                                /* ... */
+//                                
+//                                case .unknown:
+//                                    // Unknown error occurred, inspect the server response
+//                                    //                      break
+//                                    print("UPLOAD RESPONSE UNKNOWN")
+//                                default:
+//                                    // A separate error occurred. This is a good place to retry the upload.
+//                                    break
+//                                }
+//                            }
+//                        }
+//                    }
+//                    catch{
+//                        print(error)
+//                    }
+//                    
+//                    
+//                case .failed:
+//                    print("failed")
+//                    break
+//                case .cancelled:
+//                    print("cancelled")
+//                    break
+//                }
+//            }
+//        } catch {
+//            print(error)
+//            //return
+//        }
 //        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).mp4"
 //        self.videoRef = Storage.storage().reference().child("videos").child("\(name)")
 ////        Data(contentsOf: URL()
@@ -476,51 +476,51 @@ class BMPostService: BaseService {
     
     func uploadToFirebaseImage(post: BMPost, image: UIImage, compression: CGFloat = 0.8, success : @escaping (String) -> Void, failure : @escaping (Error) -> Void) {
         
-        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).jpeg"
-        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
-
-        if let uploadData = image.jpegData(compressionQuality: compression) {
-            let meta = StorageMetadata()
-            meta.contentType = "image/jpeg"
-            
-            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
-                if let error = error {
-                    failure(error)
-                }else{
-                    if let m = metadata {
-                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
-                    } else {
-                        success("metadata path not found")
-                    }
-                }
-                
-            }
-        }
+//        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).jpeg"
+//        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
+//
+//        if let uploadData = image.jpegData(compressionQuality: compression) {
+//            let meta = StorageMetadata()
+//            meta.contentType = "image/jpeg"
+//            
+//            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
+//                if let error = error {
+//                    failure(error)
+//                }else{
+//                    if let m = metadata {
+//                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
+//                    } else {
+//                        success("metadata path not found")
+//                    }
+//                }
+//                
+//            }
+//        }
 
     }
     
     func uploadToFirebaseGIF(data: Data?, success : @escaping (String) -> Void, failure : @escaping (Error) -> Void) {
         
-        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).gif"
-        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
-//        image.da
-        if let uploadData = data {
-            let meta = StorageMetadata()
-            meta.contentType = "image/gif"
-            
-            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
-                if let error = error {
-                    failure(error)
-                }else{
-                    if let m = metadata {
-                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
-                    } else {
-                        success("metadata path not found")
-                    }
-                }
-                
-            }
-        }
+//        let name = "\(BMUser.me().id!)_\(Int(Date().timeIntervalSince1970)).gif"
+//        self.imageRef = Storage.storage().reference().child("images").child("\(name)")
+////        image.da
+//        if let uploadData = data {
+//            let meta = StorageMetadata()
+//            meta.contentType = "image/gif"
+//            
+//            self.imageRef.putData(uploadData, metadata: meta) { metadata, error in
+//                if let error = error {
+//                    failure(error)
+//                }else{
+//                    if let m = metadata {
+//                        success("https://firebasestorage.googleapis.com/v0/b/warbly-265ed.appspot.com/o/images%2F\(m.name!)?alt=media")
+//                    } else {
+//                        success("metadata path not found")
+//                    }
+//                }
+//                
+//            }
+//        }
 
     }
     
