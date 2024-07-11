@@ -557,10 +557,6 @@ SOFTWARE.
    limitations under the License.
 
 
-## FirebaseAnalytics
-
-Copyright 2022 Google
-
 ## FirebaseAppCheckInterop
 
 
@@ -2851,10 +2847,6 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-## GoogleAppMeasurement
-
-Copyright 2022 Google
 
 ## GoogleDataTransport
 

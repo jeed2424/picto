@@ -364,12 +364,15 @@ struct _R {
     var youtube2: RswiftResources.ImageResource { .init(name: "youtube-2", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 1 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 2 resource files.
   struct file {
     let bundle: Foundation.Bundle
 
     /// Resource file `GoogleService-Info.plist`.
     var googleServiceInfoPlist: RswiftResources.FileResource { .init(name: "GoogleService-Info", pathExtension: "plist", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `SupabaseManager`.
+    var supabaseManager: RswiftResources.FileResource { .init(name: "SupabaseManager", pathExtension: "", bundle: bundle, locale: LocaleReference.none) }
   }
 
   /// This `_R.nib` struct is generated, and contains static references to 2 nibs.

@@ -45,8 +45,71 @@ public class SupabaseAuthenticationManager {
     public static let sharedInstance = SupabaseAuthenticationManager()
 
     public var authenticatedUser: NewBMUser?
+    private var user: User?
 
-    public init () {}
+    private init () {
+        self.currentUser(completion: { _ in
+            
+        })
+    }
+    
+    public func currentUser(completion: @escaping (NewBMUser?) -> ()) {
+        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
+            guard let user = user else { return }
+        self.getActiveUser()
+        
+        if let user = self.user {
+            Task {
+                do {
+                    if let activeUser = try await self.getActiveUserData(user: user) {
+                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email)
+                        completion(self.authenticatedUser)
+//                        return self.authenticatedUser
+                    }
+                } catch {
+                    completion(nil)
+                }
+            }
+        } else {
+            completion(nil)
+        }
+        })
+    }
+    
+    private func getActiveUser() {
+        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
+            guard let user = user else { return }
+            
+            self.user = user
+        })
+    }
+    
+    public func getActiveUserData(user: User) async throws -> databaseUser? {
+        guard let client = SupabaseManager.sharedInstance.client else { return nil }
+
+        let newUser = try await client.database
+            .from("Users")
+            .select()
+//                    .match(["user_id": user.user_id.uuidString.lowercased()])
+            .eq("email", value: user.email)
+            .limit(1)
+            .execute()
+
+        let data = newUser.data
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let dataUser = try decoder.decode([databaseUser].self, from: data)
+        print(dataUser)
+
+        if dataUser.first == nil {
+            throw DatabaseError.error
+        }
+        return dataUser.first
+
+//        print("\(newUser.users.first?.firstName)")
+//        completion(newUser.users.first?.identifier)
+    }
     
     public func authenticate(_ on: AuthService, _ method: AuthOptions, _ info: AuthObject, completion: @escaping (AuthResponse, SupaUser?) -> ()) {
         guard let client = SupabaseManager.sharedInstance.client, let email = info.email, let password = info.password else { return }

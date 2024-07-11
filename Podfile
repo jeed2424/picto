@@ -4,7 +4,7 @@ platform :ios, '15.0'
 target 'picto' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-    pod 'FirebaseAnalytics'
+  #  pod 'FirebaseAnalytics'
     pod 'Firebase/Auth'
     pod 'Firebase/Messaging'
     pod 'Firebase/Storage'

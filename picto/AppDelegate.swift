@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var showMessageNoti: Bool = true
 
-    var supabaseManager = SupabaseManager()
+    var supabaseManager = SupabaseManager.sharedInstance
+    var authManager = SupabaseAuthenticationManager.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -65,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         setupRootViewController()
+        
+        print("Hello World \(authManager.authenticatedUser?.email)")
         
         return true
     }

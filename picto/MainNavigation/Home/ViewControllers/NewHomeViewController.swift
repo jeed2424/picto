@@ -4,7 +4,7 @@ import Foil
 import Combine
 import SkyFloatingLabelTextField
 import Firebase
-import SupabaseManager
+//import SupabaseManager
 
 class NewHomeViewController: UIViewController {
 

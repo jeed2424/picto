@@ -206,12 +206,13 @@ extension MyStringEnum: UserDefaultsSerializable {
 - iOS 13.0+
 - tvOS 13.0+
 - watchOS 6.0+
-- macOS 11+
+- macOS 11.0+
+- visionOS 1.0+
 
 ## Requirements
 
-- Swift 5.9+
-- Xcode 15.0+
+- Swift 5.10+
+- Xcode 15.4+
 - [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
@@ -235,6 +236,8 @@ Alternatively, you can add the package [directly via Xcode](https://developer.ap
 ## Documentation
 
 You can read the [documentation here](https://jessesquires.github.io/Foil). Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+
+Documentation is also available on the [Swift Package Index](https://swiftpackageindex.com/jessesquires/Foil/main/documentation/foil).
 
 ## Contributing
 
