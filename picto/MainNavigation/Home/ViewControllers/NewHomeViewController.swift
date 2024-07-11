@@ -4,7 +4,6 @@ import Foil
 import Combine
 import SkyFloatingLabelTextField
 import Firebase
-//import SupabaseManager
 
 class NewHomeViewController: UIViewController {
 
@@ -243,7 +242,7 @@ extension NewHomeViewController {
             newView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             newView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             newView.topAnchor.constraint(equalTo: view.topAnchor),
-            newView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+            newView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -258,9 +257,12 @@ extension NewHomeViewController {
             let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
             let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
         if let user = BMUser.me() {
-            let profile = UserProfileViewController.makeVC(user: user, fromTab: true)
-            let base4 = self.createVC(vc: profile, icon: UIImage(systemName: "pencil.circle")!.withTintColor(.systemGray), selected: UIImage(systemName: "pencil.circle.fill")!)
-            tabBarController.viewControllers = [base1, base2, base3, base4]
+            if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
+                let base4 = self.createVC(vc: profile, icon: UIImage(systemName: "pencil.circle")!.withTintColor(.systemGray), selected: UIImage(systemName: "pencil.circle.fill")!)
+                tabBarController.viewControllers = [base1, base2, base3, base4]
+            } else {
+                tabBarController.viewControllers = [base1, base2, base3]
+            }
         } else {
             tabBarController.viewControllers = [base1, base2, base3]
         }
@@ -272,7 +274,7 @@ extension NewHomeViewController {
             tabBarController.modalPresentationStyle = .fullScreen
             tabBarController.view.backgroundColor = .systemBackground
             tabBarController.modalTransitionStyle = .crossDissolve
-            ProfileService.make().tabController = tabBarController
+            ProfileService.sharedInstance.tabController = tabBarController
             self.present(tabBarController, animated: true, completion: nil)
 //        }
     }
@@ -343,10 +345,10 @@ extension NewHomeViewController {
                             self.activityIndicator.stopAnimating()
                             self.activityIndicator.alpha = 0
                             
-                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: newUser))
-                            base.modalPresentationStyle = .overFullScreen
-                            self.present(base, animated: true, completion: nil)
-//                            self.presentMain()
+//                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: newUser))
+//                            base.modalPresentationStyle = .overFullScreen
+//                            self.present(base, animated: true, completion: nil)
+                            self.presentMain()
                         }
                     }
                     .store(in: &subscriptions)

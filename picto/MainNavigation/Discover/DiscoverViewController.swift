@@ -350,8 +350,9 @@ extension CategoryViewController: FeedCardDelegate, UICollectionViewDelegateFlow
     // tapped avatar on card cell (would do whatever action here)
     func tappedUser(post: BMPost) {
         print("tapped user avatar on card!")
-        let profile = UserProfileViewController.makeVC(user: post.user!)
-        self.push(vc: profile)
+        if let profile = UserProfileViewController.makeVC(user: post.user!) {
+            self.push(vc: profile)
+        }
     }
     
     func showMenu(post: BMPost) {

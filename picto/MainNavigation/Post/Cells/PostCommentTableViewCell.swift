@@ -127,15 +127,19 @@ class PostCommentTableViewCell: UITableViewCell {
     }
     
     func checkCommentLike(comment: BMPostComment) {
-        let me = BMUser.me()
-        if comment.user!.id! == me.id! {
-            self.commentLikeBtn.alpha = 0
-            return
-        }
-        self.commentLikeBtn.alpha = 1
-        if me.checkLike(comment: comment) {
-            self.commentLikeBtn.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
-            self.commentLikeBtn.tintColor = .systemRed
+        if let me = BMUser.me() {
+            if comment.user.identifier == me.identifier {
+                self.commentLikeBtn.alpha = 0
+                return
+            }
+            self.commentLikeBtn.alpha = 1
+            if me.checkLike(comment: comment) {
+                self.commentLikeBtn.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
+                self.commentLikeBtn.tintColor = .systemRed
+            } else {
+                self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
+                self.commentLikeBtn.tintColor = .systemGray
+            }
         } else {
             self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
             self.commentLikeBtn.tintColor = .systemGray
@@ -167,16 +171,20 @@ class PostCommentTableViewCell: UITableViewCell {
     }
     
     func checkReplyLike(reply: BMPostSubComment) {
-        let me = BMUser.me()
-        if reply.user!.id! == me.id! {
-            self.commentLikeBtn.alpha = 0
-            return
-        }
-        self.commentLikeBtn.alpha = 1
-        if me.checkLike(reply: reply) {
-            self.commentLikeBtn.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
-            self.commentLikeBtn.tintColor = .systemRed
-        } else {
+        if let me = BMUser.me() {
+            if reply.user!.identifier == me.identifier {
+                self.commentLikeBtn.alpha = 0
+                return
+            }
+            self.commentLikeBtn.alpha = 1
+            if me.checkLike(reply: reply) {
+                self.commentLikeBtn.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
+                self.commentLikeBtn.tintColor = .systemRed
+            } else {
+                self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
+                self.commentLikeBtn.tintColor = .systemGray
+            }
+        }  else {
             self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
             self.commentLikeBtn.tintColor = .systemGray
         }
@@ -251,7 +259,7 @@ class PostCommentTableViewCell: UITableViewCell {
         addHaptic(style: .light)
         let me = BMUser.me()
         if let reply = self.subComment {
-            if me.checkLike(reply: reply) {
+            if me?.checkLike(reply: reply) ?? false {
                 self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
                 self.commentLikeBtn.tintColor = .systemGray
                 self.subComment!.likes = self.subComment!.likes! - 1
@@ -268,7 +276,7 @@ class PostCommentTableViewCell: UITableViewCell {
             }
             BMPostSubComment.save(comment: &self.subComment!)
         } else if let comm = self.comment {
-            if me.checkLike(comment: comm) {
+            if me?.checkLike(comment: comm) ?? false{
                 self.commentLikeBtn.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 13, weight: .semibold))!, for: [])
                 self.commentLikeBtn.tintColor = .systemGray
                 self.comment!.likes = self.comment!.likes! - 1

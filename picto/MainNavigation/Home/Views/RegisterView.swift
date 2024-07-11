@@ -6,7 +6,7 @@ import SupabaseManager
 
 class RegisterView: UIView {
 
-    let auth = AuthenticationService.make()
+//    let auth = AuthenticationService.sharedInstance
 
     private lazy var vStack: UIStackView = {
         let stack = UIStackView()
@@ -142,16 +142,16 @@ class RegisterView: UIView {
         return button
     }()
 
-    override init(frame: CGRect) {
+    init() {
         super.init(frame: .zero)
         self.hideKeyboard()
         setupViews()
         resetValues()
     }
 
-    convenience init() {
-        self.init(frame: .zero)
-    }
+//    convenience init() {
+//        self.init(frame: .zero)
+//    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

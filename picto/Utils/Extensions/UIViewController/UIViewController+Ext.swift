@@ -247,8 +247,9 @@ extension UIViewController {
         for user in users.prefix(6) {
             let action = ATAction(title: user.username!, imageUrl: user.avatar!, style: .default) {
                 actionSheet.dismiss(animated: true) {
-                    let vc = UserProfileViewController.makeVC(user: user)
-                    self.push(vc: vc)
+                    if let vc = UserProfileViewController.makeVC(user: user) {
+                        self.push(vc: vc)
+                    }
                 }
             }
             actions.append(action)

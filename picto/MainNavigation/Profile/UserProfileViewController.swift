@@ -135,10 +135,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     var videoCount: Int = 0
 
     
-    static func makeVC(user: BMUser, fromTab: Bool? = false) -> UserProfileViewController {
-        let vc = UIStoryboard(name: "UserProfile", bundle: nil).instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
-        vc.user = user
-        vc.fromTab = fromTab ?? false
+    static func makeVC(user: BMUser, fromTab: Bool? = false) -> UserProfileViewController? {
+        let vc = UIStoryboard(name: "UserProfile", bundle: nil).instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController
+        vc?.user = user
+        vc?.fromTab = fromTab ?? false
         return vc
     }
     

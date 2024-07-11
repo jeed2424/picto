@@ -194,8 +194,9 @@ extension PostPageViewController: UIPageViewControllerDelegate, UIPageViewContro
 extension PostPageViewController: PostProfileDelegate {
     func tappedProfile(user: BMUser) {
         print("tapped profile of post user")
-        let profile = UserProfileViewController.makeVC(user: user)
-        self.push(vc: profile)
+        if let profile = UserProfileViewController.makeVC(user: user) {
+            self.push(vc: profile)
+        }
     }
 }
 
