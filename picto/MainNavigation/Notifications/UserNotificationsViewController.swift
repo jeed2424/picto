@@ -55,8 +55,9 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     @objc func reloadNotis() {
+        guard let user = BMUser.me() else { return }
         self.tableView.refreshControl?.beginRefreshing()
-        ProfileService.make().loadUser(user: BMUser.me()) { (response, u) in
+        ProfileService.make().loadUser(user: user) { (response, u) in
             if let usr = u {
    //             ProfileService.make().user = usr
                 self.tableView.reloadData()
@@ -89,7 +90,8 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BMUser.me().notifications.count
+        guard let user = BMUser.me() else { return 0 }
+        return user.notifications.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,20 +101,21 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let p = BMUser.me().notifications[indexPath.row].post {
-            if let u = BMUser.me().notifications[indexPath.row].user {
+        guard let user = BMUser.me() else { return }
+        if let p = user.notifications[indexPath.row].post {
+            if let u = user.notifications[indexPath.row].user {
                 getNotiMenu(post: p, user: u, vc: self.navigationController) {
                     print("showing noti menu")
                 }
             } else {
-                let posts = BMUser.me().notifications[indexPath.row].user!.posts
+                let posts = user.notifications[indexPath.row].user!.posts
                 let vc = PostPageViewController.makeVC(post: p, otherPosts: posts)
                 self.push(vc: vc)
             }
 //            let posts = BMUser.me().notifications[indexPath.row].user!.posts
 //            let vc = PostPageViewController.makeVC(post: p, otherPosts: posts)
 //            self.push(vc: vc)
-        } else if let u = BMUser.me().notifications[indexPath.row].user {
+        } else if let u = user.notifications[indexPath.row].user {
             let vc = UserProfileViewController.makeVC(user: u)
             vc.hidesBottomBarWhenPushed = true
             self.push(vc: vc)
@@ -161,9 +164,11 @@ class ConversationsViewController: UIViewController, UITableViewDelegate, UITabl
         self.setNavBar(title: "Inbox")
         self.tableView.fadeReload()
         self.removeRedDot(index: 2)
-        ProfileService.make().loadConversations(user: BMUser.me()) { (response, convos) in
-  //          ProfileService.make().user!.conversations = convos
-            self.tableView.fadeReload()
+        if let user = BMUser.me() {
+            ProfileService.make().loadConversations(user: user) { (response, convos) in
+      //          ProfileService.make().user!.conversations = convos
+                self.tableView.fadeReload()
+            }
         }
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadInNewMessage), name: NSNotification.Name("newMessageReceived"), object: nil)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -190,11 +195,13 @@ class ConversationsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @objc func reloadNotis() {
         self.tableView.refreshControl?.beginRefreshing()
-        ProfileService.make().loadConversations(user: BMUser.me()) { (response, convos) in
-     //       ProfileService.make().user!.conversations = convos
-            self.tableView.reloadData()
-            Timer.schedule(delay: 0.2) { (t) in
-                self.tableView.refreshControl?.endRefreshing()
+        if let user = BMUser.me() {
+            ProfileService.make().loadConversations(user: user) { (response, convos) in
+         //       ProfileService.make().user!.conversations = convos
+                self.tableView.reloadData()
+                Timer.schedule(delay: 0.2) { (t) in
+                    self.tableView.refreshControl?.endRefreshing()
+                }
             }
         }
     }
@@ -216,7 +223,8 @@ class ConversationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BMUser.me().conversations.count
+        guard let user = BMUser.me() else { return 0 }
+        return user.conversations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,12 +234,13 @@ class ConversationsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let convo = BMUser.me().conversations[indexPath.row]
+        guard let user = BMUser.me() else { return }
+        let convo = user.conversations[indexPath.row]
         var otherUser = convo.sender!
         if convo.sender!.id! == 0 {
             otherUser = convo.receiver!
         }
-        let vc = ConversationViewController.makeVC(convo: BMUser.me().conversations[indexPath.row], user: otherUser)
+        let vc = ConversationViewController.makeVC(convo: user.conversations[indexPath.row], user: otherUser)
         self.push(vc: vc)
     }
 }

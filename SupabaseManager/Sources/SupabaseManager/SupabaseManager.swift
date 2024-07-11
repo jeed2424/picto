@@ -12,7 +12,7 @@ public class SupabaseManager {
     private let supabaseString = Bundle.main.object(forInfoDictionaryKey: "Supabase_URL") as? String ?? ""
     private let supabaseKey = Bundle.main.object(forInfoDictionaryKey: "Supabase_KEY") as? String ?? ""
 
-    public init() {
+    private init() {
         initializeClient()
     }
 }

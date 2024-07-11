@@ -193,6 +193,7 @@ extension UsernameCreationView {
         guard let userId = userId, let username = usernameField.text?.noSpaces(), let firstName = firstName, let lastName = lastName, let email = email else { return }
 
         let manager = SupabaseAuthenticationManager.sharedInstance
+        let profileService = ProfileService.sharedInstance
 
         let user = DbUser(id: userId, username: username, firstName: firstName, lastName: lastName, email: email)
 
@@ -203,6 +204,7 @@ extension UsernameCreationView {
                     let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email)
                     let auth = AuthenticationService.make()
                     auth.authenticationSuccess(user: bmUser)
+                    profileService.saveUser(user: bmUser)
                     NotificationCenter.default.post(name: NotificationNames.didRegister, object: bmUser)
                 }
             }

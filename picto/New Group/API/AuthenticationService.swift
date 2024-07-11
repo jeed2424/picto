@@ -24,7 +24,7 @@ enum LoginResponseCode {
 class AuthenticationService: BaseService {
 
 //    let db = Firestore.firestore()
-    let sharedInstance = AuthenticationService(api: ClientAPI.sharedInstance)
+    static let sharedInstance = AuthenticationService(api: ClientAPI.sharedInstance)
 
     override init(api: ClientAPI) {
         super.init(api: api)

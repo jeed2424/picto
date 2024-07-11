@@ -77,13 +77,13 @@
             filePath = "picto/MainNavigation/Home/Views/UsernameCreationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "saveNewUser()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea25"
+                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea46"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -93,12 +93,12 @@
                   urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "200"
-                  endingLineNumber = "200"
-                  offsetFromSymbolStart = "344">
+                  startingLineNumber = "203"
+                  endingLineNumber = "203"
+                  offsetFromSymbolStart = "528">
                </Location>
                <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea67"
+                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea46"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -108,12 +108,12 @@
                   urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
-                  offsetFromSymbolStart = "344">
+                  startingLineNumber = "203"
+                  endingLineNumber = "203"
+                  offsetFromSymbolStart = "444">
                </Location>
                <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea67"
+                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea46"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -123,54 +123,9 @@
                   urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
-                  offsetFromSymbolStart = "400">
-               </Location>
-               <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
-                  offsetFromSymbolStart = "480">
-               </Location>
-               <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
-                  offsetFromSymbolStart = "428">
-               </Location>
-               <Location
-                  uuid = "BB6806CD-A22E-4DC2-A0EC-8184FF95B078 - b6bbe1c68b47ea67"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
-                  offsetFromSymbolStart = "508">
+                  startingLineNumber = "203"
+                  endingLineNumber = "203"
+                  offsetFromSymbolStart = "524">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -185,8 +140,8 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "setObservers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -205,6 +160,38 @@
             endingLineNumber = "195"
             landmarkName = "saveNewUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4E760306-78D1-4608-A028-61847E9E89E1 - 495232adb09bd439"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "1360">
+               </Location>
+               <Location
+                  uuid = "4E760306-78D1-4608-A028-61847E9E89E1 - 495232adb09bd439"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "1372">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -217,10 +204,57 @@
             filePath = "picto/MainNavigation/Home/Views/UsernameCreationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "saveNewUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B64E3782-80C0-4FB5-85E8-B69EF14F892C - 495232adb09bd5bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "1568">
+               </Location>
+               <Location
+                  uuid = "B64E3782-80C0-4FB5-85E8-B69EF14F892C - b6bbe1c68b47eaca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  uuid = "B64E3782-80C0-4FB5-85E8-B69EF14F892C - 495232adb09bd59c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "1452">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,8 +330,8 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "setObservers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -328,10 +362,42 @@
             filePath = "picto/MainNavigation/Home/Views/UsernameCreationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "saveNewUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5BB101C4-DB82-4751-BE05-C552F121E2A4 - b6bbe1c68b47ede3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "856">
+               </Location>
+               <Location
+                  uuid = "5BB101C4-DB82-4751-BE05-C552F121E2A4 - b6bbe1c68b47ede3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "864">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -344,10 +410,42 @@
             filePath = "picto/MainNavigation/Home/Views/UsernameCreationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "saveNewUser()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B29DBB1F-C765-4489-B599-80212E6C1803 - b6bbe1c68b47ed3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "988">
+               </Location>
+               <Location
+                  uuid = "B29DBB1F-C765-4489-B599-80212E6C1803 - b6bbe1c68b47ed3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; () in picto.UsernameCreationView.saveNewUser() -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/Views/UsernameCreationView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "208"
+                  endingLineNumber = "208"
+                  offsetFromSymbolStart = "932">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -363,6 +461,150 @@
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "editController(_:didFinishEditing:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E5CECF1-788B-4C4C-9B69-A0EFDE4D8A5B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "goToRegister(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6E5B967A-B147-44BD-AA45-AB5BF87B937B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "presentMain()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB010BCD-10EA-4F31-91B4-031915BB8C08"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Profile/UserProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "makeVC(user:fromTab:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58C81578-F060-40A2-8F70-31CE68746760"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Profile/UserProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "makeVC(user:fromTab:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43CBA8E2-5921-4DC2-9831-DC08E0585009"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Profile/UserProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "makeVC(user:fromTab:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36C60B10-3AB4-4363-84A1-0295DD851F3A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Profile/UserProfileViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "makeVC(user:fromTab:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06C8E601-7290-424B-938D-5BBC06F1D637"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/Utils/Extensions/Navigation+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "tabBarController(_:shouldSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0516A7A1-B436-4A5A-AE51-373D5F9D7438"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "presentMain()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77133CCC-141D-474D-907A-CC5ED5F8D44C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "presentMain()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
