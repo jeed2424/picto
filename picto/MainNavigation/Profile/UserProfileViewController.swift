@@ -160,15 +160,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         self.tableView.sizeHeaderToFit(preferredWidth: screenWidth)
         self.tableView.tableHeaderView!.layoutIfNeeded()
         refreshControl.addTarget(self, action: #selector(reloadProf), for: .valueChanged)
-        if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
-        } else {
             tableView.addSubview(refreshControl)
-        }
         self.tableView.layoutIfNeeded()
         self.view.layoutIfNeeded()
         self.setControlY()
-        print("userID: \(self.user!.id)")
+        print("userID: \(self.user.identifier)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

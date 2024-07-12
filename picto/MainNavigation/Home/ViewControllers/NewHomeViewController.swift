@@ -11,6 +11,8 @@ class NewHomeViewController: UIViewController {
     private(set) var viewModel = ViewModel()
     private var cancellables = Set<AnyCancellable>()
     private var subscriptions = [AnyCancellable]()
+    
+    private var user: BMUser?
 
 
     // MARK: - UI Components
@@ -246,28 +248,69 @@ extension NewHomeViewController {
         ])
     }
 
+//    func presentMain() {
+//        let feed = FeedService.make()
+//        //        feed.getFeed(all: true) { (response, posts) in
+//        //            feed.posts = posts
+//        let tabBarController = UITabBarController() //CustomTabBarController()
+//        let home = HomeTestViewController.makeVC()
+//        let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
+//        //            let search = SearchController(config: .all)
+//        let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
+//        let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+//        if let user = BMUser.me() {
+//            if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
+//                let view = NewProfileViewController()
+//                view.view.backgroundColor = .cyan
+//                let base4 = self.createVC(vc: view, icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+//                tabBarController.viewControllers = [base1, base2]//, base3, base4]
+//            } else {
+//                tabBarController.viewControllers = [base1, base2, base3]
+//            }
+//        } else {
+//            tabBarController.viewControllers = [base1, base2, base3]
+//        }
+//        tabBarController.tabBar.tintColor = .label
+//        tabBarController.tabBar.barTintColor = .systemBackground
+//        tabBarController.tabBar.isTranslucent = false
+//        tabBarController.tabBar.shadowImage = UIImage()
+//        tabBarController.tabBar.backgroundImage = UIImage()
+//        tabBarController.modalPresentationStyle = .fullScreen
+//        tabBarController.view.backgroundColor = .systemBackground
+//        tabBarController.modalTransitionStyle = .crossDissolve
+//        ProfileService.sharedInstance.tabController = tabBarController
+//        self.present(tabBarController, animated: true, completion: nil)
+//
+//        //        }
+//    }
+    
     func presentMain() {
         let feed = FeedService.make()
-        //        feed.getFeed(all: true) { (response, posts) in
-        //            feed.posts = posts
-        let tabBarController = UITabBarController() //CustomTabBarController()
-        let home = HomeTestViewController.makeVC()
-        let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
-        //            let search = SearchController(config: .all)
-        let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
-        let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
-        if let user = BMUser.me() {
+//        feed.getFeed(all: true) { (response, posts) in
+//            feed.posts = posts
+            let tabBarController = CustomTabBarController()
+            let home = HomeTestViewController.makeVC()
+            let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
+//            let search = SearchController(config: .all)
+            let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
+            let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+        if let user = self.user {
             if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
-                let view = NewProfileViewController()
-                view.view.backgroundColor = .cyan
-                let base4 = self.createVC(vc: view, icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
-                tabBarController.viewControllers = [base1, base2]//, base3, base4]
+                let base4 = self.createVC(vc: profile, icon: UIImage(named: "profile_unselected")?.withTintColor(.systemGray) ?? UIImage(), selected: UIImage(named: "profile_selected") ?? UIImage())
+                tabBarController.viewControllers = [base1, base2, base3, base4]
+                showTabBar(tabBarController)
             } else {
                 tabBarController.viewControllers = [base1, base2, base3]
+                showTabBar(tabBarController)
             }
         } else {
             tabBarController.viewControllers = [base1, base2, base3]
+            showTabBar(tabBarController)
         }
+//        }
+    }
+    
+    private func showTabBar(_ tabBarController: UITabBarController) {
         tabBarController.tabBar.tintColor = .label
         tabBarController.tabBar.barTintColor = .systemBackground
         tabBarController.tabBar.isTranslucent = false
@@ -278,14 +321,14 @@ extension NewHomeViewController {
         tabBarController.modalTransitionStyle = .crossDissolve
         ProfileService.sharedInstance.tabController = tabBarController
         self.present(tabBarController, animated: true, completion: nil)
-
-        //        }
     }
 
     private func createVC(vc: UIViewController, icon: UIImage, selected: UIImage) -> BaseNC {
-        vc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
-        vc.tabBarItem.selectedImage = selected
+//        vc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
+//        vc.tabBarItem.selectedImage = selected
         let nc = BaseNC(rootViewController: vc)
+        nc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
+        nc.tabBarItem.selectedImage = selected
         return nc
     }
 
@@ -351,6 +394,7 @@ extension NewHomeViewController {
 //                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: newUser))
 //                            base.modalPresentationStyle = .overFullScreen
 //                            self.present(base, animated: true, completion: nil)
+                            self.user = newUser
                             self.presentMain()
                         }
                     }

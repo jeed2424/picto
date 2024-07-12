@@ -10,18 +10,19 @@ final class BaseNC: UINavigationController {
 
     override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
+        self.delegate = self
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        delegate = self
-    }
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//
+//        delegate = self
+//    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        delegate = self
+        self.delegate = self
     }
 
     override func viewDidLoad() {
