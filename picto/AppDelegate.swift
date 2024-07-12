@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
-import FirebaseAnalytics
+//import FirebaseAnalytics
 import UserNotifications
 import SDWebImage
 import AVFoundation

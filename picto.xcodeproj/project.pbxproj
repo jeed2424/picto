@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		232F0B1C5524163B044A636E /* Pods_picto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C7B2082168313877969304 /* Pods_picto.framework */; };
+		32A250C1A6BD2926B69296ED /* Pods_picto_pictoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A5C7AF2E8B0B8F5AB9596 /* Pods_picto_pictoUITests.framework */; };
 		692C606C2C3F540500327616 /* SupabaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = 692C606B2C3F540500327616 /* SupabaseManager */; };
+		693D3CDA2C40C81A00F76191 /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */; };
 		696B52D62C3F0132006315A0 /* SupabaseManager in Resources */ = {isa = PBXBuildFile; fileRef = 696B52D52C3F0132006315A0 /* SupabaseManager */; };
 		69C99CB329F9F79200912E5A /* pictoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CB229F9F79200912E5A /* pictoTests.swift */; };
 		69C99CBD29F9F79200912E5A /* pictoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CBC29F9F79200912E5A /* pictoUITests.swift */; };
@@ -243,6 +246,7 @@
 		128B26FB21AF7851A0D60CB8 /* Pods-picto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto.release.xcconfig"; path = "Target Support Files/Pods-picto/Pods-picto.release.xcconfig"; sourceTree = "<group>"; };
 		42E100906A2C261BA4C4B7B0 /* Pods-pictoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pictoTests.debug.xcconfig"; path = "Target Support Files/Pods-pictoTests/Pods-pictoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E21D49E8DBB1E2DD88E23BD /* Pods-picto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto.debug.xcconfig"; path = "Target Support Files/Pods-picto/Pods-picto.debug.xcconfig"; sourceTree = "<group>"; };
+		693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileViewController.swift; sourceTree = "<group>"; };
 		696B52D52C3F0132006315A0 /* SupabaseManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SupabaseManager; sourceTree = "<group>"; };
 		69C99C9829F9F79000912E5A /* picto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = picto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C99CA429F9F79100912E5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -480,7 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				692C606C2C3F540500327616 /* SupabaseManager in Frameworks */,
-				9F69E29A1247F516F529322F /* Pods_picto.framework in Frameworks */,
+				232F0B1C5524163B044A636E /* Pods_picto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4434F27C14AF98977C0EB299 /* Pods_picto_pictoUITests.framework in Frameworks */,
+				32A250C1A6BD2926B69296ED /* Pods_picto_pictoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -836,6 +840,7 @@
 				69C99D3429F9F9F200912E5A /* UserProfile.storyboard */,
 				69C99D3529F9F9F200912E5A /* UserFollowersViewController.swift */,
 				69C99D3629F9F9F200912E5A /* OldEditProfileViewController.swift */,
+				693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1612,6 +1617,7 @@
 				69C99EB929F9F9F300912E5A /* BMNotification.swift in Sources */,
 				69C99E8729F9F9F300912E5A /* PostCommentTableViewCell.swift in Sources */,
 				69C99E5329F9F9F300912E5A /* EditProfileController.swift in Sources */,
+				693D3CDA2C40C81A00F76191 /* NewProfileViewController.swift in Sources */,
 				69C99F3729F9F9F300912E5A /* Range+Ext.swift in Sources */,
 				69C99E6329F9F9F300912E5A /* ProfileHeader.swift in Sources */,
 				69C99E5029F9F9F300912E5A /* PostsController.swift in Sources */,

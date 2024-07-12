@@ -116,9 +116,10 @@ class UserNotificationsViewController: UIViewController, UITableViewDelegate, UI
 //            let vc = PostPageViewController.makeVC(post: p, otherPosts: posts)
 //            self.push(vc: vc)
         } else if let u = user.notifications[indexPath.row].user {
-            let vc = UserProfileViewController.makeVC(user: u)
-            vc.hidesBottomBarWhenPushed = true
-            self.push(vc: vc)
+            if let vc = UserProfileViewController.makeVC(user: u) {
+                vc.hidesBottomBarWhenPushed = true
+                self.push(vc: vc)
+            }
         }
     }
 }
@@ -458,14 +459,15 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func goToProf() {
         addHaptic(style: .soft)
-        let vc = UserProfileViewController.makeVC(user: self.otherUser!)
-        self.navigationController?.navigationBar.isTranslucent = false
-        vc.hidesBottomBarWhenPushed = true
-        vc.view.superview?.layoutIfNeeded()
-        vc.view.layoutIfNeeded()
-        vc.fromSearch = true
-//        self.navigationController?.navigationBar.isTranslucent = true
-        self.push(vc: vc)
+        if let vc = UserProfileViewController.makeVC(user: self.otherUser!) {
+            self.navigationController?.navigationBar.isTranslucent = false
+            vc.hidesBottomBarWhenPushed = true
+            vc.view.superview?.layoutIfNeeded()
+            vc.view.layoutIfNeeded()
+            vc.fromSearch = true
+    //        self.navigationController?.navigationBar.isTranslucent = true
+            self.push(vc: vc)
+        }
 //        self.push(vc: vc)
 //        self.navigationController?.pushViewController(vc, animated: <#T##Bool#>)
     }

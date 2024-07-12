@@ -23,7 +23,7 @@ class ProfileService: BaseService {
     var following = [BMUser]()
     var categories = [BMCategory]()
     var user: BMUser?
-    var tabController: CustomTabBarController!
+    var tabController: UITabBarController? //CustomTabBarController!
     var videoRef = Storage.storage().reference().child("videos")
     var imageRef = Storage.storage().reference().child("images")
     

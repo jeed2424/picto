@@ -248,35 +248,38 @@ extension NewHomeViewController {
 
     func presentMain() {
         let feed = FeedService.make()
-//        feed.getFeed(all: true) { (response, posts) in
-//            feed.posts = posts
-            let tabBarController = CustomTabBarController()
-            let home = HomeTestViewController.makeVC()
-            let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
-            //            let search = SearchController(config: .all)
-            let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
-            let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+        //        feed.getFeed(all: true) { (response, posts) in
+        //            feed.posts = posts
+        let tabBarController = UITabBarController() //CustomTabBarController()
+        let home = HomeTestViewController.makeVC()
+        let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
+        //            let search = SearchController(config: .all)
+        let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
+        let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
         if let user = BMUser.me() {
             if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
-                let base4 = self.createVC(vc: profile, icon: UIImage(systemName: "pencil.circle")!.withTintColor(.systemGray), selected: UIImage(systemName: "pencil.circle.fill")!)
-                tabBarController.viewControllers = [base1, base2, base3, base4]
+                let view = NewProfileViewController()
+                view.view.backgroundColor = .cyan
+                let base4 = self.createVC(vc: view, icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+                tabBarController.viewControllers = [base1, base2]//, base3, base4]
             } else {
                 tabBarController.viewControllers = [base1, base2, base3]
             }
         } else {
             tabBarController.viewControllers = [base1, base2, base3]
         }
-            tabBarController.tabBar.tintColor = .label
-            tabBarController.tabBar.barTintColor = .systemBackground
-            tabBarController.tabBar.isTranslucent = false
-            tabBarController.tabBar.shadowImage = UIImage()
-            tabBarController.tabBar.backgroundImage = UIImage()
-            tabBarController.modalPresentationStyle = .fullScreen
-            tabBarController.view.backgroundColor = .systemBackground
-            tabBarController.modalTransitionStyle = .crossDissolve
-            ProfileService.sharedInstance.tabController = tabBarController
-            self.present(tabBarController, animated: true, completion: nil)
-//        }
+        tabBarController.tabBar.tintColor = .label
+        tabBarController.tabBar.barTintColor = .systemBackground
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.shadowImage = UIImage()
+        tabBarController.tabBar.backgroundImage = UIImage()
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.view.backgroundColor = .systemBackground
+        tabBarController.modalTransitionStyle = .crossDissolve
+        ProfileService.sharedInstance.tabController = tabBarController
+        self.present(tabBarController, animated: true, completion: nil)
+
+        //        }
     }
 
     private func createVC(vc: UIViewController, icon: UIImage, selected: UIImage) -> BaseNC {

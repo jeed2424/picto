@@ -10,7 +10,7 @@ import UIKit
 import VerticalCardSwiper
 //import SwiftyCam
 import PixelSDK
-import FirebaseAnalytics
+//import FirebaseAnalytics
 import StoreKit
 
 protocol NewFeedItemDelegate {
@@ -347,14 +347,15 @@ extension HomeTestViewController: FeedCardDelegate {
         print("tapped user avatar on card!")
 //        let profile = UserProfileViewController.makeVC(user: post.user!)
 //        self.push(vc: profile)
-        let vc = UserProfileViewController.makeVC(user: post.user!)
-        self.navigationController?.navigationBar.isTranslucent = false
-        vc.hidesBottomBarWhenPushed = true
-        vc.view.superview?.layoutIfNeeded()
-        vc.view.layoutIfNeeded()
-        vc.fromSearch = true
-//        self.navigationController?.navigationBar.isTranslucent = true
-        self.push(vc: vc)
+        if let vc = UserProfileViewController.makeVC(user: post.user!) {
+            self.navigationController?.navigationBar.isTranslucent = false
+            vc.hidesBottomBarWhenPushed = true
+            vc.view.superview?.layoutIfNeeded()
+            vc.view.layoutIfNeeded()
+            vc.fromSearch = true
+    //        self.navigationController?.navigationBar.isTranslucent = true
+            self.push(vc: vc)
+        }
     }
     
     func showMenu(post: BMPost) {
@@ -399,9 +400,10 @@ func getMenu(post: BMPost, vc: UINavigationController?, completion: (() -> Void)
         print("view profile")
         actionSheet.dismiss(animated: false) {
             DispatchQueue.main.async {
-                let newvc = UserProfileViewController.makeVC(user: post.user!)
-                newvc.hidesBottomBarWhenPushed = true
-                vc?.pushViewController(newvc, animated: true)
+                if let newvc = UserProfileViewController.makeVC(user: post.user!) {
+                    newvc.hidesBottomBarWhenPushed = true
+                    vc?.pushViewController(newvc, animated: true)
+                }
             }
         }
     }
@@ -537,9 +539,10 @@ func getNotiMenu(post: BMPost, user: BMUser, vc: UINavigationController?, comple
         print("view profile")
         actionSheet.dismiss(animated: false) {
             DispatchQueue.main.async {
-                let newvc = UserProfileViewController.makeVC(user: user)
-                newvc.hidesBottomBarWhenPushed = true
-                vc?.pushViewController(newvc, animated: true)
+                if let newvc = UserProfileViewController.makeVC(user: user) {
+                    newvc.hidesBottomBarWhenPushed = true
+                    vc?.pushViewController(newvc, animated: true)
+                }
             }
         }
     }

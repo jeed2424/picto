@@ -190,7 +190,7 @@ extension UIViewController {
     func addRedDotAtTabBarItemIndex(index: Int) {
 
         let profileService = ClientAPI.sharedInstance.profileService
-        var controller: CustomTabBarController!
+        var controller: UITabBarController? //CustomTabBarController!
 
         guard let c = profileService.tabController else {
             print("COULD NOT FIND TABBARCONTROLLER")
