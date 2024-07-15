@@ -13,6 +13,7 @@ target 'picto' do
     
     pod 'ActiveLabel'
     pod 'SDWebImage'
+    pod 'Kingfisher', '~> 7.0'
     pod 'VerticalCardSwiper', :git => "https://github.com/jeed2424/VerticalCardSwiper.git"
   #  pod 'ReactiveCocoa'
     pod 'SwiftyBeaver'

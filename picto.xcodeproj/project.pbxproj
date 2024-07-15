@@ -12,6 +12,7 @@
 		692C606C2C3F540500327616 /* SupabaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = 692C606B2C3F540500327616 /* SupabaseManager */; };
 		693D3CDA2C40C81A00F76191 /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */; };
 		696B52D62C3F0132006315A0 /* SupabaseManager in Resources */ = {isa = PBXBuildFile; fileRef = 696B52D52C3F0132006315A0 /* SupabaseManager */; };
+		69C0E51A2C443BD7007D2A4E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C0E5192C443BD7007D2A4E /* UIImageView+Ext.swift */; };
 		69C99CB329F9F79200912E5A /* pictoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CB229F9F79200912E5A /* pictoTests.swift */; };
 		69C99CBD29F9F79200912E5A /* pictoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CBC29F9F79200912E5A /* pictoUITests.swift */; };
 		69C99CBF29F9F79200912E5A /* pictoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CBE29F9F79200912E5A /* pictoUITestsLaunchTests.swift */; };
@@ -248,6 +249,7 @@
 		5E21D49E8DBB1E2DD88E23BD /* Pods-picto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto.debug.xcconfig"; path = "Target Support Files/Pods-picto/Pods-picto.debug.xcconfig"; sourceTree = "<group>"; };
 		693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileViewController.swift; sourceTree = "<group>"; };
 		696B52D52C3F0132006315A0 /* SupabaseManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SupabaseManager; sourceTree = "<group>"; };
+		69C0E5192C443BD7007D2A4E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		69C99C9829F9F79000912E5A /* picto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = picto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69C99CA429F9F79100912E5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69C99CAE29F9F79200912E5A /* pictoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pictoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -507,6 +509,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69C0E5182C443BC1007D2A4E /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				69C0E5192C443BD7007D2A4E /* UIImageView+Ext.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		69C99C8F29F9F79000912E5A = {
 			isa = PBXGroup;
 			children = (
@@ -1051,6 +1061,7 @@
 		69C99DF929F9F9F200912E5A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				69C0E5182C443BC1007D2A4E /* UIImageView */,
 				69C99DFA29F9F9F200912E5A /* UIImage */,
 				69C99DFF29F9F9F200912E5A /* UIView */,
 				69C99E0529F9F9F200912E5A /* Others */,
@@ -1561,6 +1572,7 @@
 				69C99E6429F9F9F300912E5A /* EditProfileHeader.swift in Sources */,
 				69C99EC529F9F9F300912E5A /* GifMaker.swift in Sources */,
 				69C99F4C29F9F9F300912E5A /* AlertAnimationController.swift in Sources */,
+				69C0E51A2C443BD7007D2A4E /* UIImageView+Ext.swift in Sources */,
 				69C99EB729F9F9F300912E5A /* BMPost.swift in Sources */,
 				69C99EB229F9F9F300912E5A /* BMLazyList.swift in Sources */,
 				69C99EBB29F9F9F300912E5A /* ClientAPI.swift in Sources */,

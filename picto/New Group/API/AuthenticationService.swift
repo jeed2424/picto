@@ -37,9 +37,13 @@ class AuthenticationService: BaseService {
     
     func authenticationSuccess(user: BMUser) {
         APIService.setUser(user: user)
-        ProfileService.make().getCategories(user: user) { (response, cats) in
-            ProfileService.make().categories = cats
+        ProfileService.sharedInstance.getCategories(user: user) { (response, cats) in
+            ProfileService.sharedInstance.categories = cats
         }
+    }
+
+    func saveUpdatedUser(user: BMUser) {
+        APIService.setUser(user: user)
     }
 
     func createUser(email: String, password: String, firstName: String, lastName: String, completion: @escaping (RegisterResponseCode, User?) -> Swift.Void) {

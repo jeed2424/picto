@@ -329,7 +329,7 @@ extension RegisterView {
             case .success:
                 guard let id = user?.id else { return }
                 print("")
-                let user = BMUser(id: id, username: "", firstName: firstName ?? "", lastName: lastName ?? "", email: email)
+                let user = BMUser(id: id, username: "", firstName: firstName ?? "", lastName: lastName ?? "", email: email, bio: "", website: "", showFullName: false, avatar: "")
                 NotificationCenter.default.post(name: NotificationNames.willShowUsernameSelection, object: user)
             case .error:
                 print("")

@@ -87,7 +87,7 @@ class PostCommentViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(PostCommentViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(PostCommentViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         if let user = BMUser.me() {
-            self.textContainerImg.setImage(string: user.avatar)
+            self.textContainerImg.setImage(string: user.avatar ?? "")
         }
         self.textContainerImg.round()
         self.tableView.reloadData()

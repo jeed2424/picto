@@ -298,6 +298,55 @@ extension UIViewController {
     }
 }
 
+extension UIViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    @objc func showImagePicker() {
+        self.showImagePickerOptions()
+    }
+
+    @objc private func dismissPicker(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+
+    func imagePicker(sourceType: UIImagePickerController.SourceType) -> UIImagePickerController {
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.dismissPicker(_:)))
+
+        imagePicker.navigationItem.rightBarButtonItem?.tintColor = .blue
+        imagePicker.navigationItem.rightBarButtonItem?.isEnabled = true
+
+        imagePicker.allowsEditing = true
+        return imagePicker
+    }
+
+    func showImagePickerOptions() {
+        let alertVC = UIAlertController(title: "Pick a Photo", message: "Choose a picture from Library or camera", preferredStyle: .actionSheet)
+        //Image picker for camera
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] (action) in
+            //Capture self to avoid retain cycles
+            guard let self = self else { return }
+            let cameraImagePicker = self.imagePicker(sourceType: .camera)
+            cameraImagePicker.delegate = self
+            self.present (cameraImagePicker, animated: true) {
+            }
+        }
+        //Image Picker for Library
+        let libraryAction = UIAlertAction(title: "Library", style: .default) { [weak self] (action) in
+            //Capture self to avoid retain cycles
+            guard let self = self else { return }
+            let libraryImagePicker = self.imagePicker(sourceType: .photoLibrary)
+            libraryImagePicker.delegate = self
+            self.present (libraryImagePicker, animated: true) {
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertVC.addAction(cameraAction)
+        alertVC.addAction(libraryAction)
+        alertVC.addAction(cancelAction)
+        self.present(alertVC, animated: true, completion: nil)
+    }
+}
+
 // MARK: - Controller + Camera Delegate
 extension UIViewController: EditControllerDelegate, CameraControllerDelegate {
 
@@ -330,12 +379,13 @@ extension UIViewController: EditControllerDelegate, CameraControllerDelegate {
                 }
             })
         } else {
-            ImageExporter.shared.export(image: session.image!, compressionQuality: 0.75) { (error, img) in
-                let uploadVC = PostUploadViewController.makeVC(user: user, delegate: self, image: img, videoURL: nil)
+//            ImageExporter.shared.export(image: session.image!, compressionQuality: 0.75) { (error, img) in
+//                let uploadVC = PostUploadViewController.makeVC(user: user, delegate: self, image: img, videoURL: nil)
                 editController.dismissLoadingAlertModal(animated: true) {
-                    editController.push(vc: uploadVC)
+//                    editController.push(vc: uploadVC)
+                    print("Hello Image")
                 }
-            }
+//            }
         }
 
     }

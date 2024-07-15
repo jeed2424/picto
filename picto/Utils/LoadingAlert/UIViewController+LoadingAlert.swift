@@ -8,12 +8,14 @@ extension UIViewController {
     }
     
     public func dismissLoadingAlertModal(animated: Bool, completion: (() -> Void)?) {
-        guard presentedViewController is LoadingAlertController else {
-            completion?()
-            return
+        DispatchQueue.main.async {
+            guard self.presentedViewController is LoadingAlertController else {
+                completion?()
+                return
+            }
+
+            self.dismiss(animated: animated, completion: completion)
         }
-        
-        dismiss(animated: animated, completion: completion)
     }
     
     public func bindLoadingAlertModal(to completion: (() -> Void)? = nil) -> (() -> Void) {

@@ -296,7 +296,7 @@ extension NewHomeViewController {
             let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
         if let user = self.user {
             if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
-                let base4 = self.createVC(vc: profile, icon: UIImage(named: "profile_unselected")?.withTintColor(.systemGray) ?? UIImage(), selected: UIImage(named: "profile_selected") ?? UIImage())
+                let base4 = self.createVC(vc: profile, icon: UIImage(named: "profileicon")?.withTintColor(.systemGray) ?? UIImage(), selected: UIImage(named: "profileicon-selected") ?? UIImage())
                 tabBarController.viewControllers = [base1, base2, base3, base4]
                 showTabBar(tabBarController)
             } else {
@@ -324,8 +324,6 @@ extension NewHomeViewController {
     }
 
     private func createVC(vc: UIViewController, icon: UIImage, selected: UIImage) -> BaseNC {
-//        vc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
-//        vc.tabBarItem.selectedImage = selected
         let nc = BaseNC(rootViewController: vc)
         nc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
         nc.tabBarItem.selectedImage = selected
@@ -370,7 +368,7 @@ extension NewHomeViewController {
                     .sink { [weak self] newUser in
                         guard let self = self, let newUser = newUser.object as? BMUser, let identifier = newUser.identifier else { return }
 
-                        self.usernameView.setValues(userId: identifier, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email)
+                        self.usernameView.setValues(userId: identifier, firstName: newUser.firstName ?? "", lastName: newUser.lastName ?? "", email: newUser.email ?? "")
                         self.viewModel.loadPageSelection(selection: .username)
                     }
                     .store(in: &subscriptions)

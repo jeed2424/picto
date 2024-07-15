@@ -22,7 +22,11 @@ class ProfileService: BaseService {
 //    let db = Firestore.firestore()
     var following = [BMUser]()
     var categories = [BMCategory]()
-    var user: BMUser?
+    var user: BMUser? {
+        didSet {
+            print("Hello on user set: \(user?.avatar)")
+        }
+    }
     var tabController: UITabBarController? //CustomTabBarController!
     var videoRef = Storage.storage().reference().child("videos")
     var imageRef = Storage.storage().reference().child("images")
@@ -33,6 +37,10 @@ class ProfileService: BaseService {
     }
 
     func saveUser(user: BMUser) {
+        self.user = user
+    }
+
+    func updateUser(user: BMUser) {
         self.user = user
     }
 

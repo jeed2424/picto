@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-import PixelSDK
+import SupabaseManager
 
 enum ProfileContentType {
 //    case photos
@@ -21,10 +21,18 @@ enum ProfileContentType {
 
 class UserProfileViewController: UIViewController, UITableViewDelegate {
 
-    var user: BMUser!
+    var user: BMUser? {
+        didSet {
+            if let user = user {
+                print("Hello Launch profileVC: \(user.avatar)")
+            }
+        }
+    }
 
     var refreshControl = UIRefreshControl()
-    
+
+    private var avatarEmptyAtLaunch = true
+
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -146,8 +154,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 //        self.contentType = .photos
         self.addSwipes()
-        self.setUser(user: self.user!)
-        self.loadPosts(user: self.user!)
+        if let user = BMUser.me() {
+            self.setUser(user: user)
+            self.loadPosts(user: user)
+
+            print("UserProfile \(user.avatar)")
+        }
         segmentControl.alpha = 0
         segmentControl.textFont = BaseFont.get(.bold, 16)
         segmentControl.textColor = .systemGray2
@@ -165,7 +177,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         self.tableView.layoutIfNeeded()
         self.view.layoutIfNeeded()
         self.setControlY()
-        print("userID: \(self.user.identifier)")
+        print("userID: \(self.user?.identifier)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -278,7 +290,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     
     func addAvatarTap(user: BMUser) {
         if user.identifier == BMUser.me()?.identifier {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.editAvatar))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
             self.avatar.addGestureRecognizer(tap)
             self.avatar.isUserInteractionEnabled = true
         }
@@ -372,11 +384,15 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func followAction(_ sender: Any) {
-        guard let user = BMUser.me(), let uid = user.identifier else { return }
+        guard let user = self.user, let uid = user.identifier else { return }
         addHaptic(style: .medium)
-        if BMUser.me()?.identifier == self.user.identifier {
+        if BMUser.me()?.identifier == self.user?.identifier {
+            print("Hello Profile \(user.avatar)")
 //            self.showUserList(users: FeedService.make().posts.map({$0.user!}))
             let vc = NewEditProfileViewController.makeVC(user: user)
+            vc.user = user
+            print("Hello Launch Edit: \(user.avatar)")
+            print("Hello Launch Edit VC: \(vc.user?.avatar)")
             self.push(vc: vc)
         } else {
             if BMUser.me()?.checkFollow(user: self.user!) == true {
@@ -431,8 +447,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     @objc func showMenu() {
         // Action Sheet
         let actionSheet = ATActionSheet()
-        let nb = self.user.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications"
-        let noti = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications", image: nil) {
+        let nb = self.user?.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications"
+        let noti = ATAction(title: self.user?.identifier == BMUser.me()?.identifier ? "Community Guidelines" : "Enable Notifications", image: nil) {
             print("Notifications")
             actionSheet.dismissAlertAnim {
                 if nb == "Community Guidelines" {
@@ -502,8 +518,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
                 }
             }
         }
-        let tb = self.user.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)"
-        let block = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)", image: nil, style: self.user.identifier == BMUser.me()?.identifier ? .default : .destructive) {
+        let tb = self.user?.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)"
+        let block = ATAction(title: self.user?.identifier == BMUser.me()?.identifier ? "Terms of Service" : "Block \(self.user!.username!)", image: nil, style: self.user?.identifier == BMUser.me()?.identifier ? .default : .destructive) {
             print("block")
 //            actionSheet.dismissAlert()
             actionSheet.dismissAlertAnim {
@@ -518,7 +534,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
 //                showAlertPopup(title: "Coming Soon", message: "We're currently working on this feature and will have it available soon!", image: .get(name: "notificationbell", tint: .white))
             }
         }
-        let logout = ATAction(title: self.user.identifier == BMUser.me()?.identifier ? "Log out" : "Report Activity", image: nil, style: .default) {
+        let logout = ATAction(title: self.user?.identifier == BMUser.me()?.identifier ? "Log out" : "Report Activity", image: nil, style: .default) {
             print("logged out")
             actionSheet.dismiss(animated: false) {
                 AuthenticationService.make().logout {
@@ -540,13 +556,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         let i = self.user!.instagram ?? ""
         if i != "" {
 //            actionSheet.addActions([noti, insta, block, logout])
-            if self.user.identifier == BMUser.me()?.identifier {
+            if self.user?.identifier == BMUser.me()?.identifier {
                 actionSheet.addActions([showName, likes, follows, insta, noti, block, donate, logout])
             } else {
                 actionSheet.addActions([insta, noti, block, logout])
             }
         } else {
-            if self.user.identifier == BMUser.me()?.identifier {
+            if self.user?.identifier == BMUser.me()?.identifier {
                 actionSheet.addActions([showName, likes, follows, noti, block, donate, logout])
             } else {
                 actionSheet.addActions([noti, block, logout])
@@ -556,30 +572,30 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    override public func editController(_ editController: EditController, didFinishEditing session: Session) {
-        editController.presentLoadingAlertModal(animated: true, completion: nil)
-        
-//        ImageExporter.shared.export(image: session.image!, compressionQuality: 0.5) { (error, img) in
-//            self.avatar.image = img!
-//            ProfileService.make().uploadToFirebaseImage(user: BMUser.me(), image: img!) { (imgUrl) in
-//                ProfileService.make().user!.avatar = imgUrl
-//                ProfileService.make().updateAvatar(user: BMUser.me()) { (response, u) in
-//                    if let usr = u {
-//                        ProfileService.make().user = usr
-//                        self.tableView.reloadData()
-//                    }
-//                    editController.dismissLoadingAlertModal(animated: true) {
-//                        editController.dismiss(animated: true, completion: nil)
-//                    }
-//                }
-//            } failure: { (error) in
-//                print("error: ", error)
-//                editController.dismissLoadingAlertModal(animated: true) {
-//                    editController.dismiss(animated: true, completion: nil)
-//                }
-//            }
-//        }
-    }
+//    override public func editController(_ editController: EditController, didFinishEditing session: Session) {
+//        editController.presentLoadingAlertModal(animated: true, completion: nil)
+//        
+////        ImageExporter.shared.export(image: session.image!, compressionQuality: 0.5) { (error, img) in
+////            self.avatar.image = img!
+////            ProfileService.make().uploadToFirebaseImage(user: BMUser.me(), image: img!) { (imgUrl) in
+////                ProfileService.make().user!.avatar = imgUrl
+////                ProfileService.make().updateAvatar(user: BMUser.me()) { (response, u) in
+////                    if let usr = u {
+////                        ProfileService.make().user = usr
+////                        self.tableView.reloadData()
+////                    }
+////                    editController.dismissLoadingAlertModal(animated: true) {
+////                        editController.dismiss(animated: true, completion: nil)
+////                    }
+////                }
+////            } failure: { (error) in
+////                print("error: ", error)
+////                editController.dismissLoadingAlertModal(animated: true) {
+////                    editController.dismiss(animated: true, completion: nil)
+////                }
+////            }
+////        }
+//    }
     
     func addSwipes() {
         let left = UISwipeGestureRecognizer(target: self, action: #selector(leftSwipe))
@@ -718,5 +734,75 @@ extension UserProfileViewController: UIScrollViewDelegate {
 //            self.segmentControl.frame.origin.y = self.segmentContainer.globalPoint!.y
             self.setControlY()
         }
+    }
+}
+
+extension UserProfileViewController {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
+                                       [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        let data = image?.jpegData(compressionQuality: 0.5)
+
+        if user?.avatar?.isEmpty ?? true {
+            self.avatarEmptyAtLaunch = true
+        } else {
+            self.avatarEmptyAtLaunch = false
+        }
+        self.avatar.image = image
+        //        self.avatarDidChange = true
+        //        self.avatarData = data
+        if let user = self.user {
+            self.saveAvatar(avatar: data, completion: { _ in
+                self.saveUser(user: user)
+            })
+        }
+
+        print("Hello Image Selected")
+        //        self.imageView.image = image
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    private func saveAvatar(avatar: Data?, completion: @escaping (Bool) -> ()) {
+        guard let data = avatar else { return }
+        let manager = SupabaseStorageManager.sharedInstance
+        Task {
+            do {
+                if avatarEmptyAtLaunch {
+                    try await manager.uploadAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                        self.user?.avatar = url
+                        completion(true)
+                    })
+                } else {
+                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                        self.user?.avatar = url
+                        completion(true)
+                    })
+                }
+            } catch {
+                completion(false)
+            }
+        }
+    }
+
+    private func saveUser(user: BMUser) {
+        let manager = SupabaseAuthenticationManager.sharedInstance
+        let profileService = ProfileService.sharedInstance
+        let auth = AuthenticationService.sharedInstance
+
+        let user = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "")
+
+        manager.updateUser(user: user, completion: { id in
+            if id != nil {
+//                self.auth.authenticationSuccess(user: usr)
+                if let user = manager.authenticatedUser {
+                    let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar)
+                    profileService.updateUser(user: bmUser)
+                    self.dismissLoadingAlertModal(animated: true) {
+                        self.popVC()
+                    }
+                }
+            }
+        })
+
     }
 }

@@ -17,7 +17,7 @@ protocol NewFeedItemDelegate {
     func createdNewItem(post: BMPost)
 }
 
-class HomeTestViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeTestViewController: UIViewController {
     
     @IBOutlet weak var loadingInd: UIActivityIndicatorView!
     @IBOutlet weak var cardSwiper: VerticalCardSwiper! {

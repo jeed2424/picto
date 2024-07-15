@@ -19,6 +19,10 @@ public struct databaseUser: Decodable {
     let lastName: String
     let fullName: String
     let email: String
+    let bio: String
+    let website: String
+    let showFullName: Bool
+    let avatar: String
 }
 
 public enum AuthResponse {
@@ -44,7 +48,13 @@ public class SupabaseAuthenticationManager {
 
     public static let sharedInstance = SupabaseAuthenticationManager()
 
-    public var authenticatedUser: NewBMUser?
+    public var authenticatedUser: NewBMUser? {
+        didSet {
+            if let user = authenticatedUser {
+                print("Hello authenticatedUser \(authenticatedUser?.avatar)")
+            }
+        }
+    }
     private var user: User?
 
     private init () {
@@ -54,15 +64,15 @@ public class SupabaseAuthenticationManager {
     }
     
     public func currentUser(completion: @escaping (NewBMUser?) -> ()) {
-        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
-            guard let user = user else { return }
+//        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
+//        guard let user = self.user else { return }
         self.getActiveUser()
         
         if let user = self.user {
             Task {
                 do {
                     if let activeUser = try await self.getActiveUserData(user: user) {
-                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email)
+                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar)
                         completion(self.authenticatedUser)
 //                        return self.authenticatedUser
                     }
@@ -73,7 +83,7 @@ public class SupabaseAuthenticationManager {
         } else {
             completion(nil)
         }
-        })
+//        })
     }
     
     private func getActiveUser() {
@@ -146,7 +156,7 @@ public class SupabaseAuthenticationManager {
         }
     }
 
-    public func awaitCreateUser(user: DbUser) async throws -> databaseUser? {
+    private func awaitCreateUser(user: DbUser) async throws -> databaseUser? {
         guard let client = SupabaseManager.sharedInstance.client else { return nil }
 
         try await client.database
@@ -175,9 +185,6 @@ public class SupabaseAuthenticationManager {
             throw DatabaseError.error
         }
         return dataUser.first
-
-//        print("\(newUser.users.first?.firstName)")
-//        completion(newUser.users.first?.identifier)
     }
 
     public func createNewUser(user: DbUser, completion: @escaping (UUID?) -> ()) {
@@ -185,59 +192,61 @@ public class SupabaseAuthenticationManager {
         Task {
             do {
                 let newUser = try await awaitCreateUser(user: user)
-                self.authenticatedUser = NewBMUser(id: newUser?.identifier ?? UUID(), username: newUser?.username ?? "", firstName: newUser?.firstName ?? "", lastName: newUser?.lastName ?? "", email: newUser?.email ?? "")
+                self.authenticatedUser = NewBMUser(id: newUser?.identifier ?? UUID(), username: newUser?.username ?? "", firstName: newUser?.firstName ?? "", lastName: newUser?.lastName ?? "", email: newUser?.email ?? "", bio: "", website: "", showFullName: false, avatar: "")
                 completion(newUser?.identifier)
-//                try await client.database
-//                    .from("Users")
-//                    .insert(user)
-////                    .select()
-//                // specify you want a single value returned, otherwise it returns a list.
-//                    .execute()
-//
-//
-//                let newUser: databaseUsers = try await client.database
-//                    .from("Users")
-//                    .select()
-////                    .match(["user_id": user.user_id.uuidString.lowercased()])
-//                    .eq("identifier", value: user.identifier.uuidString.lowercased())
-//                    .limit(1)
-//                    .execute()
-//                    .value
-//
-//                print("\(newUser.users.first?.firstName)")
-//                completion(newUser.users.first?.identifier)
-//                    .value
-//                completion(UUID())
-
-//                if let newUser = user.first(where: { $0.id == user.user_id }) {
-//                    self.authenticatedUser = NewBMUser(id: newUser.id, username: newUser.username, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email)
-//                    print("Done")
-//                    completion(newUser.id)
-//                } else {
-//                    print("Error getting user data")
-//                    completion(nil)
-//                }
             } catch {
                 print("Wrongggg")
                 completion(nil)
             }
         }
+    }
 
-//        Task {
-//            do {
-//                let newUser = try await client.database
-//                    .from("Users")
-//                    .select("user_id")
-////                    .match(["user_id": user.user_id.uuidString.lowercased()])
-//                    .eq("user_id", value: user.user_id.uuidString.lowercased())
-//                    .execute()
-//
-//                print("\(newUser.data)")
-////                self.authenticatedUser = NewBMUser(id: newUser.id, username: newUser.username, firstName: newUser.firstName, lastName: newUser.lastName, email: newUser.email)
-////                completion(newUser.id)
-//            } catch {
-//                completion(nil)
-//            }
-//        }
+    private func awaitUpdateUser(user: DbUser) async throws {
+        guard let client = SupabaseManager.sharedInstance.client else { return }
+
+        let params: [String: String] = ["username": user.username, "firstName": user.firstName, "lastName": user.lastName, "email": user.email, "bio": user.bio, "website": user.website, "avatar": user.avatar]
+
+        try await client.database
+            .from("Users")
+            .update(params)
+            .eq("identifier", value: user.identifier.uuidString.lowercased())
+            .execute()
+    }
+
+    private func awaitUpdateUserShowFullName(user: DbUser) async throws {
+        guard let client = SupabaseManager.sharedInstance.client else { return }
+
+        let params: [String: Bool] = ["showFullName": user.showFullName]
+
+        try await client.database
+            .from("Users")
+            .update(params)
+            .eq("identifier", value: user.identifier.uuidString.lowercased())
+            .execute()
+    }
+
+    private func updateUser(user: DbUser, completion: @escaping (Bool) -> ()) {
+        Task {
+            do {
+                try await awaitUpdateUser(user: user)
+                try await awaitUpdateUserShowFullName(user: user)
+                completion(true)
+            } catch {
+                print("Wrongggg")
+                completion(false)
+            }
+        }
+    }
+
+    public func updateUser(user: DbUser, completion: @escaping (NewBMUser?) -> ()) {
+        self.updateUser(user: user, completion: { comp in
+            if comp {
+                let authUser = NewBMUser(id: user.identifier, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar)
+                self.authenticatedUser = authUser
+                completion(authUser)
+            } else {
+
+            }
+        })
     }
 }

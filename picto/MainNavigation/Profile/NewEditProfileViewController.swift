@@ -2,10 +2,11 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 import SafariServices
-import PixelSDK
+//import PixelSDK
 //import Delighted
 import Combine
 import SwiftUI
+import SupabaseManager
 
 class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldDelegate, UITextViewDelegate, SJFluidSegmentedControlDataSource, SJFluidSegmentedControlDelegate {
 
@@ -107,7 +108,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.dataSource = self
         segmentedControl.delegate = self
-        segmentedControl.currentSegment = user.showName ? 1 : 0
+        segmentedControl.currentSegment = user?.showName ?? false ? 1 : 0
 
         segmentedControl.shadowsEnabled = false
         segmentedControl.applyCornerRadiusToSelectorView = true
@@ -121,11 +122,16 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
     }()
 
     // MARK: - Variables
-    var user: BMUser!
+    var user: BMUser?
+
+    private var avatarData: Data?
+    private var avatarEmptyAtLaunch: Bool?
+    private var avatarDidChange: Bool = false
 
     static func makeVC(user: BMUser) -> NewEditProfileViewController {
         let vc = NewEditProfileViewController()
-        vc.user = user
+        vc.user = BMUser.me()
+        print("Launch EditProfile: \(user.avatar)")
         return vc
     }
 
@@ -138,7 +144,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         bioTextView.isScrollEnabled = true
         avatar.round()
         self.setUser()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.editAvatar))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
         self.avatar.addGestureRecognizer(tap)
         self.avatar.isUserInteractionEnabled = true
         self.setNav()
@@ -150,11 +156,18 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNav()
+        if self.user?.avatar == nil || self.user?.avatar?.isEmpty ?? true {
+            self.avatarEmptyAtLaunch = true
+        } else {
+            self.avatarEmptyAtLaunch = false
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setNav()
+        self.setUser()
+         //setImage(string: self.user?.avatar ?? "", placeholderImg: UIImage(named: "personicon"))
     }
 
     func setNav() {
@@ -228,34 +241,93 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
     }
 
     @objc func saveProfile() {
+        guard let user = self.user else { return }
         self.view.endEditing(true)
         self.presentLoadingAlertModal(animated: true, completion: nil)
         Timer.schedule(delay: 0.15) { (t) in
-            ProfileService.make().updateProfile(user: self.user!) { (response, u) in
-                if let usr = u {
-                    self.user! = usr
-                    ProfileService.make().user = usr
-                    BMUser.save(user: &ProfileService.make().user!)
-                    addHaptic(style: .success)
-                    Timer.schedule(delay: 0.15) { (t) in
-                        self.dismissLoadingAlertModal(animated: true) {
-                            self.popVC()
-                        }
-                    }
-                }
+//            ProfileService.sharedInstance.updateProfile(user: self.user!) { (response, u) in
+//                if let usr = u {
+//                    self.user! = usr
+//                    ProfileService.make().user = usr
+//                    BMUser.save(user: &ProfileService.make().user!)
+//                    addHaptic(style: .success)
+//                    Timer.schedule(delay: 0.15) { (t) in
+//                        self.dismissLoadingAlertModal(animated: true) {
+//                            self.popVC()
+//                        }
+//                    }
+//                }
+//            }
+            if self.avatarDidChange {
+                self.saveAvatar(completion: { _ in
+                    print("Hello on save profile \(self.user?.avatar)")
+                    self.saveUser(user: user)
+                })
+            } else {
+                self.saveUser(user: user)
             }
         }
     }
 
-    func setUser() {
-        if self.user!.avatar != nil {
-            self.avatar.setImage(string: self.user!.avatar!)
-            print("Avatar: \(self.user!.avatar!)")
+    private func saveAvatar(completion: @escaping (Bool) -> ()) {
+        guard let data = self.avatarData else { return }
+        let manager = SupabaseStorageManager.sharedInstance
+        Task {
+            do {
+                if avatarEmptyAtLaunch ?? false {
+                    try await manager.uploadAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                        self.user?.avatar = url
+                        completion(true)
+                    })
+                } else {
+                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                        self.user?.avatar = url
+                        completion(true)
+                    })
+                }
+            } catch {
+                completion(false)
+            }
         }
-        self.usernameTF.text = self.user!.username!
-        self.websiteTF.text = self.user!.website ?? ""
-        self.bioTextView.text = self.user!.bio ?? ""
-        self.instagramTF.text = self.user!.instagram ?? ""
+    }
+
+    private func saveUser(user: BMUser) {
+        let authManager = SupabaseAuthenticationManager.sharedInstance
+        let profileService = ProfileService.sharedInstance
+        let authService = AuthenticationService.sharedInstance
+
+        print("Hello saveUser: \(user.avatar)")
+        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "")
+        print("Hello DBUser: \(dbUser.avatar)")
+
+        authManager.updateUser(user: dbUser, completion: {[weak self] updatedUser in
+            guard let self = self else { return }
+            if let updatedUser = updatedUser{
+//                self.auth.authenticationSuccess(user: usr)
+//                if let user = manager.authenticatedUser {
+                let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar)
+                    profileService.updateUser(user: userUpdate)
+                    authService.saveUpdatedUser(user: userUpdate)
+                    self.dismissLoadingAlertModal(animated: true) {
+                        self.popVC()
+                    }
+//                }
+            }
+        })
+
+    }
+
+    func setUser() {
+
+//        if self.user?.avatar != nil {
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
+//            self.avatar.setImage(string: self.user?.avatar ?? "")
+            print("Avatar: \(self.user?.avatar)")
+//        }
+        self.usernameTF.text = self.user?.username ?? ""
+        self.websiteTF.text = self.user?.website ?? ""
+        self.bioTextView.text = self.user?.bio ?? ""
+        self.instagramTF.text = self.user?.instagram ?? ""
     }
 }
 
@@ -263,7 +335,15 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
 extension NewEditProfileViewController {
 
     func textViewDidChange(_ textView: UITextView) {
-        self.user!.bio = textView.text!
+        if textView == usernameTF {
+            self.user?.username = textView.text ?? ""
+        } else if textView == bioTextView {
+            self.user?.bio = textView.text ?? ""
+        } else if textView == websiteTF {
+            self.user?.website = textView.text ?? ""
+        } else if textView == instagramTF {
+            self.user?.instagram = textView.text ?? ""
+        }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -305,12 +385,28 @@ extension NewEditProfileViewController {
                           toSegmentAtIndex toIndex:Int) {
         switch toIndex {
         case 0:
-            self.user.showName = false
+            self.user?.showName = false
         case 1:
-            self.user.showName = true
+            self.user?.showName = true
         default:
             break
         }
     }
 
+}
+
+extension NewEditProfileViewController {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
+                                      [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        let data = image?.jpegData(compressionQuality: 0.5)
+
+        self.avatar.image = image
+        self.avatarDidChange = true
+        self.avatarData = data
+
+        print("Hello Image Selected")
+//        self.imageView.image = image
+        self.dismiss(animated: true, completion: nil)
+    }
 }

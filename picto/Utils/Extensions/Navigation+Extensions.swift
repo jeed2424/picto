@@ -66,7 +66,7 @@ final class BaseNC: UINavigationController {
 
 // MARK: - UINavigationControllerDelegate
 
-extension BaseNC: UINavigationControllerDelegate {
+extension BaseNC {
 
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         guard let swipeNavigationController = navigationController as? BaseNC else { return }

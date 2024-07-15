@@ -8,21 +8,21 @@ public class BMUser: BMSerializedObject, Comparable {
     override class var identifier: String { return "_BMUser" }
     
     var identifier: UUID?
-    var username: String!
-    var firstName: String!
-    var lastName: String!
+    var username: String?
+    var firstName: String?
+    var lastName: String?
     var fullName: String {
         return "\(self.firstName!) \(self.lastName!)"
     }
-    var email: String!
-    var bio: String!
-    var website: String!
+    var email: String?
+    var bio: String?
+    var website: String?
     var fcmToken: String!
     var notiCount: Int!
-    var avatar: String!
+    var avatar: String?
     var coverPhoto: String!
-    var createdAt: Date!
-    var showName: Bool!
+    var createdAt: Date?
+    var showName: Bool = false
     
     //socials
     var twitter: String!
@@ -54,7 +54,9 @@ public class BMUser: BMSerializedObject, Comparable {
     var postLikes = [BMPostLike]()
     
     static public func me() -> BMUser? {
-        return ProfileService.sharedInstance.user
+        let user = ProfileService.sharedInstance.user
+        print("Hello BMUser.me Avatar: \(user?.avatar)")
+        return user
     }
     
     init(avatar: String) {
@@ -62,12 +64,16 @@ public class BMUser: BMSerializedObject, Comparable {
         self.avatar = avatar
     }
 
-    init(id: UUID, username: String, firstName: String, lastName: String, email: String) {
+    init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
         self.identifier = id
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        self.bio = bio
+        self.website = website
+        self.showName = showFullName
+        self.avatar = avatar
 
         super.init()
     }

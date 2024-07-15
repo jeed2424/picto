@@ -24,14 +24,22 @@ public struct DbUser: Encodable {
     public let lastName: String
     public let fullName: String
     public let email: String
+    public let bio: String
+    public let website: String
+    public let showFullName: Bool
+    public let avatar: String
 
-    public init(id: UUID, username: String, firstName: String, lastName: String, email: String) {
+    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
         self.identifier = id
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
         self.fullName = "\(firstName) \(lastName)"
         self.email = email
+        self.bio = bio
+        self.website = website
+        self.showFullName = showFullName
+        self.avatar = avatar
     }
 }
 
@@ -55,13 +63,21 @@ public struct NewBMUser {
         return "\(self.firstName) \(self.lastName)"
     }
     public let email: String
+    public var bio: String
+    public var website: String
+    public var showFullName: Bool
+    public var avatar: String
 
-    public init(id: UUID, username: String, firstName: String, lastName: String, email: String) {
+    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
         self.id = id
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        self.bio = bio
+        self.website = website
+        self.showFullName = showFullName
+        self.avatar = avatar
     }
 }
 

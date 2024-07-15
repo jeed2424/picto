@@ -177,6 +177,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - JGProgressHUD
   - Kingfisher
+  - Kingfisher (~> 7.0)
   - ObjectMapper
   - PanModal
   - PixelSDK
@@ -298,6 +299,6 @@ SPEC CHECKSUMS:
   VerticalCardSwiper: 68df635b354500f86934ea044ade37a264c044c6
   YPImagePicker: afc81b3cffab05a6e7261c5daf80dc31b4e917b4
 
-PODFILE CHECKSUM: 60a5c20ffc0747b35564bf2045d5147e0e7fa060
+PODFILE CHECKSUM: c4beed91b9c47cade723377bbb159c3b81782439
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.15.2
