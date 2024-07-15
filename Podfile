@@ -30,7 +30,6 @@ target 'picto' do
     pod 'Alamofire'
     pod 'SwifterSwift'
     pod 'DropDown'
-    pod 'Kingfisher'
     pod 'Starscream', '~> 4.0'
     pod 'SnapKit', '~> 5.6.0'
     pod 'JGProgressHUD'
