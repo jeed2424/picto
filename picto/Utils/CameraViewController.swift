@@ -418,6 +418,7 @@ extension CameraViewController {
         confirmation.nextButtonTapPublisher
             .sink { [unowned self] _ in
 #warning("Handle postupload")
+                let imgData = image.pngData()
             print("Next pressed")
         }.store(in: &self.subscriptions)
 

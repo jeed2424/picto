@@ -2,8 +2,6 @@ import Foundation
 import UIKit
 import SkyFloatingLabelTextField
 import SafariServices
-//import PixelSDK
-//import Delighted
 import Combine
 import SwiftUI
 import SupabaseManager
@@ -144,7 +142,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         bioTextView.isScrollEnabled = true
         avatar.round()
         self.setUser()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.imagePickerShow))
         self.avatar.addGestureRecognizer(tap)
         self.avatar.isUserInteractionEnabled = true
         self.setNav()
@@ -408,5 +406,9 @@ extension NewEditProfileViewController {
         print("Hello Image Selected")
 //        self.imageView.image = image
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func imagePickerShow() {
+        self.showImagePicker()
     }
 }

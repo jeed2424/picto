@@ -8,7 +8,7 @@
 import Foundation
 import Supabase
 
-class SupabasePostStorageManager {
+public class SupabasePostStorageManager {
     
     public static let sharedInstance = SupabasePostStorageManager()
 
@@ -17,7 +17,7 @@ class SupabasePostStorageManager {
     public func uploadPost(user: UUID, image: Data, completion: @escaping (String?) -> ()) async throws {
         guard let client = SupabaseManager.sharedInstance.client else { return }
 
-        let fileName = try await retrieveAuthUserPostsCount(user: user)
+        let fileName = try await getNewPostName(user: user)
 
         try await client.storage
           .from("posts")
@@ -26,7 +26,7 @@ class SupabasePostStorageManager {
             file: image,
             options: FileOptions(
               cacheControl: "3600",
-              contentType: "image/png",
+              contentType: "image/jpeg",
               upsert: false
             )
           )
@@ -42,7 +42,7 @@ class SupabasePostStorageManager {
         }
     }
     
-    private func retrieveAuthUserPostsCount(user: UUID) async throws -> String {
+    private func getNewPostName(user: UUID) async throws -> String {
         guard let client = SupabaseManager.sharedInstance.client else { return "1_\(user.uuidString)" }
 
         let posts = try await client.database

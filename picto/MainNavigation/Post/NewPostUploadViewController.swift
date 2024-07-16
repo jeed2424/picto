@@ -99,57 +99,12 @@ class NewPostUploadViewController: KeyboardManagingViewController {
         postImgView.image = self.postImage ?? nil
         captionTextView.delegate = self
         self.hideKeyboardWhenTappedAround()
-        if let c = BMPostService.make().selectedCat {
-            //            self.categoryLbl.text = c.title!
-            self.setCategory(cat: c)
-        }
+//        if let c = BMPostService.make().selectedCat {
+//            //            self.categoryLbl.text = c.title!
+//            self.setCategory(cat: c)
+//        }
         self.postImgView.layer.cornerCurve = .continuous
         setNav()
-        //        if let vid = self.video {
-        //            if let vidSeg = vid.videoSegments.first {
-        //                vidSeg.requestThumbnail(boundingSize: CGSize(width: 250, height: 300), contentMode: .contentAspectFill) { (img) in
-        //                    self.postImage = img
-        //                }
-        //            }
-        //            DispatchQueue.main.async {
-        //                let temporaryFile = (NSTemporaryDirectory() as NSString).appendingPathComponent("post\(Date())")
-        //                let fileURL = URL(fileURLWithPath: temporaryFile)
-        //                if let i = UIImage.gifImageWithURL(fileURL.absoluteString) {
-        //                    self.postImgView.image = i
-        //                } else {
-        //                    Regift.createGIFFromSource(vid.exportedVideoURL, destinationFileURL: fileURL, startTime: 0, duration: Float((2)), frameRate: 8) { (result) in
-        //                        print("Gif saved to \(result)")
-        //                        let imageURL = UIImage.gifImageWithURL(result!.absoluteString)
-        //                        self.postImgView.image = imageURL!
-        //                        let data = try! Data(contentsOf: result!)
-        //                        self.gifData = data
-        //                        print("gifDATA: ", data)
-        //                        BMPostService.make().uploadToFirebaseGIF(data: self.gifData) { (gifUrl) in
-        //                            self.gifString = gifUrl
-        //                            print("added gif url: ", gifUrl)
-        //                        } failure: { (error) in
-        //                            print("error uploading gif: ", error)
-        //                        }
-        //                        //                        let asset = AVURLAsset(url: result!)
-        //                        //                        asset.data
-        //                        //                        asset.url.getGifImageDataFromAssetUrl(completion: { (d) in
-        //                        //                            self.gifData = d
-        //                        //                            print("gifDATA: ", d)
-        //                        //                            BMPostService.make().uploadToFirebaseGIF(data: self.gifData) { (gifUrl) in
-        //                        //                                self.gifString = gifUrl
-        //                        //                                print("added gif url: ", gifUrl)
-        //                        //                            } failure: { (error) in
-        //                        //                                print("error uploading gif: ", error)
-        //                        //                            }
-        //                        //
-        //                        //                        })
-        //                        //                        self.gifData = URL(string: result!.absoluteString)?.getGifImageDataFromAssetUrl(completion: { (d) in
-        //                        //                            <#code#>
-        //                        //                        })
-        //                    }
-        //                }
-        //            }
-        //        }
         addGestures()
     }
 

@@ -290,7 +290,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     
     func addAvatarTap(user: BMUser) {
         if user.identifier == BMUser.me()?.identifier {
-            let tap = UITapGestureRecognizer(target: self, action: #selector(self.showImagePicker))
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.imagePickerShow))
             self.avatar.addGestureRecognizer(tap)
             self.avatar.isUserInteractionEnabled = true
         }
@@ -616,6 +616,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         if self.segmentControl.currentSegment != self.segmentControl.segmentsCount - 1 {
             self.segmentControl.setCurrentSegmentIndex(self.segmentControl.currentSegment + 1, animated: true)
         }
+    }
+    
+    @objc private func imagePickerShow() {
+        self.showImagePicker()
     }
 
 }

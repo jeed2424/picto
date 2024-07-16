@@ -27,7 +27,7 @@ public class SupabaseStorageManager {
             file: image,
             options: FileOptions(
               cacheControl: "3600",
-              contentType: "image/png",
+              contentType: "image/jpeg",
               upsert: false
             )
           )
@@ -55,7 +55,7 @@ public class SupabaseStorageManager {
             file: image,
             options: FileOptions(
               cacheControl: "3600",
-              contentType: "image/png",
+              contentType: "image/jpeg",
               upsert: false
             )
           )

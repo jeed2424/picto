@@ -299,8 +299,8 @@ extension UIViewController {
 }
 
 extension UIViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    @objc func showImagePicker() {
-        self.showImagePickerOptions()
+    func showImagePicker(showCustomCamera: Bool = false) {
+        self.showImagePickerOptions(showCustomCamera: showCustomCamera)
     }
 
     @objc private func dismissPicker(_ picker: UIImagePickerController) {
@@ -319,15 +319,19 @@ extension UIViewController: UINavigationControllerDelegate, UIImagePickerControl
         return imagePicker
     }
 
-    func showImagePickerOptions() {
+    func showImagePickerOptions(showCustomCamera: Bool = false) {
         let alertVC = UIAlertController(title: "Pick a Photo", message: "Choose a picture from Library or camera", preferredStyle: .actionSheet)
         //Image picker for camera
         let cameraAction = UIAlertAction(title: "Camera", style: .default) { [weak self] (action) in
             //Capture self to avoid retain cycles
             guard let self = self else { return }
-            let cameraImagePicker = self.imagePicker(sourceType: .camera)
-            cameraImagePicker.delegate = self
-            self.present (cameraImagePicker, animated: true) {
+            if showCustomCamera {
+                self.openCamera()
+            } else {
+                let cameraImagePicker = self.imagePicker(sourceType: .camera)
+                cameraImagePicker.delegate = self
+                self.present (cameraImagePicker, animated: true) {
+                }
             }
         }
         //Image Picker for Library

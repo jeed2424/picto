@@ -8,10 +8,9 @@
 
 import UIKit
 import VerticalCardSwiper
-//import SwiftyCam
-import PixelSDK
-//import FirebaseAnalytics
+//import PixelSDK
 import StoreKit
+import SupabaseManager
 
 protocol NewFeedItemDelegate {
     func createdNewItem(post: BMPost)
@@ -74,10 +73,8 @@ class HomeTestViewController: UIViewController {
                 Timer.schedule(delay: 0.2) { (t) in
                     self.loadingInd.stopAnimating()
                 }
-//                self.loadingInd.stopAnimating()
             }
         } else {
-//            self.loadingInd.stopAnimating()
             var newCards: [Int] = []
             for index in 0..<self.feedService.posts.count {
                 newCards.append(index)
@@ -91,10 +88,6 @@ class HomeTestViewController: UIViewController {
                 self.loadingInd.stopAnimating()
             }
         }
-        
-//        ProfileService.make().getCategories(user: me) { (response, cats) in
-//            ProfileService.make().categories = cats
-//        }
         
         self.updateFCMToken()
         if !(BMUser.me()?.notifications.isEmpty ?? true) {
@@ -376,6 +369,30 @@ extension HomeTestViewController: FeedCardDelegate {
         present(actionSheet, animated: true, completion: nil)
     }
 
+}
+
+extension HomeTestViewController {
+    @objc private func imagePickerShow() {
+        self.showImagePicker(showCustomCamera: true)
+    }
+    
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
+                                      [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        let data = image?.jpegData(compressionQuality: 0.5)
+
+//        self.avatar.image = image
+//        self.avatarDidChange = true
+//        self.avatarData = data
+        
+//        let storageManager = SupabasePostStorageManager.sharedInstance
+//        
+//        storageManager.uploadPost(user: <#T##UUID#>, image: <#T##Data#>, completion: <#T##(String?) -> ()#>)
+
+        print("Hello Image Selected")
+//        self.imageView.image = image
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // Check to see if the target viewController current is currently presenting a ViewController
