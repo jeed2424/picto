@@ -17,7 +17,7 @@ class SupabasePostStorageManager {
     public func uploadPost(user: UUID, image: Data, completion: @escaping (String?) -> ()) async throws {
         guard let client = SupabaseManager.sharedInstance.client else { return }
 
-        let fileName = image.
+        let fileName = try await retrieveAuthUserPostsCount(user: user)
 
         try await client.storage
           .from("posts")
@@ -42,11 +42,9 @@ class SupabasePostStorageManager {
         }
     }
     
-    private func retrieveAuthUserPostsNames(user: UUID) async throws -> [String]? {
-        guard let client = SupabaseManager.sharedInstance.client else { return nil }
-        var postNames: [String]? = []
-        var postCount = 0
-        
+    private func retrieveAuthUserPostsCount(user: UUID) async throws -> String {
+        guard let client = SupabaseManager.sharedInstance.client else { return "1_\(user.uuidString)" }
+
         let posts = try await client.database
             .from("Posts")
             .select()
@@ -61,22 +59,10 @@ class SupabasePostStorageManager {
         print(dataPosts)
 
         if dataPosts.first == nil {
-            throw DatabaseError.error
+            return "1_\(user.uuidString)"
+        } else {
+            return "\(dataPosts.count + 1)_\(user.uuidString)"
         }
-        
-        postCount = dataPosts.count
-        
-        for i in 0...(postCount-1) {
-            postNames?.append(dataPosts[i].id)
-            
-            if i == postCount - 1 {
-                return postNames
-            } else {
-                continue
-            }
-//            print(dataPosts[i])
-        }
-//        return dataPosts.first
     }
     
     public func retrievePublicPosts() {
