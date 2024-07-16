@@ -80,8 +80,9 @@ class NewPostUploadViewController: KeyboardManagingViewController {
 
     //    let placeholder = "Add a 🔥 caption to this post..."
 
-    static func makeVC(user: BMUser, delegate: NewFeedItemDelegate, image: UIImage?, videoURL: URL?, video: URL? = nil) -> NewPostUploadViewController {
-        let vc = NewPostUploadViewController()
+    init(user: BMUser, delegate: NewFeedItemDelegate, image: UIImage?, videoURL: URL?, video: URL? = nil) {
+        super.init()
+        let vc = self
         vc.postImage = image
         vc.feedDelegate = delegate
         vc.videoURL = videoURL
@@ -90,9 +91,13 @@ class NewPostUploadViewController: KeyboardManagingViewController {
         let media = BMPostMedia(imageUrl: nil, videoUrl: videoURL?.absoluteString)
         post.medias.append(media)
         vc.post = post
-        return vc
+//        return vc
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getCategories()

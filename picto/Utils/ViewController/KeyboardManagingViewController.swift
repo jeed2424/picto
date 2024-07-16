@@ -35,7 +35,15 @@ open class KeyboardManagingViewController: UIViewController {
         recognizer.cancelsTouchesInView = true
         return recognizer
     }()
-
+    
+    init() {
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if enableKeyboardManagement {
