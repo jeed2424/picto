@@ -9,13 +9,14 @@
 import Foundation
 import Alamofire
 import Firebase
+import SupabaseManager
 //import FirebaseFirestore
 
 class ProfileService: BaseService {
 
     public static let sharedInstance = ProfileService(api: ClientAPI.sharedInstance)
 
-    override init(api: ClientAPI) {
+    private override init(api: ClientAPI) {
         super.init(api: api)
     }
 
@@ -140,16 +141,13 @@ class ProfileService: BaseService {
     }
     
     func getCategories(user: BMUser, completion: @escaping (ResponseCode, [BMCategory]) -> Swift.Void) {
-        let params: Parameters = ["user_id": user.id!]
-        APIService.requestAPIJson(url:"https://us-central1-picto-ce462.cloudfunctions.net/getcategories", method: .post, parameters: params, success: { responseDict in
-            let itemDicts = responseDict["categories"] as! [[String:Any]]
-            var foundItems = [BMCategory]()
-            for itemData in itemDicts {
-                foundItems.append(CategorySerializer.unserialize(JSON: itemData))
+        let manager = SupabaseDatabaseManager.sharedInstance
+        manager.getCategories(completion: { categories in
+            if let cats: [BMCategory] = categories?.compactMap({ category in BMCategory(title: category.title, imageUrl: category.imageUrl) }) {
+                completion(ResponseCode.Success, cats)
+            } else {
+                completion(ResponseCode.Error, [])
             }
-            completion(ResponseCode.Success, foundItems)
-        }, failure: { errorString in
-            completion(ResponseCode.Error, [BMCategory]())
         })
     }
     

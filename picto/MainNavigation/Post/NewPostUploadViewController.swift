@@ -36,9 +36,18 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     private lazy var categorySelectionMenu: DropDown = {
         let menu = DropDown()
         menu.translatesAutoresizingMaskIntoConstraints = false
-
+        
         menu.dataSource = categories
-
+        
+        menu.direction = .bottom
+        
+        menu.selectionAction = { [weak self] (index: Int, item: String) in
+            guard let self = self else { return }
+            let category = BMCategory(title: item)
+            self.post?.category
+            print("Selected item: \(item) at index: \(index)")
+        }
+        
         return menu
     }()
 

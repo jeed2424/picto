@@ -14,7 +14,43 @@ public class SupabaseDatabaseManager {
     private init() {
 
     }
+    
+    // MARK: - Category
+    
+    public func getCategories(completion: @escaping ([CategoryObject]?) -> ()) {
+        Task {
+            do {
+                let categories = try await self.awaitGetCategories()
+                completion(categories)
+            } catch {
+                print("Wrongggg")
+                completion(nil)
+            }
+        }
+    }
 
+    private func awaitGetCategories() async throws -> [CategoryObject]? {
+        guard let client = SupabaseManager.sharedInstance.client else { return nil }
+
+        let newPost = try await client.database
+            .from("Categories")
+            .select()
+            .execute()
+
+        let data = newPost.data
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let dataCategories = try decoder.decode([CategoryObject].self, from: data)
+        print(dataCategories)
+
+        if dataCategories.first == nil {
+            throw DatabaseError.error
+        }
+        return dataCategories
+    }
+
+    // MARK: - Post
     private func awaitUploadPost(user: DbUser, post: DbPost) async throws -> PostObject? {
         guard let client = SupabaseManager.sharedInstance.client else { return nil }
 
@@ -61,6 +97,7 @@ public class SupabaseDatabaseManager {
         }
     }
 
+    // MARK: - User
     public func fetchUserPosts(user: DbUser, completion: @escaping ([PostObject]?) -> ()) {
         Task {
             do {

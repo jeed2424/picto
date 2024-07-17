@@ -424,12 +424,13 @@ class BMSavedPost: BMSerializedObject, Comparable {
 class BMCategory: BMSerializedObject, Comparable {
     override class var identifier: String { return "_BMCategory" }
     
-    var title: String!
-    var imageUrl: String!
+    var title: String?
+    var imageUrl: String?
     
-    init(title: String) {
-        super.init()
+    init(title: String, imageUrl: String) {
         self.title = title
+        self.imageUrl = imageUrl
+        super.init()
     }
 
     // Mappable
