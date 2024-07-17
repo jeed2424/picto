@@ -23,6 +23,7 @@ public struct databaseUser: Decodable {
     let website: String
     let showFullName: Bool
     let avatar: String
+    let posts: [Int8]
 }
 
 public enum AuthResponse {
@@ -51,7 +52,7 @@ public class SupabaseAuthenticationManager {
     public var authenticatedUser: NewBMUser? {
         didSet {
             if let user = authenticatedUser {
-                print("Hello authenticatedUser \(authenticatedUser?.avatar)")
+                print("Hello authenticatedUser \(user.avatar)")
             }
         }
     }
@@ -72,8 +73,14 @@ public class SupabaseAuthenticationManager {
             Task {
                 do {
                     if let activeUser = try await self.getActiveUserData(user: user) {
-                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: [])
-                        completion(self.authenticatedUser)
+                        if try await userIsAdmin(user: activeUser) ?? false {
+                            self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: true)
+                            completion(self.authenticatedUser)
+                        } else {
+                            self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: false)
+                            completion(self.authenticatedUser)
+                        }
+
 //                        return self.authenticatedUser
                     }
                 } catch {
@@ -92,6 +99,40 @@ public class SupabaseAuthenticationManager {
             
             self.user = user
         })
+    }
+    
+    public func userIsAdmin(user: databaseUser) async throws -> Bool? {
+        
+        struct dbAdmin: Decodable {
+            let identifier: UUID
+        }
+        
+        guard let client = SupabaseManager.sharedInstance.client else { return nil }
+
+        let newUser = try await client.database
+            .from("Admins")
+            .select()
+//                    .match(["user_id": user.user_id.uuidString.lowercased()])
+            .eq("userid", value: user.identifier)
+            .limit(1)
+            .execute()
+
+        let data = newUser.data
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let dataUser = try decoder.decode([dbAdmin].self, from: data)
+        print(dataUser)
+
+        if dataUser.first == nil {
+//            throw DatabaseError.error
+            return false
+        } else {
+            return true
+        }
+
+//        print("\(newUser.users.first?.firstName)")
+//        completion(newUser.users.first?.identifier)
     }
     
     public func getActiveUserData(user: User) async throws -> databaseUser? {
@@ -240,7 +281,7 @@ public class SupabaseAuthenticationManager {
 
     public func updateUser(user: DbUser, completion: @escaping (NewBMUser?) -> ()) {
         self.updateUser(user: user, completion: { comp in
-            if comp ?? false {
+            if comp {
                 let authUser = NewBMUser(id: user.identifier, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: user.posts)
                 self.authenticatedUser = authUser
                 completion(authUser)

@@ -218,13 +218,13 @@ class CardCollectionViewCell: CardCell {
         self.videoPlayer.pause()
     }
     
-    func setFollow(user: BMUser) {
-        if user.identifier == BMUser.me()?.identifier {
+    func setFollow(user: BMUser?) {
+        if user?.identifier == BMUser.me()?.identifier {
             self.followBtn.alpha = 0
             self.followBtn.setTitle("", for: [])
         } else {
             self.followBtn.alpha = 0
-            if BMUser.me()?.checkFollow(user: user) ?? false {
+            if let user = user, BMUser.me()?.checkFollow(user: user) ?? false {
                 self.followBtn.setTitle("•  Following", for: [])
             } else {
                 self.followBtn.setTitle("•  Follow", for: [])
@@ -418,7 +418,7 @@ extension CardCollectionViewCell: VideoViewDelegate {
     func addViewCount(post: BMPost?) {
         if var p = post {
             if let video = URL(string: p.medias.first!.videoUrl ?? "") {
-                if p.user.identifier != BMUser.me()?.identifier && self.videoPlayer.currentItem() != nil {
+                if p.user?.identifier != BMUser.me()?.identifier && self.videoPlayer.currentItem() != nil {
                     if var viewCount = p.viewCount {
                         viewCount += 1
                         p.viewCount = viewCount

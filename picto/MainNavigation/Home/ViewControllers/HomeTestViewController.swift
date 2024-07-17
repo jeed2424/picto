@@ -465,20 +465,20 @@ func getMenu(post: BMPost, vc: UINavigationController?, completion: (() -> Void)
     })
     if let l = post.location {
         if !l.isEmpty {
-            if post.user.identifier == user.identifier {
+            if post.user?.identifier == user.identifier {
                 actionSheet.addActions([place, profile, share, delete])
             } else {
                 actionSheet.addActions([place, collection, profile, share, report])
             }
         } else {
-            if post.user.identifier == user.identifier {
+            if post.user?.identifier == user.identifier {
                 actionSheet.addActions([profile, share, delete])
             } else {
                 actionSheet.addActions([collection, profile, share, report])
             }
         }
     } else {
-        if post.user.identifier == user.identifier {
+        if post.user?.identifier == user.identifier {
             actionSheet.addActions([profile, share, delete])
         } else {
             actionSheet.addActions([collection, profile, share, report])

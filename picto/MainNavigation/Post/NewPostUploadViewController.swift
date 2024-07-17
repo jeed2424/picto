@@ -62,12 +62,19 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     private lazy var captionTextView: UITextView = {
         let view = UITextView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.placeholder = "Caption"
+        
+        view.font = .systemFont(ofSize: 16)
+        
+        view.borderWidth = 1
+        view.borderColor = .black
 
         return view
     }()
 
     // MARK: - Variables
-    private var categories: [String] = []
+    private var categories: [String] = ["Cats", "Fun", "Kool"]
 
     let mockService = MockService.make()
     var postImage: UIImage?
@@ -127,43 +134,43 @@ class NewPostUploadViewController: KeyboardManagingViewController {
             self.post!.createdAt = Date()
             self.view.endEditing(true)
             self.presentLoadingAlertModal(animated: true, completion: nil)
-
+            
             let data = self.postImage?.jpegData(compressionQuality: 0.5)
-
-    //        self.avatar.image = image
-    //        self.avatarDidChange = true
-    //        self.avatarData = data
-
+            
+            //        self.avatar.image = image
+            //        self.avatarDidChange = true
+            //        self.avatarData = data
+            
             let storageManager = SupabasePostStorageManager.sharedInstance
             let databaseManager = SupabaseDatabaseManager.sharedInstance
-
+            
             let user = BMUser.me()
-
+            
             let dbUser: DbUser = DbUser(id: user?.identifier ?? UUID(), username: user?.username ?? "", firstName: user?.firstName ?? "", lastName: user?.lastName ?? "", email: user?.email ?? "", bio: user?.bio ?? "", website: user?.website ?? "", showFullName: user?.showName ?? false, avatar: user?.avatar ?? "", posts: BMUser.me()?.getPostIDs() ?? [])
-                    storageManager.uploadPost(user: self.post?.user.identifier, image: data, completion: { imageUrl in
-                        if let imageUrl = imageUrl {
-
-                                    let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: user?.identifier ?? UUID(), image: imageUrl, comments: [])
-                                    databaseManager.uploadPost(user: dbUser, post: post, completion: { newPost in
-                                        print("\(newPost?.identifier)")
-                                    })
-
-                            }
-                        })
-//                        try await databaseManager.uploadPost(user: <#T##DbUser#>, post: <#T##DbPost#>, completion: <#T##(PostObject?) -> ()#>)
-//                    })
-//            }
-//            BMPostService.make().createPost(post: self.post!, image: self.postImage, url: self.videoURL, gifUrl: self.gifString) { (response, p) in
-//                print("created new post")
-//                //                spinner.dismiss()
-//                self.dismissLoadingAlertModal(animated: true, completion: {
-//                    if let po = p {
-//                        self.createdNewPost(post: po)
-//                    } else {
-//                        self.creating = false
-//                    }
-//                })
-//            }
+            storageManager.uploadPost(user: self.post?.user?.identifier, image: data, completion: { imageUrl in
+                if let imageUrl = imageUrl {
+                    
+                    let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: user?.identifier ?? UUID(), image: imageUrl, comments: [], likeCount: 0)
+                    databaseManager.uploadPost(user: dbUser, post: post, completion: { newPost in
+                        print("\(newPost?.identifier)")
+                    })
+                    
+                }
+            })
+            //                        try await databaseManager.uploadPost(user: <#T##DbUser#>, post: <#T##DbPost#>, completion: <#T##(PostObject?) -> ()#>)
+            //                    })
+            //            }
+            //            BMPostService.make().createPost(post: self.post!, image: self.postImage, url: self.videoURL, gifUrl: self.gifString) { (response, p) in
+            //                print("created new post")
+            //                //                spinner.dismiss()
+            //                self.dismissLoadingAlertModal(animated: true, completion: {
+            //                    if let po = p {
+            //                        self.createdNewPost(post: po)
+            //                    } else {
+            //                        self.creating = false
+            //                    }
+            //                })
+            //            }
         }
     }
 
@@ -232,8 +239,8 @@ extension NewPostUploadViewController {
         scrollView.addSubview(vStack)
 
         NSLayoutConstraint.activate([
-            vStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            vStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 25),
+            vStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -25),
             vStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
             vStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
@@ -241,13 +248,18 @@ extension NewPostUploadViewController {
         vStack.addArrangedSubviews([
             postImgView,
             categorySelectionView,
+//            categorySelectionMenu,
             captionTextView
         ])
 
         NSLayoutConstraint.activate([
             postImgView.widthAnchor.constraint(equalToConstant: 160),
-            postImgView.heightAnchor.constraint(equalToConstant: 160)
+            postImgView.heightAnchor.constraint(equalToConstant: 160),
+            captionTextView.heightAnchor.constraint(equalToConstant: 250),
+            captionTextView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50)
         ])
+        
+        vStack.setCustomSpacing(50, after: categorySelectionMenu)
     }
 
     func setNav() {
@@ -342,7 +354,6 @@ extension NewPostUploadViewController {
 
     }
 }
-
 
 //import UIKit
 //import Photos

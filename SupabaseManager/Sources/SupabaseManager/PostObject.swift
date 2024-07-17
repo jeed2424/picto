@@ -13,6 +13,7 @@ public struct PostObject: Decodable {
     public let owner: UUID
     public let image: String
     public let comments: [String]
+    public let likeCount: Int8
 }
 
 public struct CommentObject: Decodable {
@@ -28,8 +29,9 @@ public struct DbPost: Encodable {
     public let owner: UUID
     public let image: String
     public let comments: [String]
+    public let likeCount: Int8
 
-    public init(identifier: Int8?, createdAt: String, owner: UUID, image: String, comments: [String]) {
+    public init(identifier: Int8?, createdAt: String, owner: UUID, image: String, comments: [String], likeCount: Int8) {
         self.identifier = identifier
         self.created_at = createdAt
 //        {
@@ -41,5 +43,6 @@ public struct DbPost: Encodable {
         self.owner = owner
         self.image = image
         self.comments = comments
+        self.likeCount = likeCount
     }
 }

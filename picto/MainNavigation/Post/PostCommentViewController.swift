@@ -222,11 +222,11 @@ class PostCommentViewController: UIViewController {
     }
     
     @IBAction func tappedFollow() {
-        guard let user = BMUser.me() else { return }
+        guard var user = BMUser.me(), var postUser = self.post.user else { return }
         addHaptic(style: .medium)
-        user.followUser(user: self.post.user)
-        self.setFollow(user: self.post.user)
-        BMUser.save(user: &self.post.user)
+        user.followUser(user: postUser)
+        self.setFollow(user: postUser)
+        BMUser.save(user: &postUser)
 //        ProfileService.make().followUser(user: self.post!.user!) { (response, u) in
 //            BMUser.save(user: &ProfileService.make().user!)
 //        }
@@ -954,7 +954,7 @@ extension PostCommentViewController: ImageScrollViewDelegate {
             UIView.animate(withDuration: 0.2) {
                 self.userAvatar.alpha = alpha
                 self.menuBtn.alpha = alpha
-                self.followBtn.alpha = self.post.user.identifier != BMUser.me()?.identifier ? alpha : 0
+                self.followBtn.alpha = self.post.user?.identifier != BMUser.me()?.identifier ? alpha : 0
                 self.usernameLbl.alpha = alpha
                 self.captionLbl.alpha = alpha
                 self.gradientView.alpha = alpha
