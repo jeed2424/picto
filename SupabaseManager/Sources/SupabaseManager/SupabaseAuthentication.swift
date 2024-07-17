@@ -72,7 +72,7 @@ public class SupabaseAuthenticationManager {
             Task {
                 do {
                     if let activeUser = try await self.getActiveUserData(user: user) {
-                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar)
+                        self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: [])
                         completion(self.authenticatedUser)
 //                        return self.authenticatedUser
                     }
@@ -192,7 +192,7 @@ public class SupabaseAuthenticationManager {
         Task {
             do {
                 let newUser = try await awaitCreateUser(user: user)
-                self.authenticatedUser = NewBMUser(id: newUser?.identifier ?? UUID(), username: newUser?.username ?? "", firstName: newUser?.firstName ?? "", lastName: newUser?.lastName ?? "", email: newUser?.email ?? "", bio: "", website: "", showFullName: false, avatar: "")
+                self.authenticatedUser = NewBMUser(id: newUser?.identifier ?? UUID(), username: newUser?.username ?? "", firstName: newUser?.firstName ?? "", lastName: newUser?.lastName ?? "", email: newUser?.email ?? "", bio: "", website: "", showFullName: false, avatar: "", posts: [])
                 completion(newUser?.identifier)
             } catch {
                 print("Wrongggg")
@@ -240,8 +240,8 @@ public class SupabaseAuthenticationManager {
 
     public func updateUser(user: DbUser, completion: @escaping (NewBMUser?) -> ()) {
         self.updateUser(user: user, completion: { comp in
-            if comp {
-                let authUser = NewBMUser(id: user.identifier, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar)
+            if comp ?? false {
+                let authUser = NewBMUser(id: user.identifier, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: user.posts)
                 self.authenticatedUser = authUser
                 completion(authUser)
             } else {

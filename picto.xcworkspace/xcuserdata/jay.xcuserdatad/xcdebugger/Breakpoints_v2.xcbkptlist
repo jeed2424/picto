@@ -14,42 +14,10 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "createVCNav(vc:icon:selected:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CC6EC068-049F-4CD8-9F2F-860CE207741C - 144b7e991b152fca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Foundation.Notification) -&gt; () in picto.NewHomeViewController.setObservers() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "340"
-                  endingLineNumber = "340"
-                  offsetFromSymbolStart = "1616">
-               </Location>
-               <Location
-                  uuid = "CC6EC068-049F-4CD8-9F2F-860CE207741C - 144b7e991b152fca"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (Foundation.Notification) -&gt; () in picto.NewHomeViewController.setObservers() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "340"
-                  endingLineNumber = "340"
-                  offsetFromSymbolStart = "1296">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -125,40 +93,40 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
-            landmarkName = "NewHomeViewController"
-            landmarkType = "21">
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "bindViewModel()"
+            landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 8645b74a58e18479"
+                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 76bf5487cb51d08"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (Foundation.Notification) -&gt; () in picto.NewHomeViewController.setObservers() -&gt; ()"
+                  symbolName = "picto.NewHomeViewController.bindViewModel() -&gt; ()"
                   moduleName = "picto"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "353"
-                  endingLineNumber = "353"
-                  offsetFromSymbolStart = "124">
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "528">
                </Location>
                <Location
-                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 8645b74a58e1845a"
+                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 3c158148f0ec71bc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #3 (Foundation.Notification) -&gt; () in picto.NewHomeViewController.setObservers() -&gt; ()"
+                  symbolName = "closure #1 (picto.NewHomeViewController.ViewModel.CurrentPage) -&gt; () in picto.NewHomeViewController.bindViewModel() -&gt; ()"
                   moduleName = "picto"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "354"
-                  endingLineNumber = "354"
-                  offsetFromSymbolStart = "120">
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
+                  offsetFromSymbolStart = "192">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -205,72 +173,10 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "NewHomeViewController"
             landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "6E5B967A-B147-44BD-AA45-AB5BF87B937B - 8dd8a282ab47fbce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "2796">
-               </Location>
-               <Location
-                  uuid = "6E5B967A-B147-44BD-AA45-AB5BF87B937B - 8dd8a282ab47fbce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "2852">
-               </Location>
-               <Location
-                  uuid = "6E5B967A-B147-44BD-AA45-AB5BF87B937B - 8dd8a282ab47fbce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "2884">
-               </Location>
-               <Location
-                  uuid = "6E5B967A-B147-44BD-AA45-AB5BF87B937B - 8dd8a282ab47fbce"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "2844">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -283,57 +189,10 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "NewHomeViewController"
             landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "0516A7A1-B436-4A5A-AE51-373D5F9D7438 - 8dd8a282ab47faab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "264"
-                  endingLineNumber = "264"
-                  offsetFromSymbolStart = "2428">
-               </Location>
-               <Location
-                  uuid = "0516A7A1-B436-4A5A-AE51-373D5F9D7438 - 8dd8a282ab47faab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "264"
-                  endingLineNumber = "264"
-                  offsetFromSymbolStart = "2472">
-               </Location>
-               <Location
-                  uuid = "0516A7A1-B436-4A5A-AE51-373D5F9D7438 - 8dd8a282ab47faab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "264"
-                  endingLineNumber = "264"
-                  offsetFromSymbolStart = "2484">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -346,72 +205,10 @@
             filePath = "picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "NewHomeViewController"
             landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "77133CCC-141D-474D-907A-CC5ED5F8D44C - 8dd8a282ab47fb69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "2600">
-               </Location>
-               <Location
-                  uuid = "77133CCC-141D-474D-907A-CC5ED5F8D44C - 8dd8a282ab47fb69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "2668">
-               </Location>
-               <Location
-                  uuid = "77133CCC-141D-474D-907A-CC5ED5F8D44C - 8dd8a282ab47fb69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "2700">
-               </Location>
-               <Location
-                  uuid = "77133CCC-141D-474D-907A-CC5ED5F8D44C - 8dd8a282ab47fb69"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.presentMain() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "2660">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -475,6 +272,21 @@
                   endingLineNumber = "280"
                   offsetFromSymbolStart = "236">
                </Location>
+               <Location
+                  uuid = "A9D08123-F9AB-4522-A990-A2777D81CA91 - aef53a3baf7002a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "104">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,6 +334,21 @@
                   startingLineNumber = "285"
                   endingLineNumber = "285"
                   offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "D4A9846A-EA81-4EE1-95E4-74E054AB08AD - e5682f6b61b25fc3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "285"
+                  endingLineNumber = "285"
+                  offsetFromSymbolStart = "104">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -600,6 +427,66 @@
                   startingLineNumber = "289"
                   endingLineNumber = "289"
                   offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - aef53a3baf700075"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - e5682f6b61b25c4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - 7816a6c083528644"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - d3df5c9822fda841"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "340">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -709,6 +596,21 @@
                   endingLineNumber = "279"
                   offsetFromSymbolStart = "96">
                </Location>
+               <Location
+                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 83b07d18d9af1e88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "279"
+                  endingLineNumber = "279"
+                  offsetFromSymbolStart = "264">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -773,6 +675,21 @@
                   endingLineNumber = "160"
                   offsetFromSymbolStart = "860">
                </Location>
+               <Location
+                  uuid = "19739DAF-4199-47E5-9AAA-7428FA33C329 - d6a49fd914b2816d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "912">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -820,6 +737,21 @@
                   startingLineNumber = "162"
                   endingLineNumber = "162"
                   offsetFromSymbolStart = "912">
+               </Location>
+               <Location
+                  uuid = "FBC7E412-4752-473C-A9C1-B64A27B285F0 - d6a49fd914b281a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "920">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -883,6 +815,21 @@
                   startingLineNumber = "242"
                   endingLineNumber = "242"
                   offsetFromSymbolStart = "320">
+               </Location>
+               <Location
+                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 59b3a1d73b169685"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "242"
+                  endingLineNumber = "242"
+                  offsetFromSymbolStart = "308">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1225,6 +1172,21 @@
                   startingLineNumber = "244"
                   endingLineNumber = "244"
                   offsetFromSymbolStart = "388">
+               </Location>
+               <Location
+                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - 59b3a1d73b1696db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "436">
                </Location>
             </Locations>
          </BreakpointContent>

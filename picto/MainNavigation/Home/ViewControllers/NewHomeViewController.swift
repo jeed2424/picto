@@ -4,6 +4,7 @@ import Foil
 import Combine
 import SkyFloatingLabelTextField
 import Firebase
+import SupabaseManager
 
 class NewHomeViewController: UIViewController {
 
@@ -439,4 +440,13 @@ extension NewHomeViewController {
                     }
                     .store(in: &subscriptions)
     }
+
+//    private func fetchPosts() {
+//        let manager = SupabaseDatabaseManager.sharedInstance
+//
+//        let user = DbUser(id: UUID(), username: "", firstName: "", lastName: "", email: "", bio: "", website: "", showFullName: false, avatar: "", posts: [])
+//        manager.fetchUserPosts(user: user, completion: { posts in
+//            print("\(posts?.first?.identifier)")
+//        })
+//    }
 }

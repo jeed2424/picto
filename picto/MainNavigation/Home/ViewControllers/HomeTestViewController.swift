@@ -151,7 +151,7 @@ class HomeTestViewController: UIViewController {
 //        self.setLeftAvatarItem()
         self.setNavTitle(text: "", font: BaseFont.get(.bold, 20), letterSpacing: 0.1, color: .label)
 //        self.setRightNavBtn(image: UIImage(systemName: "camera.aperture", withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular))!, color: .label, action: #selector(self.openCamera), animated: false)
-        self.setRightNavBtn(image: UIImage(named: "cameraadd")!, color: .label, action: #selector(self.openCamera), animated: false)
+        self.setRightNavBtn(image: UIImage(named: "cameraadd")!, color: .label, action: #selector(self.imagePickerShow), animated: false)
         self.setInviteEmoji()
         self.setFeedTopButtons(leftBtn: self.followingBtn, rightBtn: self.DiscoverBtn, rightEnabled: self.rightEnabled)
         self.addNavBtnTaps()
@@ -379,7 +379,7 @@ extension HomeTestViewController {
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
                                       [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
-        let data = image?.jpegData(compressionQuality: 0.5)
+//        let data = image?.jpegData(compressionQuality: 0.5)
 
 //        self.avatar.image = image
 //        self.avatarDidChange = true
@@ -388,6 +388,11 @@ extension HomeTestViewController {
 //        let storageManager = SupabasePostStorageManager.sharedInstance
 //        
 //        storageManager.uploadPost(user: <#T##UUID#>, image: <#T##Data#>, completion: <#T##(String?) -> ()#>)
+
+        if let user = BMUser.me() {
+            let postUploadVC = NewPostUploadViewController.makeVC(user: user, delegate: self, image: image, videoURL: nil)
+            self.navigationController?.pushViewController(postUploadVC, animated: true)
+        }
 
         print("Hello Image Selected")
 //        self.imageView.image = image

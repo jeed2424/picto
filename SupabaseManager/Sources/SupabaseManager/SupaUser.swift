@@ -28,8 +28,9 @@ public struct DbUser: Encodable {
     public let website: String
     public let showFullName: Bool
     public let avatar: String
+    public let posts: [Int8]
 
-    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
+    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String, posts: [Int8]) {
         self.identifier = id
         self.username = username
         self.firstName = firstName
@@ -40,6 +41,7 @@ public struct DbUser: Encodable {
         self.website = website
         self.showFullName = showFullName
         self.avatar = avatar
+        self.posts = posts
     }
 }
 
@@ -67,8 +69,9 @@ public struct NewBMUser {
     public var website: String
     public var showFullName: Bool
     public var avatar: String
+    public var posts: [Int8]
 
-    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
+    public init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String, posts: [Int8]) {
         self.id = id
         self.username = username
         self.firstName = firstName
@@ -78,6 +81,7 @@ public struct NewBMUser {
         self.website = website
         self.showFullName = showFullName
         self.avatar = avatar
+        self.posts = posts
     }
 }
 

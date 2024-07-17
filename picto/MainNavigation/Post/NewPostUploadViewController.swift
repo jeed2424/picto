@@ -3,6 +3,7 @@ import Foundation
 import DropDown
 import AVKit
 import CameraManager
+import SupabaseManager
 
 class NewPostUploadViewController: KeyboardManagingViewController {
 
@@ -69,33 +70,29 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     private var categories: [String] = []
 
     let mockService = MockService.make()
-    var postImage: UIImage!
-    var videoURL: URL!
+    var postImage: UIImage?
+    var videoURL: URL?
     var video: URL?
     var feedDelegate: NewFeedItemDelegate?
-    var post: BMPost!
+    var post: BMPost?
     var creating: Bool = false
-    var gifData: Data!
+    var gifData: Data?
     var gifString = ""
 
     //    let placeholder = "Add a 🔥 caption to this post..."
 
-    init(user: BMUser, delegate: NewFeedItemDelegate, image: UIImage?, videoURL: URL?, video: URL? = nil) {
-        super.init()
-        let vc = self
+    static func makeVC(user: BMUser, delegate: NewFeedItemDelegate, image: UIImage?, videoURL: URL?, video: URL? = nil) -> NewPostUploadViewController {
+//        super.init()
+        let vc = NewPostUploadViewController()
         vc.postImage = image
         vc.feedDelegate = delegate
-        vc.videoURL = videoURL
-        vc.video = video
-        let post = BMPost(user: user, caption: "")
-        let media = BMPostMedia(imageUrl: nil, videoUrl: videoURL?.absoluteString)
-        post.medias.append(media)
+//        vc.videoURL = videoURL
+//        vc.video = video
+        let post = BMPost(identifier: nil, user: user, caption: "")
+//        let media = BMPostMedia(imageUrl: nil, videoUrl: videoURL?.absoluteString)
+//        post.medias.append(media)
         vc.post = post
-//        return vc
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return vc
     }
     
     override func viewDidLoad() {
@@ -111,6 +108,7 @@ class NewPostUploadViewController: KeyboardManagingViewController {
         self.postImgView.layer.cornerCurve = .continuous
         setNav()
         addGestures()
+        setupStyle()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -129,17 +127,43 @@ class NewPostUploadViewController: KeyboardManagingViewController {
             self.post!.createdAt = Date()
             self.view.endEditing(true)
             self.presentLoadingAlertModal(animated: true, completion: nil)
-            BMPostService.make().createPost(post: self.post!, image: self.postImage, url: self.videoURL, gifUrl: self.gifString) { (response, p) in
-                print("created new post")
-                //                spinner.dismiss()
-                self.dismissLoadingAlertModal(animated: true, completion: {
-                    if let po = p {
-                        self.createdNewPost(post: po)
-                    } else {
-                        self.creating = false
-                    }
-                })
-            }
+
+            let data = self.postImage?.jpegData(compressionQuality: 0.5)
+
+    //        self.avatar.image = image
+    //        self.avatarDidChange = true
+    //        self.avatarData = data
+
+            let storageManager = SupabasePostStorageManager.sharedInstance
+            let databaseManager = SupabaseDatabaseManager.sharedInstance
+
+            let user = BMUser.me()
+
+            let dbUser: DbUser = DbUser(id: user?.identifier ?? UUID(), username: user?.username ?? "", firstName: user?.firstName ?? "", lastName: user?.lastName ?? "", email: user?.email ?? "", bio: user?.bio ?? "", website: user?.website ?? "", showFullName: user?.showName ?? false, avatar: user?.avatar ?? "", posts: BMUser.me()?.getPostIDs() ?? [])
+                    storageManager.uploadPost(user: self.post?.user.identifier, image: data, completion: { imageUrl in
+                        if let imageUrl = imageUrl {
+
+                                    let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: user?.identifier ?? UUID(), image: imageUrl, comments: [])
+                                    databaseManager.uploadPost(user: dbUser, post: post, completion: { newPost in
+                                        print("\(newPost?.identifier)")
+                                    })
+
+                            }
+                        })
+//                        try await databaseManager.uploadPost(user: <#T##DbUser#>, post: <#T##DbPost#>, completion: <#T##(PostObject?) -> ()#>)
+//                    })
+//            }
+//            BMPostService.make().createPost(post: self.post!, image: self.postImage, url: self.videoURL, gifUrl: self.gifString) { (response, p) in
+//                print("created new post")
+//                //                spinner.dismiss()
+//                self.dismissLoadingAlertModal(animated: true, completion: {
+//                    if let po = p {
+//                        self.createdNewPost(post: po)
+//                    } else {
+//                        self.creating = false
+//                    }
+//                })
+//            }
         }
     }
 
@@ -157,7 +181,7 @@ class NewPostUploadViewController: KeyboardManagingViewController {
 extension NewPostUploadViewController: PostCategoryDelegate, PostLocationDelegate {
 
     func setCategory(cat: BMCategory) {
-        self.post!.category = cat
+        self.post?.category = cat
         //   self.categoryLbl.text = cat.title!
     }
 
@@ -176,7 +200,7 @@ extension NewPostUploadViewController: UITextViewDelegate {
         //        } else {
         //            self.post!.caption = ""
         //        }
-        self.post!.caption = self.captionTextView.text!
+        self.post?.caption = self.captionTextView.text ?? ""
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -266,6 +290,56 @@ extension NewPostUploadViewController {
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
         categorySelectionView.addGestureRecognizer(tap)
+    }
+}
+
+extension NewPostUploadViewController {
+    private func uploadPost() {
+        
+    }
+
+    private func saveUser(user: BMUser?) {
+        guard let user = user else { return }
+        let authManager = SupabaseAuthenticationManager.sharedInstance
+        let profileService = ProfileService.sharedInstance
+        let authService = AuthenticationService.sharedInstance
+
+//        var postID: [Int] = {
+//            var anything: [Int] = []
+//            for i in 0..<user.posts.count {
+//                let post = user.posts[i]
+//
+//                if let postID = post.postID {
+//                    anything.append(postID)
+//                }
+//
+//                if i == user.posts.count - 1 {
+//                    return anything
+//                } else {
+//                    continue
+//                }
+//            }
+//        }()
+
+        print("Hello saveUser: \(user.avatar)")
+        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "", posts: user.getPostIDs() ?? [])
+        print("Hello DBUser: \(dbUser.avatar)")
+
+        authManager.updateUser(user: dbUser, completion: {[weak self] updatedUser in
+            guard let self = self else { return }
+            if let updatedUser = updatedUser{
+//                self.auth.authenticationSuccess(user: usr)
+//                if let user = manager.authenticatedUser {
+                let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar, posts: [])
+                    profileService.updateUser(user: userUpdate)
+                    authService.saveUpdatedUser(user: userUpdate)
+                    self.dismissLoadingAlertModal(animated: true) {
+                        self.popVC()
+                    }
+//                }
+            }
+        })
+
     }
 }
 

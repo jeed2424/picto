@@ -64,7 +64,7 @@ public class BMUser: BMSerializedObject, Comparable {
         self.avatar = avatar
     }
 
-    init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String) {
+    init(id: UUID, username: String, firstName: String, lastName: String, email: String, bio: String, website: String, showFullName: Bool, avatar: String, posts: [BMPost]) {
         self.identifier = id
         self.username = username
         self.firstName = firstName
@@ -74,6 +74,7 @@ public class BMUser: BMSerializedObject, Comparable {
         self.website = website
         self.showName = showFullName
         self.avatar = avatar
+        self.posts = posts
 
         super.init()
     }
@@ -248,6 +249,12 @@ public class BMUser: BMSerializedObject, Comparable {
         //
         //        }
         //        BMSerializer<BMUser>.from(id: self.id!) = self
+    }
+
+    func getPostIDs() -> [Int8]? {
+        let postIds: [Int8] = self.posts.compactMap { post in post.postID }
+
+        return postIds
     }
 
 }

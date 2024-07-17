@@ -294,16 +294,18 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         let profileService = ProfileService.sharedInstance
         let authService = AuthenticationService.sharedInstance
 
+        let postIds: [Int8] = user.posts.compactMap { post in post.postID }
+        
         print("Hello saveUser: \(user.avatar)")
-        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "")
+        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "", posts: postIds)
         print("Hello DBUser: \(dbUser.avatar)")
 
         authManager.updateUser(user: dbUser, completion: {[weak self] updatedUser in
             guard let self = self else { return }
-            if let updatedUser = updatedUser{
+            if let updatedUser = updatedUser {
 //                self.auth.authenticationSuccess(user: usr)
 //                if let user = manager.authenticatedUser {
-                let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar)
+                let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar, posts: user.posts)
                     profileService.updateUser(user: userUpdate)
                     authService.saveUpdatedUser(user: userUpdate)
                     self.dismissLoadingAlertModal(animated: true) {

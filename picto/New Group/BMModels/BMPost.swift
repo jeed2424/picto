@@ -20,29 +20,31 @@ enum PostContentType {
 public class BMPost: BMSerializedObject, Comparable {
     override class var identifier: String { return "_BMPost" }
     
-    var user: BMUser! {
-        get {
-//            return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
-            if let data = self.userData {
-                return ObjectLoader.shared.from(id: data.id!, key: BMUser.identifier) as! BMUser
-            }
-            return nil
-        }
-        set {
-            self.userData = newValue
-        }
-//        return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
-    }
-    var userData: BMUser!
+    var postID: Int8?
+    var user: BMUser?
+//    {
+//        get {
+////            return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
+//            if let data = self.userData {
+//                return ObjectLoader.shared.from(id: data.id!, key: BMUser.identifier) as! BMUser
+//            }
+//            return nil
+//        }
+//        set {
+//            self.userData = newValue
+//        }
+////        return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
+//    }
+    var userData: BMUser?
     
-    var caption: String!
-    var videoUrl: String!
+    var caption: String?
+    var videoUrl: String?
 //    var category: String!
-    var location: String!
-    var likeCount: Int!
-    var viewCount: Int! = 0
-    var commentCount: Int!
-    var createdAt: Date!
+    var location: String?
+    var likeCount: Int?
+    var viewCount: Int? = 0
+    var commentCount: Int?
+    var createdAt: Date?
     
     var captionExpanded: Bool = false
 //    var postI
@@ -65,8 +67,9 @@ public class BMPost: BMSerializedObject, Comparable {
     var medias = [BMPostMedia]()
     var comments = [BMPostComment]()
     
-    init(user: BMUser, caption: String) {
+    init(identifier: Int8? = nil, user: BMUser, caption: String) {
         super.init()
+        self.postID = identifier
         self.userData = user
         self.caption = caption
     }

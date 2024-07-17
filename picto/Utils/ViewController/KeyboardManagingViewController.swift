@@ -37,10 +37,10 @@ open class KeyboardManagingViewController: UIViewController {
     }()
     
     init() {
-        super.init()
+        super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

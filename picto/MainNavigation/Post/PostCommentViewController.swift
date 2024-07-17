@@ -596,7 +596,12 @@ extension PostCommentViewController: VideoViewDelegate {
 //        self.dateLbl.text = "\(post.createdAtText())  •  \(post.viewCount!.countText(text: "view"))"
         if var p = post {
             if p.user!.identifier != BMUser.me()?.identifier {
-                p.viewCount += 1
+                if var viewCount = p.viewCount {
+                    viewCount += 1
+                    p.viewCount = viewCount
+                } else {
+                    p.viewCount = 1
+                }
                 print("increased view count to: \(p.viewCount!.countText(text: "view"))")
                 self.dateLbl.text = "\(p.createdAtText())  •  \(p.viewCount!.countText(text: "view"))"
                 BMPost.save(post: &p)

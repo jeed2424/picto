@@ -84,13 +84,13 @@ class RegisterProfileViewController: UIViewController, UITextFieldDelegate {
 
         let manager = SupabaseAuthenticationManager.sharedInstance
 
-        let user = DbUser(id: userId, username: username, firstName: firstName, lastName: lastName, email: email, bio: "", website: "", showFullName: false, avatar: "")
+        let user = DbUser(id: userId, username: username, firstName: firstName, lastName: lastName, email: email, bio: "", website: "", showFullName: false, avatar: "", posts: [])
 
         manager.createNewUser(user: user, completion: { id in
             if id != nil {
                 //                self.auth.authenticationSuccess(user: usr)
                 if let user = manager.authenticatedUser {
-                    let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: "", website: "", showFullName: false, avatar: "")
+                    let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: "", website: "", showFullName: false, avatar: "", posts: [])
                     let auth = AuthenticationService.make()
                     auth.authenticationSuccess(user: bmUser)
                     if let user  = self.user {

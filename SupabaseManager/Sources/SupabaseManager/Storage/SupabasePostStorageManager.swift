@@ -13,9 +13,21 @@ public class SupabasePostStorageManager {
     public static let sharedInstance = SupabasePostStorageManager()
 
     private init() {}
-    
-    public func uploadPost(user: UUID, image: Data, completion: @escaping (String?) -> ()) async throws {
-        guard let client = SupabaseManager.sharedInstance.client else { return }
+
+    public func uploadPost(user: UUID?, image: Data?, completion: @escaping (String?) -> ()) {
+        Task {
+            do {
+                try await awaitUploadPost(user: user, image: image, completion: { postURL in
+                    completion(postURL)
+                })
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+
+    private func awaitUploadPost(user: UUID?, image: Data?, completion: @escaping (String?) -> ()) async throws {
+        guard let client = SupabaseManager.sharedInstance.client, let user = user, let image = image else { throw DatabaseError.error }
 
         let fileName = try await getNewPostName(user: user)
 

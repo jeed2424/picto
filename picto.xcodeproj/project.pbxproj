@@ -11,6 +11,7 @@
 		32A250C1A6BD2926B69296ED /* Pods_picto_pictoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26A5C7AF2E8B0B8F5AB9596 /* Pods_picto_pictoUITests.framework */; };
 		692C606C2C3F540500327616 /* SupabaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = 692C606B2C3F540500327616 /* SupabaseManager */; };
 		693D3CDA2C40C81A00F76191 /* NewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */; };
+		69639F632C476C1500B08D27 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69639F622C476C1500B08D27 /* Date+Ext.swift */; };
 		696B52D62C3F0132006315A0 /* SupabaseManager in Resources */ = {isa = PBXBuildFile; fileRef = 696B52D52C3F0132006315A0 /* SupabaseManager */; };
 		69C0E51A2C443BD7007D2A4E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C0E5192C443BD7007D2A4E /* UIImageView+Ext.swift */; };
 		69C99CB329F9F79200912E5A /* pictoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99CB229F9F79200912E5A /* pictoTests.swift */; };
@@ -248,6 +249,7 @@
 		42E100906A2C261BA4C4B7B0 /* Pods-pictoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pictoTests.debug.xcconfig"; path = "Target Support Files/Pods-pictoTests/Pods-pictoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E21D49E8DBB1E2DD88E23BD /* Pods-picto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto.debug.xcconfig"; path = "Target Support Files/Pods-picto/Pods-picto.debug.xcconfig"; sourceTree = "<group>"; };
 		693D3CD92C40C81A00F76191 /* NewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileViewController.swift; sourceTree = "<group>"; };
+		69639F622C476C1500B08D27 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		696B52D52C3F0132006315A0 /* SupabaseManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SupabaseManager; sourceTree = "<group>"; };
 		69C0E5192C443BD7007D2A4E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		69C99C9829F9F79000912E5A /* picto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = picto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1071,6 +1073,7 @@
 				69C99E1729F9F9F200912E5A /* Navigation+Extensions.swift */,
 				69C99E1829F9F9F200912E5A /* FluidSegmentControl */,
 				69C99E1D29F9F9F200912E5A /* HelperFiles.swift */,
+				69639F622C476C1500B08D27 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1654,6 +1657,7 @@
 				69C99EB329F9F9F300912E5A /* BMUser.swift in Sources */,
 				69C99EA329F9F9F300912E5A /* ProfileHeaderViewModel.swift in Sources */,
 				69C99F2929F9F9F300912E5A /* UIImage+ColorMask.swift in Sources */,
+				69639F632C476C1500B08D27 /* Date+Ext.swift in Sources */,
 				69C99E5C29F9F9F300912E5A /* AppDelegate.swift in Sources */,
 				69C99ECE29F9F9F300912E5A /* BBAnimationType.swift in Sources */,
 				69C99E5B29F9F9F300912E5A /* ResetPasswordController.swift in Sources */,

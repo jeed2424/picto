@@ -793,13 +793,13 @@ extension UserProfileViewController {
         let profileService = ProfileService.sharedInstance
         let auth = AuthenticationService.sharedInstance
 
-        let user = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "")
+        let user = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "", posts: user.getPostIDs() ?? [])
 
         manager.updateUser(user: user, completion: { id in
             if id != nil {
 //                self.auth.authenticationSuccess(user: usr)
                 if let user = manager.authenticatedUser {
-                    let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar)
+                    let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: BMUser.me()?.posts ?? [])
                     profileService.updateUser(user: bmUser)
                     self.dismissLoadingAlertModal(animated: true) {
                         self.popVC()
