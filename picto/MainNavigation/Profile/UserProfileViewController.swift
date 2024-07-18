@@ -510,7 +510,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
             print("Posts")
             actionSheet.dismissAlertAnim {
                 DispatchQueue.main.async {
-                    let cat = BMCategory(title: "Liked Posts")
+                    let cat = BMCategory(title: "Liked Posts", imageUrl: nil)
                     let newvc = CategoryViewController.makeVC(cat: cat)
                     newvc.hidesBottomBarWhenPushed = true
                     self.fromSearch = true

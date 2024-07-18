@@ -36,15 +36,17 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     private lazy var categorySelectionMenu: DropDown = {
         let menu = DropDown()
         menu.translatesAutoresizingMaskIntoConstraints = false
-        
-        menu.dataSource = categories
-        
+
+        menu.dataSource = categoriesTitles
+
         menu.direction = .bottom
         
         menu.selectionAction = { [weak self] (index: Int, item: String) in
             guard let self = self else { return }
-            let category = BMCategory(title: item)
-            self.post?.category
+
+            if let category = categories.first(where: { $0.title == item }) {
+                self.setCategory(cat: category)
+            }
             print("Selected item: \(item) at index: \(index)")
         }
         
@@ -83,7 +85,8 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     }()
 
     // MARK: - Variables
-    private var categories: [String] = ["Cats", "Fun", "Kool"]
+    private var categoriesTitles: [String] = []
+    private var categories: [BMCategory] = []
 
     let mockService = MockService.make()
     var postImage: UIImage?
@@ -291,8 +294,11 @@ extension NewPostUploadViewController {
 // MARK: - Functions
 extension NewPostUploadViewController {
     private func getCategories() {
-        ProfileService.make().categories.forEach { category in
-            categories.append(category.title)
+        ProfileService.sharedInstance.categories.forEach { category in
+            if let title = category.title {
+                categories.append(category)
+                categoriesTitles.append(title)
+            }
         }
     }
 }

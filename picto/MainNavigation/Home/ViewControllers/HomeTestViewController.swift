@@ -456,7 +456,7 @@ func getMenu(post: BMPost, vc: UINavigationController?, completion: (() -> Void)
         print("tapped place")
         actionSheet.dismiss(animated: false) {
             DispatchQueue.main.async {
-                let cat = BMCategory(title: post.location ?? "")
+                let cat = BMCategory(title: post.location ?? "", imageUrl: nil)
                 let newvc = CategoryViewController.makeVC(cat: cat)
                 newvc.hidesBottomBarWhenPushed = true
                 vc?.pushViewController(newvc, animated: true)

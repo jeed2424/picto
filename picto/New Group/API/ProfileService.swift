@@ -16,7 +16,7 @@ class ProfileService: BaseService {
 
     public static let sharedInstance = ProfileService(api: ClientAPI.sharedInstance)
 
-    private override init(api: ClientAPI) {
+    override init(api: ClientAPI) {
         super.init(api: api)
     }
 

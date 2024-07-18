@@ -39,7 +39,7 @@ public class BMPost: BMSerializedObject, Comparable {
     
     var caption: String?
     var videoUrl: String?
-//    var category: String!
+//    var category: String?
     var location: String?
     var likeCount: Int?
     var viewCount: Int? = 0
@@ -63,11 +63,11 @@ public class BMPost: BMSerializedObject, Comparable {
 //        }
 //    }
     
-    var category: BMCategory!
+    var category: BMCategory?
     var medias = [BMPostMedia]()
     var comments = [BMPostComment]()
     
-    init(identifier: Int8? = nil, user: BMUser, caption: String) {
+    init(identifier: Int8? = nil, createdAt: Date, user: BMUser, caption: String) {
         super.init()
         self.postID = identifier
         self.userData = user
@@ -167,11 +167,11 @@ public class BMPost: BMSerializedObject, Comparable {
 class BMPostMedia: BMSerializedObject, Comparable {
     override class var identifier: String { return "_BMPostMedia" }
     
-    var image: UIImage!
-    var imageUrl: String!
-    var videoUrl: String!
-    var gifUrl: String!
-    
+    var image: UIImage?
+    var imageUrl: String?
+    var videoUrl: String?
+    var gifUrl: String?
+
     init(imageUrl: String?, videoUrl: String?) {
         super.init()
         self.imageUrl = imageUrl
@@ -427,7 +427,7 @@ class BMCategory: BMSerializedObject, Comparable {
     var title: String?
     var imageUrl: String?
     
-    init(title: String, imageUrl: String) {
+    init(title: String?, imageUrl: String?) {
         self.title = title
         self.imageUrl = imageUrl
         super.init()

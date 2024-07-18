@@ -263,7 +263,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewData
 
 class CategoryViewController: UICollectionViewController {
 
-    var category: BMCategory!
+    var category: BMCategory?
     var posts = [BMPost]()
     
     static func makeVC(cat: BMCategory) -> CategoryViewController {
@@ -289,7 +289,7 @@ class CategoryViewController: UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        BMPostService.make().selectedCat = self.category!
+        BMPostService.make().selectedCat = self.category
         self.presentLoadingAlertModal(animated: false, completion: nil)
         if self.category!.title! == "Liked Posts" {
             BMPostService.make().selectedCat = nil
