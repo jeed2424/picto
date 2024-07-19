@@ -22,56 +22,40 @@ public class BMPost: BMSerializedObject, Comparable {
     
     var postID: Int8?
     var user: BMUser?
-//    {
-//        get {
-////            return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
-//            if let data = self.userData {
-//                return ObjectLoader.shared.from(id: data.id!, key: BMUser.identifier) as! BMUser
-//            }
-//            return nil
-//        }
-//        set {
-//            self.userData = newValue
-//        }
-////        return ObjectLoader.shared.from(id: self.userData!.id!, key: BMUser.identifier) as? BMUser ?? self.userData
-//    }
     var userData: BMUser?
-    
     var caption: String?
     var videoUrl: String?
 //    var category: String?
     var location: String?
-    var likeCount: Int?
-    var viewCount: Int? = 0
-    var commentCount: Int?
+    var likeCount: Int8?
+    var viewCount: Int8? = 0
+    var commentCount: Int8?
     var createdAt: Date?
     
     var captionExpanded: Bool = false
-//    var postI
-//    var postImage: UIImage {
-//        SDWebImageDownloader.shared.downloadImage(with: URL(string: self.medias.first!.imageUrl!)!, options: [.highPriority]) { (i, d, e, completed) in
-//
-//        }
-//    }
-    
-//    var image: UIImage {
-//        get {
-//            return 3.0 * sideLength
-//        }
-//        set {
-//            sideLength = newValue / 3.0
-//        }
-//    }
-    
     var category: BMCategory?
     var medias = [BMPostMedia]()
     var comments = [BMPostComment]()
     
-    init(identifier: Int8? = nil, createdAt: Date, user: BMUser, caption: String) {
+    init(identifier: Int8? = nil, createdAt: Date?, user: BMUser, caption: String?, location: String?, category: BMCategory?, commentCount: Int8?, likeCount: Int8?, comments: [BMPostComment]?, medias: [BMPostMedia]?) {
         super.init()
         self.postID = identifier
         self.userData = user
+        self.user = user
         self.caption = caption
+        self.createdAt = createdAt
+        self.location = location
+        self.category = category
+        self.commentCount = commentCount
+        self.likeCount = likeCount
+        
+        if let comments = comments {
+            self.comments = comments
+        }
+        
+        if let medias = medias {
+            self.medias = medias
+        }
     }
 
     // Mappable

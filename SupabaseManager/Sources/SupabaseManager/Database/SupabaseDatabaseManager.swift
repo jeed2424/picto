@@ -51,7 +51,7 @@ public class SupabaseDatabaseManager {
     }
 
     // MARK: - Post
-    private func awaitUploadPost(user: DbUser, post: DbPost) async throws -> PostObject? {
+    private func awaitUploadPost(user: UUID, post: DbPost) async throws -> PostObject? {
         guard let client = SupabaseManager.sharedInstance.client else { return nil }
 
         try await client.database
@@ -65,8 +65,8 @@ public class SupabaseDatabaseManager {
             .from("Posts")
             .select()
     //                    .match(["user_id": user.user_id.uuidString.lowercased()])
-            .eq("owner", value: user.identifier.uuidString.lowercased())
-            .eq("image", value: post.image)
+            .eq("owner", value: user.uuidString.lowercased())
+            .eq("image", value: post.images?.first)
             .limit(1)
             .execute()
 
@@ -83,7 +83,7 @@ public class SupabaseDatabaseManager {
         return dataPost.first
     }
 
-    public func uploadPost(user: DbUser, post: DbPost, completion: @escaping (PostObject?) -> ()) {
+    public func uploadPost(user: UUID, post: DbPost, completion: @escaping (PostObject?) -> ()) {
     //        guard let client = SupabaseManager.sharedInstance.client else { return }
         Task {
             do {

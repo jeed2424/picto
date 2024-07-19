@@ -9,7 +9,7 @@ import Foundation
 
 public struct PostObject: Decodable {
     public let identifier: Int8
-    public let created_at: String
+    public let createdAt: String
     public let owner: UUID
     public let caption: String
     public let images: [String]
@@ -20,14 +20,14 @@ public struct PostObject: Decodable {
 
 public struct CommentObject: Decodable {
     public let id: Int
-    public let created_at: String
+    public let createdAt: String
     public let owner: UUID
     public let comment: String
 }
 
 public struct DbPost: Encodable {
     public let identifier: Int8?
-    public let created_at: String?
+    public let createdAt: String?
     public let owner: UUID?
     public let caption: String?
     public let images: [String]?
@@ -37,7 +37,7 @@ public struct DbPost: Encodable {
 
     public init(identifier: Int8?, createdAt: String, owner: UUID, caption: String, images: [String], likeCount: Int8, commentCount: Int8, comments: [String]) {
         self.identifier = identifier
-        self.created_at = createdAt
+        self.createdAt = createdAt
         self.owner = owner
         self.caption = caption
         self.images = images

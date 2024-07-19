@@ -107,7 +107,7 @@ class NewPostUploadViewController: KeyboardManagingViewController {
         vc.feedDelegate = delegate
 //        vc.videoURL = videoURL
 //        vc.video = video
-        let post = BMPost(identifier: nil, user: user, caption: "")
+        let post = BMPost(identifier: nil, createdAt: nil, user: user, caption: nil, location: nil, category: nil, commentCount: 0, likeCount: 0, comments: nil, medias: nil)
 //        let media = BMPostMedia(imageUrl: nil, videoUrl: videoURL?.absoluteString)
 //        post.medias.append(media)
         vc.post = post
@@ -141,49 +141,8 @@ class NewPostUploadViewController: KeyboardManagingViewController {
     }
 
     @objc func createPost() {
-        if self.creating == false {
-            self.creating = true
-            self.post!.createdAt = Date()
-            self.view.endEditing(true)
-            self.presentLoadingAlertModal(animated: true, completion: nil)
-            
-            let data = self.postImage?.jpegData(compressionQuality: 0.5)
-            
-            //        self.avatar.image = image
-            //        self.avatarDidChange = true
-            //        self.avatarData = data
-            
-            let storageManager = SupabasePostStorageManager.sharedInstance
-            let databaseManager = SupabaseDatabaseManager.sharedInstance
-            
-            let user = BMUser.me()
-            
-            let dbUser: DbUser = DbUser(id: user?.identifier ?? UUID(), username: user?.username ?? "", firstName: user?.firstName ?? "", lastName: user?.lastName ?? "", email: user?.email ?? "", bio: user?.bio ?? "", website: user?.website ?? "", showFullName: user?.showName ?? false, avatar: user?.avatar ?? "", posts: BMUser.me()?.getPostIDs() ?? [])
-            storageManager.uploadPost(user: self.post?.user?.identifier, image: data, completion: { imageUrl in
-                if let imageUrl = imageUrl {
-                    
-                    let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: user?.identifier ?? UUID(), image: imageUrl, comments: [], likeCount: 0)
-                    databaseManager.uploadPost(user: dbUser, post: post, completion: { newPost in
-                        print("\(newPost?.identifier)")
-                    })
-                    
-                }
-            })
-            //                        try await databaseManager.uploadPost(user: <#T##DbUser#>, post: <#T##DbPost#>, completion: <#T##(PostObject?) -> ()#>)
-            //                    })
-            //            }
-            //            BMPostService.make().createPost(post: self.post!, image: self.postImage, url: self.videoURL, gifUrl: self.gifString) { (response, p) in
-            //                print("created new post")
-            //                //                spinner.dismiss()
-            //                self.dismissLoadingAlertModal(animated: true, completion: {
-            //                    if let po = p {
-            //                        self.createdNewPost(post: po)
-            //                    } else {
-            //                        self.creating = false
-            //                    }
-            //                })
-            //            }
-        }
+        guard let captionText = self.captionTextView.text else { return }
+        self.uploadPost(captionText: captionText)
     }
 
     func createdNewPost(post: BMPost) {
@@ -321,11 +280,39 @@ extension NewPostUploadViewController {
 }
 
 extension NewPostUploadViewController {
-    private func uploadPost() {
-        
+    private func uploadPost(captionText: String) {
+        if self.creating == false {
+            self.creating = true
+            self.post!.createdAt = Date()
+            self.view.endEditing(true)
+            self.presentLoadingAlertModal(animated: true, completion: nil)
+            
+            let data = self.postImage?.jpegData(compressionQuality: 0.5)
+            let storageManager = SupabasePostStorageManager.sharedInstance
+            let databaseManager = SupabaseDatabaseManager.sharedInstance
+            
+            if let user = BMUser.me(), let userId = user.identifier {
+                storageManager.uploadPost(user: userId, image: data, completion: { imageUrl in
+                    if let imageUrl = imageUrl {
+                        
+                        let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: userId, caption: captionText, images: [imageUrl], likeCount: 0, commentCount: 0, comments: [])
+                        databaseManager.uploadPost(user: userId, post: post, completion: { newPost in
+                            
+                            let images: [BMPostMedia]? = newPost?.images.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })
+                            
+                            let post = BMPost(identifier: newPost?.identifier, createdAt: newPost?.createdAt, user: BMUser.me(), caption: newPost?.caption, location: "", category: nil, commentCount: 0, likeCount: 0, comments: nil, medias: images)
+                            print("\(newPost?.identifier)")
+                        })
+                        
+                    }
+                })
+            }
+            
+//            let dbUser: DbUser = DbUser(id: user?.identifier ?? UUID(), username: user?.username ?? "", firstName: user?.firstName ?? "", lastName: user?.lastName ?? "", email: user?.email ?? "", bio: user?.bio ?? "", website: user?.website ?? "", showFullName: user?.showName ?? false, avatar: user?.avatar ?? "", posts: BMUser.me()?.getPostIDs() ?? [])
+        }
     }
 
-    private func saveUser(user: BMUser?) {
+    private func saveUserWithNewPost(user: BMUser?, post: BMPost) {
         guard let user = user else { return }
         let authManager = SupabaseAuthenticationManager.sharedInstance
         let profileService = ProfileService.sharedInstance
@@ -355,6 +342,7 @@ extension NewPostUploadViewController {
         authManager.updateUser(user: dbUser, completion: {[weak self] updatedUser in
             guard let self = self else { return }
             if let updatedUser = updatedUser{
+                let posts = BMUser.me()?.posts
 //                self.auth.authenticationSuccess(user: usr)
 //                if let user = manager.authenticatedUser {
                 let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar, posts: [])
