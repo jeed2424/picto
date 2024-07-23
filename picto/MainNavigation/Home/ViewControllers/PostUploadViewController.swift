@@ -30,9 +30,9 @@ class PostUploadViewController: UITableViewController {
         vc.feedDelegate = delegate
         vc.videoURL = videoURL
         vc.video = video
-        let post = BMPost(user: user, caption: "")
-        let media = BMPostMedia(imageUrl: nil, videoUrl: videoURL?.absoluteString)
-        post.medias.append(media)
+        let post = BMPost(user: user)
+//        let media = BMPostMedia(imageUrl: nil, videoUrl: nil)
+//        post.medias.append(media)
         vc.post = post
         return vc
     }

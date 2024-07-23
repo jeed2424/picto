@@ -142,7 +142,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         bioTextView.isScrollEnabled = true
         avatar.round()
         self.setUser()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.imagePickerShow))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imagePickerShow))
         self.avatar.addGestureRecognizer(tap)
         self.avatar.isUserInteractionEnabled = true
         self.setNav()

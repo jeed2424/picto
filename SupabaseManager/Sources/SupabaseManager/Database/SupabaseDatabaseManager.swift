@@ -66,7 +66,8 @@ public class SupabaseDatabaseManager {
             .select()
     //                    .match(["user_id": user.user_id.uuidString.lowercased()])
             .eq("owner", value: user.uuidString.lowercased())
-            .eq("image", value: post.images?.first)
+            .contains("images", value: "{\(post.images?.first ?? "")}")
+//            .eq("images", value: post.images?.first)
             .limit(1)
             .execute()
 
@@ -116,7 +117,7 @@ public class SupabaseDatabaseManager {
         let newPost = try await client.database
             .from("Posts")
             .select()
-            .eq("owner", value: user.identifier.uuidString.lowercased())
+//            .eq("owner", value: user.identifier.uuidString.lowercased())
             .execute()
 
         let data = newPost.data

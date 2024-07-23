@@ -37,7 +37,7 @@ public class BMPost: BMSerializedObject, Comparable {
     var medias = [BMPostMedia]()
     var comments = [BMPostComment]()
     
-    init(identifier: Int8? = nil, createdAt: Date?, user: BMUser, caption: String?, location: String?, category: BMCategory?, commentCount: Int8?, likeCount: Int8?, comments: [BMPostComment]?, medias: [BMPostMedia]?) {
+    init(identifier: Int8? = nil, createdAt: Date? = nil, user: BMUser, caption: String? = nil, location: String? = nil, category: BMCategory? = nil, commentCount: Int8? = nil, likeCount: Int8? = nil, comments: [BMPostComment]? = nil, medias: [BMPostMedia]? = nil) {
         super.init()
         self.postID = identifier
         self.userData = user
@@ -434,6 +434,17 @@ class BMCategory: BMSerializedObject, Comparable {
 }
 
 extension Int {
+    
+    func countText(text: String) -> String {
+        if self == 1 {
+            return "\(self) \(text)"
+        } else {
+            return "\(self) \(text)s"
+        }
+    }
+}
+
+extension Int8 {
     
     func countText(text: String) -> String {
         if self == 1 {

@@ -294,16 +294,17 @@ extension NewPostUploadViewController {
             if let user = BMUser.me(), let userId = user.identifier {
                 storageManager.uploadPost(user: userId, image: data, completion: { imageUrl in
                     if let imageUrl = imageUrl {
-                        
-                        let post = DbPost(identifier: nil, createdAt: Date.now.toYearMonthDay(), owner: userId, caption: captionText, images: [imageUrl], likeCount: 0, commentCount: 0, comments: [])
-                        databaseManager.uploadPost(user: userId, post: post, completion: { newPost in
-                            
-                            let images: [BMPostMedia]? = newPost?.images.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })
-                            
-                            let post = BMPost(identifier: newPost?.identifier, createdAt: newPost?.createdAt, user: BMUser.me(), caption: newPost?.caption, location: "", category: nil, commentCount: 0, likeCount: 0, comments: nil, medias: images)
-                            print("\(newPost?.identifier)")
+//                        
+                        let dbPost = DbPost(identifier: nil, createdAt: nil, owner: userId, caption: captionText, images: [imageUrl], likeCount: 0, commentCount: 0, comments: nil)
+                        databaseManager.uploadPost(user: userId, post: dbPost, completion: { newPost in
+//
+                            let images = newPost?.images?.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })
+//                            
+//                            let post = BMPost(identifier: newPost?.identifier, createdAt: newPost?.createdAt, user: BMUser.me(), caption: newPost?.caption, location: "", category: nil, commentCount: 0, likeCount: 0, comments: nil, medias: images)
+//                            print("\(newPost?.identifier)")
+                            self.saveUserWithNewPost(user: user, post: newPost, images: images)
                         })
-                        
+//                        
                     }
                 })
             }
@@ -312,37 +313,30 @@ extension NewPostUploadViewController {
         }
     }
 
-    private func saveUserWithNewPost(user: BMUser?, post: BMPost) {
-        guard let user = user else { return }
+    private func saveUserWithNewPost(user: BMUser?, post: PostObject?, images: [BMPostMedia]?) {
+        guard let user = user, let post = post, let images = images else { return }
+        
         let authManager = SupabaseAuthenticationManager.sharedInstance
         let profileService = ProfileService.sharedInstance
         let authService = AuthenticationService.sharedInstance
+        
+        let newBmPost = BMPost(identifier: post.identifier, createdAt: post.createdAt?.dateAndTimeFromString(), user: user, caption: post.caption, location: "", category: nil, commentCount: 0, likeCount: 0, comments: nil, medias: images)
 
-//        var postID: [Int] = {
-//            var anything: [Int] = []
-//            for i in 0..<user.posts.count {
-//                let post = user.posts[i]
-//
-//                if let postID = post.postID {
-//                    anything.append(postID)
-//                }
-//
-//                if i == user.posts.count - 1 {
-//                    return anything
-//                } else {
-//                    continue
-//                }
-//            }
-//        }()
+        var postIds = user.getPostIDs()
+        
+        if let postID = newBmPost.postID {
+            postIds?.append(postID)
+        }
 
-        print("Hello saveUser: \(user.avatar)")
-        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "", posts: user.getPostIDs() ?? [])
+        let dbUser = DbUser(id: user.identifier ?? UUID(), username: user.username ?? "", firstName: user.firstName ?? "", lastName: user.lastName ?? "", email: user.email ?? "", bio: user.bio ?? "", website: user.website ?? "", showFullName: user.showName, avatar: user.avatar ?? "", posts: postIds ?? [])
+        
         print("Hello DBUser: \(dbUser.avatar)")
 
         authManager.updateUser(user: dbUser, completion: {[weak self] updatedUser in
             guard let self = self else { return }
             if let updatedUser = updatedUser{
-                let posts = BMUser.me()?.posts
+                var posts = BMUser.me()?.posts
+                posts?.append(newBmPost)
 //                self.auth.authenticationSuccess(user: usr)
 //                if let user = manager.authenticatedUser {
                 let userUpdate = BMUser(id: updatedUser.id, username: updatedUser.username, firstName: updatedUser.firstName, lastName: updatedUser.lastName, email: updatedUser.email, bio: updatedUser.bio, website: updatedUser.website, showFullName: updatedUser.showFullName, avatar: updatedUser.avatar, posts: [])
