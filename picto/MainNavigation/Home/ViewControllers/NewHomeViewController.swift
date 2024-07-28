@@ -124,7 +124,6 @@ class NewHomeViewController: UIViewController {
         setupViews()
         bindViewModel()
         setObservers()
-        fetchPosts()
     }
 }
 
@@ -440,26 +439,5 @@ extension NewHomeViewController {
                         }
                     }
                     .store(in: &subscriptions)
-    }
-
-    private func fetchPosts() {
-        let manager = SupabaseDatabaseManager.sharedInstance
-
-        let user = DbUser(id: UUID(), username: "", firstName: "", lastName: "", email: "", bio: "", website: "", showFullName: false, avatar: "", posts: [])
-        manager.fetchUserPosts(user: user, completion: { posts in
-            print("\(posts?.first?.identifier)")
-        })
-        
-        let array = ["one", "two"]
-        
-        Task {
-            do {
-                let data = try JSONSerialization.data(withJSONObject: array, options: .fragmentsAllowed)
-                let string = NSString(data: data, encoding: NSUTF8StringEncoding)
-                print(string)
-            } catch {
-                
-            }
-        }
     }
 }

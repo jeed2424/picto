@@ -3,4 +3,360 @@
    uuid = "1035DE3F-AF72-4B8F-B05B-E6B32ED03319"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A0BCD6EB-9AA6-4916-8C8B-B099C5417126"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3 - f8806313e44ab7c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76">
+               </Location>
+               <Location
+                  uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3 - 9f057f502f7a5d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76">
+               </Location>
+               <Location
+                  uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3 - 40db7b07e6473f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76">
+               </Location>
+               <Location
+                  uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3 - 40db7b07e6473f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76">
+               </Location>
+               <Location
+                  uuid = "DD2DBC3D-FF87-4883-8EC1-AF6590DBD0F3 - 69a6f20ae52a5dfa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6E7BDCD-C49C-4CBB-A388-1F2F9C89D07E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D6E7BDCD-C49C-4CBB-A388-1F2F9C89D07E - 352dd9ad2179aeb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+               <Location
+                  uuid = "D6E7BDCD-C49C-4CBB-A388-1F2F9C89D07E - 352dd9ad2179aeb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA4CE49E-9A3D-45EA-B6C1-301DAE10D698"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D09B25A3-0D73-4156-A792-55488C1CCD7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "52967C7A-2D06-4AB6-A5CE-38E4EA62B4DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "52967C7A-2D06-4AB6-A5CE-38E4EA62B4DC - 69a6f20ae52a5f8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+               <Location
+                  uuid = "52967C7A-2D06-4AB6-A5CE-38E4EA62B4DC - 3f69e8f93236f989"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 (Swift.Optional&lt;Auth.User&gt;) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.currentUser(completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13FD816A-8294-47D9-A376-88B21EF7B877"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "currentUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69E6F669-2D67-446B-A0FF-2876994825BA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "getActiveUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EE479CC-5B17-4823-BC71-1DD764A17B33"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "getActiveUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1453CD76-A49D-41BA-B140-D6A82E82D82D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "758441DA-876A-461E-A9A2-565F4E7F7BFC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "getActiveUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "758441DA-876A-461E-A9A2-565F4E7F7BFC - b7611e53ade5f7d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseManager.getActiveUser(completion: (Swift.Optional&lt;Auth.User&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+               <Location
+                  uuid = "758441DA-876A-461E-A9A2-565F4E7F7BFC - d7d16da28008bbd2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseManager.getActiveUser(completion: (Swift.Optional&lt;Auth.User&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "picto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/SupabaseManager/Sources/SupabaseManager/SupabaseManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77233A82-84E4-48F8-B8C3-69F138C6DA91"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getActiveUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupRootViewController()
         
-        print("Hello World \(authManager.authenticatedUser?.email)")
+        print("Hello World AuthUser: \(authManager.authenticatedUser?.email)")
         
         return true
     }

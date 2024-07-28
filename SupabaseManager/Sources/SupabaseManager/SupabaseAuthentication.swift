@@ -52,52 +52,56 @@ public class SupabaseAuthenticationManager {
     public var authenticatedUser: NewBMUser? {
         didSet {
             if let user = authenticatedUser {
-                print("Hello authenticatedUser \(user.avatar)")
+                print("Hello authenticatedUser \(user.username)")
             }
         }
     }
     private var user: User?
 
     private init () {
-        self.currentUser(completion: { _ in
-            
+        self.currentUser(completion: { user in
+            self.authenticatedUser = user
         })
     }
     
     public func currentUser(completion: @escaping (NewBMUser?) -> ()) {
 //        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
 //        guard let user = self.user else { return }
-        self.getActiveUser()
-        
-        if let user = self.user {
-            Task {
-                do {
-                    if let activeUser = try await self.getActiveUserData(user: user) {
-                        if try await userIsAdmin(user: activeUser) ?? false {
-                            self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: true)
-                            completion(self.authenticatedUser)
-                        } else {
-                            self.authenticatedUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: false)
-                            completion(self.authenticatedUser)
-                        }
+        self.getActiveUser(completion:  { user in
+            self.user = user
+            
+            if let user = user {
+                Task {
+                    do {
+                        if let activeUser = try await self.getActiveUserData(user: user) {
+                            if try await self.userIsAdmin(user: activeUser) ?? false {
+                                let newBmUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: true)
+                                completion(newBmUser)
+                            } else {
+                                let newBmUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: false)
+                                completion(newBmUser)
+                            }
 
-//                        return self.authenticatedUser
+    //                        return self.authenticatedUser
+                        }
+                    } catch {
+                        completion(nil)
                     }
-                } catch {
-                    completion(nil)
                 }
+            } else {
+                completion(nil)
             }
-        } else {
-            completion(nil)
-        }
+        })
 //        })
     }
     
-    private func getActiveUser() {
+    private func getActiveUser(completion: @escaping (User?) -> ()) {
         SupabaseManager.sharedInstance.getActiveUser(completion: { user in
-            guard let user = user else { return }
-            
-            self.user = user
+            if let user = user {
+                completion(user)
+            } else {
+                completion(nil)
+            }
         })
     }
     
