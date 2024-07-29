@@ -101,6 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 //    }
     
+    func reloadAppToMain() {
+        self.setupRootViewController()
+    }
+    
     func extractUserInfo(userInfo: [AnyHashable : Any]) -> (title: String, body: String, text: String, name: String, pic: String) {
         var info = (title: "", body: "", text: "", name: "", pic: "")
         guard let aps = userInfo["aps"] as? [String: Any] else { return info }
@@ -436,12 +440,14 @@ extension AppDelegate {
                     })
                 })
             } else {
-                let center = NewHomeViewController()
+                DispatchQueue.main.async {
+                    let center = NewHomeViewController()
 
-                self.window = UIWindow(frame: UIScreen.main.bounds)
-                self.window?.rootViewController = center
-                self.window?.tintColor = .white
-                self.window?.makeKeyAndVisible()
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    self.window?.rootViewController = center
+                    self.window?.tintColor = .white
+                    self.window?.makeKeyAndVisible()
+                }
             }
         })
     }

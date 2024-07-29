@@ -34,6 +34,17 @@ public extension SupabaseManager {
         }
 
     }
+    
+    func signOut(completion: @escaping (Bool) -> ()) {
+        Task {
+            do {
+                try await client?.auth.signOut()
+                completion(true)
+            } catch {
+                completion(false)
+            }
+        }
+    }
 }
 
 

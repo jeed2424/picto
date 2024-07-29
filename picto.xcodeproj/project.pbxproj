@@ -224,6 +224,7 @@
 		69C99F8329FA01A400912E5A /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69C99D3429F9F9F200912E5A /* UserProfile.storyboard */; };
 		69C99F8829FA169700912E5A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99F8729FA169700912E5A /* R.generated.swift */; };
 		69EC89B72BB65A3900DA6E74 /* UsernameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */; };
+		8F823FCA2C5834C0006C5F18 /* KingFisherHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F823FC92C5834C0006C5F18 /* KingFisherHelper.swift */; };
 		A01526C1A6F198D7905BF41D /* Pods_pictoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBECAC838A17B2D6BFD761DE /* Pods_pictoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -474,6 +475,7 @@
 		69C99F7229F9FEEF00912E5A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69C99F8729FA169700912E5A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationView.swift; sourceTree = "<group>"; };
+		8F823FC92C5834C0006C5F18 /* KingFisherHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherHelper.swift; sourceTree = "<group>"; };
 		B9C7B2082168313877969304 /* Pods_picto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_picto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1E4F81D5C8664834C71B6E /* Pods-pictoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pictoTests.release.xcconfig"; path = "Target Support Files/Pods-pictoTests/Pods-pictoTests.release.xcconfig"; sourceTree = "<group>"; };
 		D7342C1045DAD1A3E7151D30 /* Pods-picto-pictoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-picto-pictoUITests.release.xcconfig"; path = "Target Support Files/Pods-picto-pictoUITests/Pods-picto-pictoUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -992,6 +994,7 @@
 				69C99E3F29F9F9F300912E5A /* Views */,
 				69C99E4329F9F9F300912E5A /* YBAlertController.swift */,
 				69C99E4429F9F9F300912E5A /* ATActionSheet */,
+				8F823FC92C5834C0006C5F18 /* KingFisherHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1693,6 +1696,7 @@
 				69C99F3D29F9F9F300912E5A /* BinaryInteger+Ext.swift in Sources */,
 				69C99E6A29F9F9F300912E5A /* ChatCell.swift in Sources */,
 				69C99F6B29F9F9F300912E5A /* ATAction+Style.swift in Sources */,
+				8F823FCA2C5834C0006C5F18 /* KingFisherHelper.swift in Sources */,
 				69C99E9129F9F9F300912E5A /* NewEditProfileViewController.swift in Sources */,
 				69C99E8D29F9F9F300912E5A /* PostPageViewController.swift in Sources */,
 				69C99E7029F9F9F300912E5A /* LoginViewController.swift in Sources */,

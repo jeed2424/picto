@@ -50,7 +50,7 @@ public class SupabaseStorageManager {
 
         try await client.storage
           .from("avatars")
-          .upload(
+          .update(
             path: "public/\(fileName)",
             file: image,
             options: FileOptions(

@@ -15,30 +15,54 @@ extension UIImageView {
         self.kf.setImage(with: url)
     }
 
-    func setComplexImage(url: String, placeholder: UIImage) {
+    func setComplexImage(url: String, placeholder: UIImage, forceRefresh: Bool, completion: @escaping (Bool) -> ()) {
         print("Hello \(url)")
         let url = URL(string: url)
         let processor = DownsamplingImageProcessor(size: self.bounds.size)
                      |> RoundCornerImageProcessor(cornerRadius: 20)
         self.kf.indicatorType = .activity
-        self.kf.setImage(
-            with: url,
-            placeholder: placeholder,
-            options: [
-                .processor(processor),
-                .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1)),
-                .cacheOriginalImage
-            ])
-        {
-            result in
-            switch result {
-            case .success(let value):
-                print("Task done for: \(value.source.url?.absoluteString ?? "")")
-            case .failure(let error):
-                print("Job failed: \(error.localizedDescription)")
-                print("Failure: \(error)")
+
+//        if forceRefresh {
+            self.kf.setImage(
+                with: url,
+                placeholder: placeholder,
+                options: [
+                    .processor(processor),
+                    .scaleFactor(UIScreen.main.scale),
+                    .transition(.fade(1)),
+                    .forceRefresh,
+                    .cacheOriginalImage
+                ]) { result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                    completion(true)
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                    print("Failure: \(error)")
+                    completion(true)
+                }
             }
-        }
+//        } else {
+//            self.kf.setImage(
+//                with: url,
+//                placeholder: placeholder,
+//                options: [
+//                    .processor(processor),
+//                    .scaleFactor(UIScreen.main.scale),
+//                    .transition(.fade(1)),
+//                    .cacheOriginalImage
+//                ]) { result in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                    completion(true)
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                    print("Failure: \(error)")
+//                    completion(true)
+//                }
+//            }
+//        }
     }
 }

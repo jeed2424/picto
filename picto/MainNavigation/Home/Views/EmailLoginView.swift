@@ -3,6 +3,7 @@ import UIKit
 import Combine
 import Foil
 import SkyFloatingLabelTextField
+import SupabaseManager
 
 class EmailLoginView: UIView {
 
@@ -96,14 +97,14 @@ class EmailLoginView: UIView {
         return field
     }()
 
-    private lazy var lblRemember: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Remember me"
-        label.textColor = .label
-
-        return label
-    }()
+//    private lazy var lblRemember: UILabel = {
+//        let label = UILabel()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.text = "Remember me"
+//        label.textColor = .label
+//
+//        return label
+//    }()
 
     private lazy var btnSubmit: UIButton = {
         let button = UIButton()
@@ -121,7 +122,7 @@ class EmailLoginView: UIView {
         return button
     }()
 
-    let checkBox = CustomCheckBox(frame: CGRect(x: 0, y: 0, width: 17.5, height: 17.5))
+//    let checkBox = CustomCheckBox(frame: CGRect(x: 0, y: 0, width: 17.5, height: 17.5))
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -149,7 +150,7 @@ extension EmailLoginView {
         addSubviews([
             btnExit,
             vStack,
-            hStack,
+//            hStack,
             btnSubmit
         ])
 
@@ -159,11 +160,11 @@ extension EmailLoginView {
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             vStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             vStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -150),
-            hStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+//            hStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             //            hStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -150),
-            hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 50),
+//            hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 50),
             //           hStack.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -75),
-            btnSubmit.topAnchor.constraint(equalTo: hStack.bottomAnchor, constant: 50),
+            btnSubmit.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 75),
             btnSubmit.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
 
@@ -174,20 +175,20 @@ extension EmailLoginView {
             passwordField
         ])
 
-        hStack.addArrangedSubviews([
-            checkBox,
-            lblRemember
-        ])
+//        hStack.addArrangedSubviews([
+//            checkBox,
+//            lblRemember
+//        ])
 
         NSLayoutConstraint.activate([
-            btnSubmit.widthAnchor.constraint(equalToConstant: 150),
-            checkBox.widthAnchor.constraint(equalToConstant: 17.5),
-            checkBox.heightAnchor.constraint(equalToConstant: 17.5)
+            btnSubmit.widthAnchor.constraint(equalToConstant: 150)
+//            checkBox.widthAnchor.constraint(equalToConstant: 17.5),
+//            checkBox.heightAnchor.constraint(equalToConstant: 17.5)
             //   btnRemember.heightAnchor.constraint(equalToConstant: 30)
         ])
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapCheckbox))
-        checkBox.addGestureRecognizer(gesture)
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapCheckbox))
+//        checkBox.addGestureRecognizer(gesture)
     }
 }
 
@@ -210,25 +211,97 @@ extension EmailLoginView {
     }
 
     private func loginUser() {
-        auth.loginUserWithEmail(email: emailField.text!, password: passwordField.text!) { (response, u) in
-            Timer.schedule(delay: 0.3) { (t) in
-                switch response {
-                case .Success:
-                    guard let usr = u else { return }
-                    self.auth.authenticationSuccess(user: usr)
-                    if self.checkBox.isChecked {
-                        UserDefaultHelper().savedUserID = usr.id
+        guard let email = emailField.text, let password = passwordField.text else { return }
+        //        auth.loginUserWithEmail(email: emailField.text!, password: passwordField.text!) { (response, u) in
+        //            Timer.schedule(delay: 0.3) { (t) in
+        //                switch response {
+        //                case .Success:
+        //                    guard let usr = u else { return }
+        //                    self.auth.authenticationSuccess(user: usr)
+        //                    if self.checkBox.isChecked {
+        //                        UserDefaultHelper().savedUserID = usr.id
+        //                    }
+        //                    self.resetValues()
+        //                    NotificationCenter.default.post(name: NotificationNames.didLogin, object: usr)
+        //                case .Error:
+        //                    self.errorLbl.text = "Error loging in, please try again later."
+        //                case .InvalidCredentials:
+        //                    self.errorLbl.text = "Invalid Credentials"
+        //                }
+        //
+        //            }
+        
+        let manager = SupabaseAuthenticationManager.sharedInstance
+                
+        manager.authenticate(.email, .signin, AuthObject(email: email, password: password), completion: { response, user in
+            switch response {
+                
+            case .success:
+                guard let id = user?.id else { return }
+                
+                self.getActiveUser(completion: { bmUser in
+                    if bmUser != nil {
+                        NotificationCenter.default.post(name: NotificationNames.didLogin, object: bmUser)
+                    } else {
+                        print("Hello")
                     }
-                    self.resetValues()
-                    NotificationCenter.default.post(name: NotificationNames.didLogin, object: usr)
-                case .Error:
-                    self.errorLbl.text = "Error loging in, please try again later."
-                case .InvalidCredentials:
-                    self.errorLbl.text = "Invalid Credentials"
-                }
-
+                })
+                //                print("")
+                //                let user = BMUser(id: id, username: "", firstName: firstName ?? "", lastName: lastName ?? "", email: email, bio: "", website: "", showFullName: false, avatar: "", posts: [])
+                //                NotificationCenter.default.post(name: NotificationNames.willShowUsernameSelection, object: user)
+            case .error:
+                print("")
             }
-        }
+        })
+    }
+    
+    private func getActiveUser(completion: @escaping (BMUser?) -> ()) {
+        let authManager = SupabaseAuthenticationManager.sharedInstance
+        
+        authManager.currentUser(completion: { [weak self] user in
+            guard let self = self else { return }
+            
+            if let user = user {
+                let databaseManager = SupabaseDatabaseManager.sharedInstance
+                var posts: [BMPost]? = []
+                
+                let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: [])
+                
+                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now(), execute: {
+                    databaseManager.fetchUserPosts(user: user.id, completion: { userPosts in
+                        posts = userPosts?.compactMap({ post in BMPost(identifier: post.identifier,
+                                                                       createdAt: post.createdAt?.dateAndTimeFromString(),
+                                                                       user: bmUser,
+                                                                       caption: post.caption,
+                                                                       location: "",
+                                                                       category: nil,
+                                                                       commentCount: post.commentCount,
+                                                                       likeCount: post.likeCount,
+                                                                       comments: nil,
+                                                                       medias: {
+                            post.images?.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })
+                        }()
+                        )})
+                    })
+                    
+                    if let posts = posts {
+                        bmUser.posts = posts
+                    }
+                    
+                    let auth = AuthenticationService.make()
+                    auth.authenticationSuccess(user: bmUser)
+                    ProfileService.sharedInstance.saveUser(user: bmUser)
+                    
+                    completion(bmUser)
+                    
+//                    DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+//                        self.presentMain(user: bmUser)
+//                    })
+                })
+            } else {
+                completion(nil)
+            }
+        })
     }
 
     private func registerNotifications() {
@@ -271,9 +344,9 @@ extension EmailLoginView {
         }
     }
 
-    @objc func didTapCheckbox() {
-        checkBox.toggle()
-    }
+//    @objc func didTapCheckbox() {
+//        checkBox.toggle()
+//    }
 
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

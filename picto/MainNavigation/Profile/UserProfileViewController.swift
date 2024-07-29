@@ -199,9 +199,12 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
 //            }
 //        }
 //        self.setUser(user: self.user!)
-        if self.user!.avatar != nil {
-            avatar.setImage(string: self.user!.avatar!)
-        }
+//        if self.user!.avatar != nil {
+//            avatar.setImage(string: self.user!.avatar!)
+//        }
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: false, completion: { _ in
+            
+        })
         avatar.round()
         bioLbl.text = self.user!.bio ?? "No bio added yet"
         bioLbl.setLineHeight(lineHeight: 1.2)
@@ -537,9 +540,22 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         let logout = ATAction(title: self.user?.identifier == BMUser.me()?.identifier ? "Log out" : "Report Activity", image: nil, style: .default) {
             print("logged out")
             actionSheet.dismiss(animated: false) {
-                AuthenticationService.make().logout {
-                    self.dismiss(animated: true, completion: nil)
-                }
+                //                AuthenticationService.make().logout {
+                //                    self.dismiss(animated: true, completion: nil)
+                //                }
+                let authManager = SupabaseAuthenticationManager.sharedInstance
+                
+                authManager.signOut(completion: { didSignOut in
+                    if didSignOut {
+//                        AppDelegate().reloadAppToMain()
+                        DispatchQueue.main.async {
+                            let center = NewHomeViewController()
+                            
+                            UIApplication.shared.windows.first?.rootViewController = center
+                            UIApplication.shared.windows.first?.makeKeyAndVisible()
+                        }
+                    }
+                })
             }
         }
 
@@ -771,7 +787,7 @@ extension UserProfileViewController {
         let manager = SupabaseStorageManager.sharedInstance
         Task {
             do {
-                if avatarEmptyAtLaunch {
+                if avatarEmptyAtLaunch || (self.user?.avatar == nil || self.user?.avatar?.isEmpty ?? false) {
                     try await manager.uploadAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
                         self.user?.avatar = url
                         completion(true)
@@ -801,12 +817,21 @@ extension UserProfileViewController {
                 if let user = manager.authenticatedUser {
                     let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: BMUser.me()?.posts ?? [])
                     profileService.updateUser(user: bmUser)
+                    self.user = bmUser
                     self.dismissLoadingAlertModal(animated: true) {
-                        self.popVC()
+                        self.refreshUser(completion: { _ in
+                            self.popVC()
+                        })
                     }
                 }
             }
         })
 
+    }
+    
+    private func refreshUser(completion: @escaping (Bool) -> ()) {
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: true, completion: { complete in
+            completion(complete)
+        })
     }
 }

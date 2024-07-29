@@ -63,8 +63,6 @@ public class SupabaseAuthenticationManager {
     }
     
     public func currentUser(completion: @escaping (NewBMUser?) -> ()) {
-//        SupabaseManager.sharedInstance.getActiveUser(completion: { user in
-//        guard let user = self.user else { return }
         self.getActiveUser(completion:  { user in
             self.user = user
             
@@ -79,8 +77,6 @@ public class SupabaseAuthenticationManager {
                                 let newBmUser = NewBMUser(id: activeUser.identifier, username: activeUser.username, firstName: activeUser.firstName, lastName: activeUser.lastName, email: activeUser.email, bio: activeUser.bio, website: activeUser.website, showFullName: activeUser.showFullName, avatar: activeUser.avatar, posts: activeUser.posts, isAdmin: false)
                                 completion(newBmUser)
                             }
-
-    //                        return self.authenticatedUser
                         }
                     } catch {
                         completion(nil)
@@ -90,7 +86,6 @@ public class SupabaseAuthenticationManager {
                 completion(nil)
             }
         })
-//        })
     }
     
     private func getActiveUser(completion: @escaping (User?) -> ()) {
@@ -114,7 +109,6 @@ public class SupabaseAuthenticationManager {
         let newUser = try await client.database
             .from("Admins")
             .select()
-//                    .match(["user_id": user.user_id.uuidString.lowercased()])
             .eq("userid", value: user.identifier)
             .limit(1)
             .execute()
@@ -127,14 +121,10 @@ public class SupabaseAuthenticationManager {
         print(dataUser)
 
         if dataUser.first == nil {
-//            throw DatabaseError.error
             return false
         } else {
             return true
         }
-
-//        print("\(newUser.users.first?.firstName)")
-//        completion(newUser.users.first?.identifier)
     }
     
     public func getActiveUserData(user: User) async throws -> databaseUser? {
@@ -143,7 +133,6 @@ public class SupabaseAuthenticationManager {
         let newUser = try await client.database
             .from("Users")
             .select()
-//                    .match(["user_id": user.user_id.uuidString.lowercased()])
             .eq("email", value: user.email)
             .limit(1)
             .execute()
@@ -158,10 +147,8 @@ public class SupabaseAuthenticationManager {
         if dataUser.first == nil {
             throw DatabaseError.error
         }
+        
         return dataUser.first
-
-//        print("\(newUser.users.first?.firstName)")
-//        completion(newUser.users.first?.identifier)
     }
     
     public func authenticate(_ on: AuthService, _ method: AuthOptions, _ info: AuthObject, completion: @escaping (AuthResponse, SupaUser?) -> ()) {
@@ -290,6 +277,12 @@ public class SupabaseAuthenticationManager {
             } else {
 
             }
+        })
+    }
+    
+    public func signOut(completion: @escaping (Bool) -> ()) {
+        SupabaseManager.sharedInstance.signOut(completion: { didSignOut in
+            completion(didSignOut)
         })
     }
 }

@@ -416,6 +416,7 @@ extension NewHomeViewController {
 //                            let base = BaseNC(rootViewController: RegisterProfileViewController.makeVC(user: user))
 //                            base.modalPresentationStyle = .overFullScreen
 //                            self.present(base, animated: true, completion: nil)
+                            self.user = user
                             self.presentMain()
                             print("Logged in in newhome")
                         }
