@@ -99,7 +99,7 @@ public class SupabaseDatabaseManager {
     }
 
     // MARK: - User
-    public func fetchUserPosts(user: DbUser, completion: @escaping ([PostObject]?) -> ()) {
+    public func fetchUserPosts(user: UUID, completion: @escaping ([PostObject]?) -> ()) {
         Task {
             do {
                 let userPosts = try await self.awaitFetchUserPosts(user: user)
@@ -111,13 +111,13 @@ public class SupabaseDatabaseManager {
         }
     }
 
-    private func awaitFetchUserPosts(user: DbUser) async throws -> [PostObject]? {
+    private func awaitFetchUserPosts(user: UUID) async throws -> [PostObject]? {
         guard let client = SupabaseManager.sharedInstance.client else { return nil }
 
         let newPost = try await client.database
             .from("Posts")
             .select()
-//            .eq("owner", value: user.identifier.uuidString.lowercased())
+            .eq("owner", value: user.uuidString.lowercased())
             .execute()
 
         let data = newPost.data

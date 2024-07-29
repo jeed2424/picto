@@ -64,10 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        Delighted.initializeSDK()
 
-
         setupRootViewController()
-        
-        print("Hello World AuthUser: \(authManager.authenticatedUser?.email)")
         
         return true
     }
@@ -400,10 +397,103 @@ class CustomBarButton: UIBarButtonItem {
 
 extension AppDelegate {
     private func setupRootViewController() {
-        let center = NewHomeViewController()
+        self.authManager.currentUser(completion: { [weak self] user in
+            guard let self = self else { return }
+
+            if let user = user {
+                let databaseManager = SupabaseDatabaseManager.sharedInstance
+                var posts: [BMPost]? = []
+
+                let bmUser = BMUser(id: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: [])
+
+                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now(), execute: {
+                    databaseManager.fetchUserPosts(user: user.id, completion: { userPosts in
+                        posts = userPosts?.compactMap({ post in BMPost(identifier: post.identifier,
+                                                                       createdAt: post.createdAt?.dateAndTimeFromString(),
+                                                                       user: bmUser,
+                                                                       caption: post.caption,
+                                                                       location: "",
+                                                                       category: nil,
+                                                                       commentCount: post.commentCount,
+                                                                       likeCount: post.likeCount,
+                                                                       comments: nil,
+                                                                       medias: {
+                            post.images?.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })
+                        }()
+                        )})
+                    })
+
+                    if let posts = posts {
+                        bmUser.posts = posts
+                    }
+
+                    let auth = AuthenticationService.make()
+                    auth.authenticationSuccess(user: bmUser)
+                    ProfileService.sharedInstance.saveUser(user: bmUser)
+
+                    DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                        self.presentMain(user: bmUser)
+                    })
+                })
+            } else {
+                let center = NewHomeViewController()
+
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = center
+                self.window?.tintColor = .white
+                self.window?.makeKeyAndVisible()
+            }
+        })
+    }
+
+    private func presentMain(user: BMUser) {
+        
+        print("POSTS: \(user.posts.count)")
+
+        for post in user.posts {
+            print("POST: \(post.user?.identifier)")
+        }
+        
+        let feed = FeedService.make()
+//        feed.getFeed(all: true) { (response, posts) in
+//            feed.posts = posts
+            let tabBarController = CustomTabBarController()
+            let home = HomeTestViewController.makeVC()
+            let base1 = self.createVC(vc: home, icon: UIImage(named: "homeicon1")!.withTintColor(.systemGray), selected: UIImage(named: "homeicon1-selected")!)
+//            let search = SearchController(config: .all)
+            let base2 = self.createVC(vc: DiscoverViewController.makeVC(), icon: UIImage(named: "searchicon")!.withTintColor(.systemGray), selected: UIImage(named: "searchicon-selected")!)
+            let base3 = self.createVC(vc: UserNotificationsViewController.makeVC(), icon: UIImage(named: "notificationbell")!.withTintColor(.systemGray), selected: UIImage(named: "notificationbell-selected")!)
+            if let profile = UserProfileViewController.makeVC(user: user, fromTab: true) {
+                let base4 = self.createVC(vc: profile, icon: UIImage(named: "profileicon")?.withTintColor(.systemGray) ?? UIImage(), selected: UIImage(named: "profileicon-selected") ?? UIImage())
+                tabBarController.viewControllers = [base1, base2, base3, base4]
+                showTabBar(tabBarController)
+            } else {
+                tabBarController.viewControllers = [base1, base2, base3]
+                showTabBar(tabBarController)
+            }
+//        }
+    }
+
+    private func createVC(vc: UIViewController, icon: UIImage, selected: UIImage) -> BaseNC {
+        let nc = BaseNC(rootViewController: vc)
+        nc.tabBarItem = UITabBarItem(title: "", image: icon, tag: 0)
+        nc.tabBarItem.selectedImage = selected
+        return nc
+    }
+
+    private func showTabBar(_ tabBarController: UITabBarController) {
+        tabBarController.tabBar.tintColor = .label
+        tabBarController.tabBar.barTintColor = .systemBackground
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.shadowImage = UIImage()
+        tabBarController.tabBar.backgroundImage = UIImage()
+        tabBarController.modalPresentationStyle = .fullScreen
+        tabBarController.view.backgroundColor = .systemBackground
+        tabBarController.modalTransitionStyle = .crossDissolve
+        ProfileService.sharedInstance.tabController = tabBarController
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = center
+        self.window?.rootViewController = tabBarController
         window?.tintColor = .white
         window?.makeKeyAndVisible()
     }

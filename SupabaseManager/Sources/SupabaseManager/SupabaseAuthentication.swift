@@ -56,12 +56,10 @@ public class SupabaseAuthenticationManager {
             }
         }
     }
+
     private var user: User?
 
     private init () {
-        self.currentUser(completion: { user in
-            self.authenticatedUser = user
-        })
     }
     
     public func currentUser(completion: @escaping (NewBMUser?) -> ()) {

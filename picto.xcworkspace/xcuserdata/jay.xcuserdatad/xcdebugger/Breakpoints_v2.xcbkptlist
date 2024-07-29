@@ -47,8 +47,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "160"
-                  endingLineNumber = "160"
-                  offsetFromSymbolStart = "464">
+                  endingLineNumber = "160">
                </Location>
                <Location
                   uuid = "09F2987B-6750-48C3-8DB4-5C0AECD565C4 - da0ca90f2eca71b6"
@@ -62,8 +61,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "160"
-                  endingLineNumber = "160"
-                  offsetFromSymbolStart = "480">
+                  endingLineNumber = "160">
                </Location>
                <Location
                   uuid = "09F2987B-6750-48C3-8DB4-5C0AECD565C4 - da0ca90f2eca7055"
@@ -77,8 +75,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
-                  endingLineNumber = "159"
-                  offsetFromSymbolStart = "368">
+                  endingLineNumber = "159">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -95,8 +92,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "352"
             endingLineNumber = "352"
-            landmarkName = "bindViewModel()"
-            landmarkType = "7">
+            landmarkName = "NewHomeViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 76bf5487cb51d08"
@@ -110,8 +107,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "352"
-                  endingLineNumber = "352"
-                  offsetFromSymbolStart = "528">
+                  endingLineNumber = "352">
                </Location>
                <Location
                   uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 3c158148f0ec71bc"
@@ -125,8 +121,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "352"
-                  endingLineNumber = "352"
-                  offsetFromSymbolStart = "192">
+                  endingLineNumber = "352">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -241,53 +236,6 @@
             endingLineNumber = "280"
             landmarkName = "saveAvatar(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A9D08123-F9AB-4522-A990-A2777D81CA91 - 83b07d18d9af1ee9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "280"
-                  endingLineNumber = "280"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "A9D08123-F9AB-4522-A990-A2777D81CA91 - 83b07d18d9af1ee9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "280"
-                  endingLineNumber = "280"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  uuid = "A9D08123-F9AB-4522-A990-A2777D81CA91 - aef53a3baf7002a2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "280"
-                  endingLineNumber = "280"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -304,53 +252,6 @@
             endingLineNumber = "285"
             landmarkName = "saveAvatar(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D4A9846A-EA81-4EE1-95E4-74E054AB08AD - 3a7a40384b4a5b3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "D4A9846A-EA81-4EE1-95E4-74E054AB08AD - 3a7a40384b4a5b3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  uuid = "D4A9846A-EA81-4EE1-95E4-74E054AB08AD - e5682f6b61b25fc3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "285"
-                  endingLineNumber = "285"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -369,66 +270,6 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - 7816a6c083528644"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - d3df5c9822fda841"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - 7816a6c083528644"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - d3df5c9822fda841"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
                   uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - aef53a3baf700075"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -440,8 +281,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "212">
+                  endingLineNumber = "289">
                </Location>
                <Location
                   uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - e5682f6b61b25c4f"
@@ -455,8 +295,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "212">
+                  endingLineNumber = "289">
                </Location>
                <Location
                   uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - 7816a6c083528644"
@@ -470,8 +309,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "340">
+                  endingLineNumber = "289">
                </Location>
                <Location
                   uuid = "A15C29CF-13E4-4B61-AB6B-878D499F1B12 - d3df5c9822fda841"
@@ -485,8 +323,7 @@
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "289"
-                  endingLineNumber = "289"
-                  offsetFromSymbolStart = "340">
+                  endingLineNumber = "289">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -505,113 +342,6 @@
             endingLineNumber = "279"
             landmarkName = "saveAvatar(completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 7786168aea36b6d5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "296">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - b8f596c6099e1154"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - aef53a3baf7002c3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 7816a6c0835284f2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 83b07d18d9af1e88"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "84">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 83b07d18d9af1e88"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "96">
-               </Location>
-               <Location
-                  uuid = "9F206B98-9905-475A-8509-B7CA0F50EF17 - 83b07d18d9af1e88"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.String&gt;) -&gt; () in closure #1 @Sendable () async -&gt; () in picto.NewEditProfileViewController.saveAvatar(completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "279"
-                  endingLineNumber = "279"
-                  offsetFromSymbolStart = "264">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -644,53 +374,6 @@
             endingLineNumber = "160"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "19739DAF-4199-47E5-9AAA-7428FA33C329 - d6a49fd914b28182"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  uuid = "19739DAF-4199-47E5-9AAA-7428FA33C329 - d6a49fd914b2816d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160"
-                  offsetFromSymbolStart = "860">
-               </Location>
-               <Location
-                  uuid = "19739DAF-4199-47E5-9AAA-7428FA33C329 - d6a49fd914b2816d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160"
-                  offsetFromSymbolStart = "912">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -707,717 +390,6 @@
             endingLineNumber = "162"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "FBC7E412-4752-473C-A9C1-B64A27B285F0 - d6a49fd914b281a3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "FBC7E412-4752-473C-A9C1-B64A27B285F0 - d6a49fd914b281a3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162"
-                  offsetFromSymbolStart = "912">
-               </Location>
-               <Location
-                  uuid = "FBC7E412-4752-473C-A9C1-B64A27B285F0 - d6a49fd914b281a3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewEditProfileViewController.viewWillAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Profile/NewEditProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "162"
-                  endingLineNumber = "162"
-                  offsetFromSymbolStart = "920">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 59b3a1d73b169685"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "1000">
-               </Location>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 250f56ec3d4e39d5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "344">
-               </Location>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 59b3a1d73b169685"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "320">
-               </Location>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 59b3a1d73b169685"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "308">
-               </Location>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - 34f11d29ce03d51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "2964">
-               </Location>
-               <Location
-                  uuid = "890562D9-68EA-4C11-AFF7-3DD131D43727 - bc8782b186966cae"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "564">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - d38b996f504e20fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - 8b9c95e9084b86ff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - f3276f46b038b8d3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "231"
-                  endingLineNumber = "231"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - 58f9dd420f2a479e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "231"
-                  endingLineNumber = "231"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - d38b996f504e20df"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "231"
-                  endingLineNumber = "231"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "4EF85DD1-0854-4FF7-98C0-6EB1C0574F9E - d3bb557c4316d133"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "231"
-                  endingLineNumber = "231"
-                  offsetFromSymbolStart = "188">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 1b668cf59842ca96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "788">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - d38b996f504e2099"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "408">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 8b9c95e9084b8698"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "408">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 58f9dd420f2a47f9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "128">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 3a1e73ee73fba7fa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) await resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 1b668cf59842cab7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 8b9c95e9084b86b9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "232"
-                  endingLineNumber = "232"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - d3bb557c4316d175"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "200">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 9e766322148dfcd1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  uuid = "C49D0FFE-97CE-45E3-87C8-52213B29A1BF - 9cbe3694c18d93a8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83993029-E57C-405B-857D-CBC957349EB3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - 1b668cf59842ca96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "788">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - d38b996f504e2099"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "408">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - 8b9c95e9084b8698"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "408">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - 1b668cf59842ca96"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - d3bb557c4316d175"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "200">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - 9e766322148dfcd1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  uuid = "83993029-E57C-405B-857D-CBC957349EB3 - 9cbe3694c18d93a8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "233"
-                  endingLineNumber = "233"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - 59b3a1d73b1696db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "1024">
-               </Location>
-               <Location
-                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - 59b3a1d73b1696db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "388">
-               </Location>
-               <Location
-                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - 59b3a1d73b1696db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in SupabaseManager.SupabaseAuthenticationManager.updateUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;SupabaseManager.NewBMUser&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "436">
-               </Location>
-               <Location
-                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - a97587e1f07dd30d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.awaitUpdateUser(user: SupabaseManager.DbUser) async throws -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "245"
-                  endingLineNumber = "245"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  uuid = "205C59F3-D1B4-4DD7-A894-EAB99AA69ADA - a40457fe612b2d48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for SupabaseManager.SupabaseAuthenticationManager.awaitUpdateUser(user: SupabaseManager.DbUser) async throws -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "245"
-                  endingLineNumber = "245"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D8D089D9-C3EF-4928-B80B-3BCFFB4AFF7D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DEDAC434-670B-45E0-A7B5-3E9042A64581"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "updateUser(user:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "DEDAC434-670B-45E0-A7B5-3E9042A64581 - a97587e1f07dd30d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SupabaseManager.SupabaseAuthenticationManager.awaitUpdateUser(user: SupabaseManager.DbUser) async throws -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "245"
-                  endingLineNumber = "245"
-                  offsetFromSymbolStart = "172">
-               </Location>
-               <Location
-                  uuid = "DEDAC434-670B-45E0-A7B5-3E9042A64581 - a40457fe612b2d48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for SupabaseManager.SupabaseAuthenticationManager.awaitUpdateUser(user: SupabaseManager.DbUser) async throws -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "245"
-                  endingLineNumber = "245"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
