@@ -80,12 +80,4 @@ public class SupabasePostStorageManager {
     public func retrievePublicPosts() {
         guard let client = SupabaseManager.sharedInstance.client else { return }
     }
-    
-    public func retrieveAuthenticatedUserPosts() {
-        guard let client = SupabaseManager.sharedInstance.client else { return }
-    }
-    
-    public func retrieveUserPosts() {
-        guard let client = SupabaseManager.sharedInstance.client else { return }
-    }
 }

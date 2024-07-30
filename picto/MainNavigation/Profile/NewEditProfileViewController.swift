@@ -278,7 +278,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
                         completion(true)
                     })
                 } else {
-                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), avatarName: self.user?.avatar ?? "", image: data, completion: { url in
                         self.user?.avatar = url
                         completion(true)
                     })
@@ -309,10 +309,7 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
                     profileService.updateUser(user: userUpdate)
                     authService.saveUpdatedUser(user: userUpdate)
                     self.dismissLoadingAlertModal(animated: true) {
-                        self.user = userUpdate
-                        self.refreshUser(completion: { _ in
                             self.popVC()
-                        })
                     }
 //                }
             }
@@ -321,11 +318,8 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
     }
 
     func setUser() {
-
 //        if self.user?.avatar != nil {
-        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: false, completion: { _ in
-            
-        })
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
 //            self.avatar.setImage(string: self.user?.avatar ?? "")
             print("Avatar: \(self.user?.avatar)")
 //        }
@@ -333,22 +327,6 @@ class NewEditProfileViewController: KeyboardManagingViewController, UITextFieldD
         self.websiteTF.text = self.user?.website ?? ""
         self.bioTextView.text = self.user?.bio ?? ""
         self.instagramTF.text = self.user?.instagram ?? ""
-    }
-    
-    func refreshUser(completion: @escaping (Bool) -> ()) {
-
-//        if self.user?.avatar != nil {
-//            self.avatar.setImage(string: self.user?.avatar ?? "")
-            print("Avatar: \(self.user?.avatar)")
-//        }
-        self.usernameTF.text = self.user?.username ?? ""
-        self.websiteTF.text = self.user?.website ?? ""
-        self.bioTextView.text = self.user?.bio ?? ""
-        self.instagramTF.text = self.user?.instagram ?? ""
-        
-        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: true, completion: { complete in
-            completion(complete)
-        })
     }
 }
 

@@ -15,7 +15,7 @@ extension UIImageView {
         self.kf.setImage(with: url)
     }
 
-    func setComplexImage(url: String, placeholder: UIImage, forceRefresh: Bool, completion: @escaping (Bool) -> ()) {
+    func setComplexImage(url: String, placeholder: UIImage) {
         print("Hello \(url)")
         let url = URL(string: url)
         let processor = DownsamplingImageProcessor(size: self.bounds.size)
@@ -30,17 +30,16 @@ extension UIImageView {
                     .processor(processor),
                     .scaleFactor(UIScreen.main.scale),
                     .transition(.fade(1)),
-                    .forceRefresh,
                     .cacheOriginalImage
                 ]) { result in
                 switch result {
                 case .success(let value):
                     print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                    completion(true)
+//                    completion(true)
                 case .failure(let error):
                     print("Job failed: \(error.localizedDescription)")
                     print("Failure: \(error)")
-                    completion(true)
+//                    completion(true)
                 }
             }
 //        } else {

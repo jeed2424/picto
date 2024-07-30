@@ -202,9 +202,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
 //        if self.user!.avatar != nil {
 //            avatar.setImage(string: self.user!.avatar!)
 //        }
-        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: false, completion: { _ in
-            
-        })
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
         avatar.round()
         bioLbl.text = self.user!.bio ?? "No bio added yet"
         bioLbl.setLineHeight(lineHeight: 1.2)
@@ -242,6 +240,13 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
         var when = DispatchTime.now() + 0.1
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.setControlY()
+        }
+        
+        if let user = BMUser.me() {
+            self.setUser(user: user)
+            self.loadPosts(user: user)
+
+            print("UserProfile \(user.avatar)")
         }
     }
     
@@ -344,7 +349,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
     }
     
     func loadPosts(user: BMUser) {
-        BMPostService.make().getUserPosts(user: user) { (response, p) in
+        let p = user.posts
+        for post in p {
+            print("HelloPostssss \(post.caption)")
+        }
+//        BMPostService.make().getUserPosts(user: user) { (response, p) in
             self.posts = p.sorted(by: {$0.createdAt! > $1.createdAt!})
             self.user!.posts = self.posts.sorted(by: {$0.createdAt! > $1.createdAt!})
             self.videoCount = self.user!.posts.filter({$0.contentType() == .video}).count
@@ -367,7 +376,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate {
                     self.segmentControl.alpha = 1
                 }
             }
-        }
+//        }
     }
     
     func resizeTable() {
@@ -793,7 +802,7 @@ extension UserProfileViewController {
                         completion(true)
                     })
                 } else {
-                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), image: data, completion: { url in
+                    try await manager.updateAvatar(user: user?.identifier ?? UUID(), avatarName: user?.avatar ?? "", image: data, completion: { url in
                         self.user?.avatar = url
                         completion(true)
                     })
@@ -830,8 +839,7 @@ extension UserProfileViewController {
     }
     
     private func refreshUser(completion: @escaping (Bool) -> ()) {
-        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage(), forceRefresh: true, completion: { complete in
-            completion(complete)
-        })
+        avatar.setComplexImage(url: self.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
+        completion(true)
     }
 }
