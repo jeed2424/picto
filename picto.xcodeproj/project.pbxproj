@@ -223,6 +223,8 @@
 		69C99F8229FA019F00912E5A /* JHSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C99E2929F9F9F300912E5A /* JHSpinnerView.xib */; };
 		69C99F8329FA01A400912E5A /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69C99D3429F9F9F200912E5A /* UserProfile.storyboard */; };
 		69C99F8829FA169700912E5A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C99F8729FA169700912E5A /* R.generated.swift */; };
+		69DDBEB22C8E457A00E2E33C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DDBEB12C8E457A00E2E33C /* Networking.swift */; };
+		69DDBEB42C8E811500E2E33C /* NetworkingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DDBEB32C8E811500E2E33C /* NetworkingConstants.swift */; };
 		69EC89B72BB65A3900DA6E74 /* UsernameCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */; };
 		8F823FCA2C5834C0006C5F18 /* KingFisherHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F823FC92C5834C0006C5F18 /* KingFisherHelper.swift */; };
 		A01526C1A6F198D7905BF41D /* Pods_pictoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBECAC838A17B2D6BFD761DE /* Pods_pictoTests.framework */; };
@@ -474,6 +476,8 @@
 		69C99E4E29F9F9F300912E5A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		69C99F7229F9FEEF00912E5A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69C99F8729FA169700912E5A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		69DDBEB12C8E457A00E2E33C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		69DDBEB32C8E811500E2E33C /* NetworkingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingConstants.swift; sourceTree = "<group>"; };
 		69EC89B62BB65A3900DA6E74 /* UsernameCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameCreationView.swift; sourceTree = "<group>"; };
 		8F823FC92C5834C0006C5F18 /* KingFisherHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherHelper.swift; sourceTree = "<group>"; };
 		B9C7B2082168313877969304 /* Pods_picto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_picto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -973,6 +977,7 @@
 		69C99D6F29F9F9F200912E5A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				69DDBEB02C8E456B00E2E33C /* Networking */,
 				69C99D7029F9F9F200912E5A /* Constants.swift */,
 				69C99D7129F9F9F200912E5A /* GifMaker.swift */,
 				69C99D7229F9F9F200912E5A /* UserDefaultHelper.swift */,
@@ -1235,6 +1240,15 @@
 			);
 			path = Generated;
 			sourceTree = SOURCE_ROOT;
+		};
+		69DDBEB02C8E456B00E2E33C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				69DDBEB12C8E457A00E2E33C /* Networking.swift */,
+				69DDBEB32C8E811500E2E33C /* NetworkingConstants.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
 		};
 		6E165FE2251AF2C29BD1B18A /* Pods */ = {
 			isa = PBXGroup;
@@ -1668,6 +1682,7 @@
 				69C99CD729F9F94800912E5A /* CGColor+ColorDeck.swift in Sources */,
 				69C99E5D29F9F9F300912E5A /* ActionSheetCell.swift in Sources */,
 				69C99F4E29F9F9F300912E5A /* AlertPresentationController.swift in Sources */,
+				69DDBEB22C8E457A00E2E33C /* Networking.swift in Sources */,
 				69C99F5029F9F9F300912E5A /* CameraViewController+ViewModel.swift in Sources */,
 				69C99E8929F9F9F300912E5A /* PostLocationViewController.swift in Sources */,
 				69C99E5129F9F9F300912E5A /* ActionSheetLauncher.swift in Sources */,
@@ -1723,6 +1738,7 @@
 				69C99F4B29F9F9F300912E5A /* UIViewController+LoadingAlert.swift in Sources */,
 				69C99E5829F9F9F300912E5A /* RegistrationController.swift in Sources */,
 				69C99E8129F9F9F300912E5A /* DiscoverCategoryCell.swift in Sources */,
+				69DDBEB42C8E811500E2E33C /* NetworkingConstants.swift in Sources */,
 				69C99EBA29F9F9F300912E5A /* ConversationService.swift in Sources */,
 				69C99E5529F9F9F300912E5A /* CommentController.swift in Sources */,
 				69C99EC029F9F9F300912E5A /* ProfileService.swift in Sources */,

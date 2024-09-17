@@ -61,6 +61,7 @@ class HomeTestViewController: UIViewController {
         setNavBar(title: "Feed")
         if feedService.posts.isEmpty {
             feedService.getFeed(all: true) { (response, posts) in
+                print("Hello World Posts \(posts.count)")
                 self.feedService.posts = posts
                 var newCards: [Int] = []
                 for index in 0..<posts.count {
@@ -328,8 +329,11 @@ extension HomeTestViewController: VerticalCardSwiperDelegate, VerticalCardSwiper
     
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         print("tapped feed item at: \(index)")
+        print("Index for post \(index)")
         let posts = FeedService.make().posts
-        let vc = PostPageViewController.makeVC(post: posts[index], otherPosts: posts)
+
+        print("Post title: \(posts[index].caption)")
+        let vc = PostPageViewController.makeVC(post: posts[index], otherPosts: posts, disableSwipe: true)
         self.push(vc: vc)
     }
 }
@@ -572,7 +576,7 @@ func getNotiMenu(post: BMPost, user: BMUser, vc: UINavigationController?, comple
         print("view post")
         actionSheet.dismiss(animated: false) {
             DispatchQueue.main.async {
-                let newvc = PostPageViewController.makeVC(post: post, otherPosts: [BMPost]())
+                let newvc = PostPageViewController.makeVC(post: post, otherPosts: [BMPost](), disableSwipe: true)
                 newvc.hidesBottomBarWhenPushed = true
                 vc?.pushViewController(newvc, animated: true)
             }

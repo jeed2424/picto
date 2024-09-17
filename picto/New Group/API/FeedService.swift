@@ -17,28 +17,39 @@ class FeedService: BaseService {
     }
     
     var user: User!
-    var posts = [BMPost]()
-    
+    var posts = [BMPost]() {
+        didSet {
+            print("Hello World Posts \(posts.count)")
+        }
+    }
+
     static func make() -> FeedService {
         let feed = ClientAPI.sharedInstance.feedService
         return feed
     }
     
     func getFeed(all: Bool, completion: @escaping (ResponseCode, [BMPost]) -> Swift.Void) {
-        APIService.requestAPIJson(url: URL(string: "https://us-central1-picto-ce462.cloudfunctions.net/getfeed")!,
-                               method: .post,
-                               parameters: nil,
-                               cache_time: 0,
-                               success: { responseDict in
-                                let itemDicts = responseDict["posts"] as! [[String:Any]]
-                                var foundItems = [BMPost]()
-                                for itemData in itemDicts {
-                                    foundItems.append(PostSerializer.unserialize(JSON: itemData))
-                                }
-                                completion(ResponseCode.Success, foundItems)
-                               }, failure: { errorString in
-                                completion(ResponseCode.Error, [BMPost]())
-                               })
+//        APIService.requestAPIJson(url: URL(string: "https://us-central1-picto-ce462.cloudfunctions.net/getfeed")!,
+//                               method: .post,
+//                               parameters: nil,
+//                               cache_time: 0,
+//                               success: { responseDict in
+//                                let itemDicts = responseDict["posts"] as! [[String:Any]]
+//                                var foundItems = [BMPost]()
+//                                for itemData in itemDicts {
+//                                    foundItems.append(PostSerializer.unserialize(JSON: itemData))
+//                                }
+//                                completion(ResponseCode.Success, foundItems)
+//                               }, failure: { errorString in
+//                                completion(ResponseCode.Error, [BMPost]())
+//                               })
+        Networking.sharedInstance.fetchPosts(completion: { posts in
+            if let posts = posts {
+                completion(.Success, posts)
+            } else {
+                completion(.Error, [])
+            }
+        })
     }
     
     func getFollowingFeed(all: Bool, completion: @escaping (ResponseCode, [BMPost]) -> Swift.Void) {

@@ -295,7 +295,7 @@ extension NewPostUploadViewController {
                 storageManager.uploadPost(user: userId, image: data, completion: { imageUrl in
                     if let imageUrl = imageUrl {
 //                        
-                        let dbPost = DbPost(identifier: nil, createdAt: nil, owner: userId, caption: captionText, images: [imageUrl], likeCount: 0, commentCount: 0, comments: nil)
+                        let dbPost = DbPost(identifier: nil, createdAt: nil, owner: userId, caption: captionText, images: [imageUrl], likes: nil, commentCount: 0, comments: nil)
                         databaseManager.uploadPost(user: userId, post: dbPost, completion: { newPost in
 //
                             let images = newPost?.images?.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })

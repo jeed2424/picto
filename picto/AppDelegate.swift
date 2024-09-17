@@ -419,7 +419,7 @@ extension AppDelegate {
                                                                        location: "",
                                                                        category: nil,
                                                                        commentCount: post.commentCount,
-                                                                       likeCount: post.likeCount,
+                                                                       likeCount: Int8(post.likes?.count ?? 0),
                                                                        comments: nil,
                                                                        medias: {
                             post.images?.compactMap({ image in BMPostMedia(imageUrl: image, videoUrl: nil) })

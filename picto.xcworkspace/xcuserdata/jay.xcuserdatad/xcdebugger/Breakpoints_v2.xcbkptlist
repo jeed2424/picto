@@ -34,50 +34,6 @@
             endingLineNumber = "159"
             landmarkName = "createNewUser(user:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "09F2987B-6750-48C3-8DB4-5C0AECD565C4 - 65c43a6c34bc2049"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160">
-               </Location>
-               <Location
-                  uuid = "09F2987B-6750-48C3-8DB4-5C0AECD565C4 - da0ca90f2eca71b6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160">
-               </Location>
-               <Location
-                  uuid = "09F2987B-6750-48C3-8DB4-5C0AECD565C4 - da0ca90f2eca7055"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in SupabaseManager.SupabaseAuthenticationManager.createNewUser(user: SupabaseManager.DbUser, completion: (Swift.Optional&lt;Foundation.UUID&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/SupabaseManager/Sources/SupabaseManager/SupabaseAuthentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,36 +50,6 @@
             endingLineNumber = "352"
             landmarkName = "NewHomeViewController"
             landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 76bf5487cb51d08"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.NewHomeViewController.bindViewModel() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352">
-               </Location>
-               <Location
-                  uuid = "4DFAAD25-97E1-41D8-8CE6-5D5160FCD24C - 3c158148f0ec71bc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (picto.NewHomeViewController.ViewModel.CurrentPage) -&gt; () in picto.NewHomeViewController.bindViewModel() -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jay/Documents/Personal%20Xcode/picto/picto/MainNavigation/Home/ViewControllers/NewHomeViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -341,22 +267,6 @@
             startingLineNumber = "279"
             endingLineNumber = "279"
             landmarkName = "saveAvatar(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F8A73BFE-3C19-443C-A262-9B9F8D7B55C8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "picto/New Group/API/ProfileService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "updateUser(user:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -119,7 +119,9 @@ class PostCommentViewController: UIViewController {
     func setPost(post: BMPost) {
         self.comments = post.comments
         self.gradientView.applyGradient(colors: [UIColor.black.withAlphaComponent(0.0), UIColor.black.withAlphaComponent(0.1),  UIColor.black.withAlphaComponent(0.7)], type: .vertical)
-        self.setFollow(user: post.user!)
+        if let user = post.user {
+            self.setFollow(user: user)
+        }
         self.likeBtn.setImage(.get(name: "heart", tint: .white), for: [])
         self.likeBtn.tintColor = .white
         self.checkLikeBtn(fill: false)
@@ -127,16 +129,16 @@ class PostCommentViewController: UIViewController {
         self.commentBtn.setImage(.get(name: "chatoutline", tint: .white), for: [])
         self.volumeBtn.alpha = 0
         self.videoPlayer.alpha = 0
-        self.userAvatar.setImage(string: post.user!.avatar!)
+        self.userAvatar.setComplexImage(url: post.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
         self.userAvatar.round()
-        self.usernameLbl.text = post.user!.username!
-        self.captionLbl.text = post.caption!.removeTags()
+        self.usernameLbl.text = post.user?.username ?? "Anonymous"
+        self.captionLbl.text = post.caption?.removeTags()
         self.captionLbl.textDropShadow()
         self.dateLbl.textDropShadow()
         self.usernameLbl.textDropShadow()
         self.dateLbl.text = post.createdAtText()
-        self.likeCountLbl.text = "\(post.likeCount!)"
-        self.commentCountLbl.text = "\(post.commentCount!)"
+        self.likeCountLbl.text = "\(post.likeCount ?? 0)"
+        self.commentCountLbl.text = "\(post.commentCount ?? 0)"
         self.pageControl.currentPage = 0
         self.pageControl.numberOfPages = post.medias.count
         self.pageControl.hidesForSinglePage = true

@@ -76,8 +76,4 @@ public class SupabasePostStorageManager {
             return "\(dataPosts.count + 1)_\(user.uuidString)"
         }
     }
-    
-    public func retrievePublicPosts() {
-        guard let client = SupabaseManager.sharedInstance.client else { return }
-    }
 }

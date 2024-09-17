@@ -27,12 +27,15 @@ class PostPageViewController: UIViewController {
     var initialPost: BMPost!
     var currentPost: BMPost!
     var postVCs = [PostCommentViewController]()
-    
-    static func makeVC(post: BMPost, otherPosts: [BMPost]) -> PostPageViewController {
+
+    private var disableSwipe: Bool = false
+
+    static func makeVC(post: BMPost, otherPosts: [BMPost], disableSwipe: Bool = false) -> PostPageViewController {
         let vc = UIStoryboard(name: "Post", bundle: nil).instantiateViewController(withIdentifier: "PostPageViewController") as! PostPageViewController
         vc.initialPost = post
         vc.currentPost = post
         vc.posts = otherPosts
+        vc.disableSwipe = disableSwipe
         return vc
     }
     
@@ -44,13 +47,21 @@ class PostPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNav(title: "\(self.initialPost!.user!.username!)'s Posts")
+        if let username = self.initialPost?.user?.username {
+            self.setNav(title: "\(username)'s Posts")
+        } else {
+            self.setNav(title: "Anonymous's Posts")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setNav(title: "\(self.initialPost!.user!.username!)'s Posts")
-        
+        if let username = self.initialPost?.user?.username {
+            self.setNav(title: "\(username)'s Posts")
+        } else {
+            self.setNav(title: "Anonymous's Posts")
+        }
+
         Timer.schedule(delay: 0.3) { (t) in
             if var pview = UserDefaults.standard.value(forKey: "post_view") as? Int {
                 if pview == 10 {
@@ -69,23 +80,35 @@ class PostPageViewController: UIViewController {
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
         self.pageViewController.view.frame = .zero
-        
-        for index in 0..<self.posts.count {
-//            if self.posts[index].id! != self.initialPost!.id! {
-//                let vc = PostCommentViewController.makeVC(post: self.posts[index], index: index, delegate: self)
-//                self.postVCs.append(vc)
-//            }
-            let vc = PostCommentViewController.makeVC(post: self.posts[index], index: index, delegate: self, pagingDelegate: self)
+
+        if disableSwipe {
+            let vc = PostCommentViewController.makeVC(post: self.initialPost, index: 0, delegate: self, pagingDelegate: self)
             self.postVCs.append(vc)
-        }
-        if let initialIndex = self.posts.index(of: self.initialPost!) {
-            self.postVCs[0].pageIndex = initialIndex
-            self.postVCs[initialIndex].pageIndex = 0
-            self.postVCs.swapAt(0, initialIndex)
+
+            for view in pageViewController.view.subviews {
+                if let view = view as? UIScrollView {
+                    view.isScrollEnabled = false
+                }
+            }
         } else {
-            let vc = PostCommentViewController.makeVC(post: self.currentPost!, index: 0, delegate: self, pagingDelegate: self)
-            self.postVCs.append(vc)
+            for index in 0..<self.posts.count {
+    //            if self.posts[index].id! != self.initialPost!.id! {
+    //                let vc = PostCommentViewController.makeVC(post: self.posts[index], index: index, delegate: self)
+    //                self.postVCs.append(vc)
+    //            }
+                let vc = PostCommentViewController.makeVC(post: self.posts[index], index: index, delegate: self, pagingDelegate: self)
+                self.postVCs.append(vc)
+            }
+            if let initialIndex = self.posts.index(of: self.initialPost!) {
+                self.postVCs[0].pageIndex = initialIndex
+                self.postVCs[initialIndex].pageIndex = 0
+                self.postVCs.swapAt(0, initialIndex)
+            } else {
+                let vc = PostCommentViewController.makeVC(post: self.currentPost!, index: 0, delegate: self, pagingDelegate: self)
+                self.postVCs.append(vc)
+            }
         }
+
 //        self.pageViewController.setViewControllers(self.postVCs, direction: .forward, animated: false, completion: nil)
 //        self.pageViewController.setViewControllers([self.postVCs.first!], direction: .forward, animated: false, completion: nil)
         self.pageViewController.setViewControllers([self.postVCs.first!], direction: .forward, animated: false, completion: nil)
@@ -110,9 +133,13 @@ class PostPageViewController: UIViewController {
 //            }
 //        }
         
-        self.currentPost = self.initialPost!
-        self.setNav(title: "\(self.initialPost!.user!.username!)'s Posts")
-        
+        self.currentPost = self.initialPost
+        if let username = self.initialPost?.user?.username {
+            self.setNav(title: "\(username)'s Posts")
+        } else {
+            self.setNav(title: "Anonymous's Posts")
+        }
+
     }
     
     func setNav(title: String) {

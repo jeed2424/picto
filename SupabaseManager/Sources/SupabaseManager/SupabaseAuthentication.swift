@@ -12,18 +12,18 @@ public struct databaseUsers: Decodable {
 }
 
 public struct databaseUser: Decodable {
-    let identifier: UUID
+    public let identifier: UUID
 //    let created_at: String
-    let username: String
-    let firstName: String
-    let lastName: String
-    let fullName: String
-    let email: String
-    let bio: String
-    let website: String
-    let showFullName: Bool
-    let avatar: String
-    let posts: [Int8]
+    public let username: String
+    public let firstName: String
+    public let lastName: String
+    public let fullName: String
+    public let email: String
+    public let bio: String
+    public let website: String
+    public let showFullName: Bool
+    public let avatar: String
+    public let posts: [Int8]
 }
 
 public enum AuthResponse {
@@ -150,7 +150,37 @@ public class SupabaseAuthenticationManager {
         
         return dataUser.first
     }
-    
+
+    public func getUserForPost(user: UUID) async throws -> NewBMUser? {
+        guard let client = SupabaseManager.sharedInstance.client else { return nil }
+
+        let newUser = try await client.database
+            .from("Users")
+            .select()
+            .eq("identifier", value: user.uuidString)
+            .limit(1)
+            .execute()
+
+        let data = newUser.data
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+        let dataUser = try decoder.decode([databaseUser].self, from: data)
+        print(dataUser)
+
+        if dataUser.first == nil {
+            throw DatabaseError.error
+        }
+
+        if let user = dataUser.first {
+            let newBmUser = NewBMUser(id: user.identifier, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio, website: user.website, showFullName: user.showFullName, avatar: user.avatar, posts: user.posts)
+
+            return newBmUser
+        } else {
+            return nil
+        }
+    }
+
     public func authenticate(_ on: AuthService, _ method: AuthOptions, _ info: AuthObject, completion: @escaping (AuthResponse, SupaUser?) -> ()) {
         guard let client = SupabaseManager.sharedInstance.client, let email = info.email, let password = info.password else { return }
         switch method {

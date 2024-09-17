@@ -106,8 +106,8 @@ class PostCommentTableViewCell: UITableViewCell {
         let firstAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label, .font: BaseFont.get(.bold, 15), .kern: 0.2]
         let secondAttributes = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel, .font: BaseFont.get(.regular, 15)]
 
-        let attrString = NSMutableAttributedString(string: "\(comment.user!.username!)", attributes: firstAttributes)
-        let secondString = NSAttributedString(string: "  \(comment.message!)", attributes: secondAttributes)
+        let attrString = NSMutableAttributedString(string: "\(comment.user?.username ?? "Anonymous")", attributes: firstAttributes)
+        let secondString = NSAttributedString(string: "  \(comment.message ?? "")", attributes: secondAttributes)
 
         attrString.append(secondString)
         
@@ -118,7 +118,7 @@ class PostCommentTableViewCell: UITableViewCell {
         let firstAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label, .font: BaseFont.get(.bold, 15), .kern: 0.2]
         let secondAttributes = [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel, .font: BaseFont.get(.regular, 15)]
 
-        let attrString = NSMutableAttributedString(string: "Username appears hhere", attributes: firstAttributes)
+        let attrString = NSMutableAttributedString(string: BMUser.me()?.username ?? "Anonymous", attributes: firstAttributes)
         let secondString = NSAttributedString(string: "  Be the first to comment on this post!", attributes: secondAttributes)
 
         attrString.append(secondString)

@@ -145,9 +145,9 @@ class CardCollectionViewCell: CardCell {
         self.likeBtn.tintColor = .white
         self.checkLikeBtn(fill: false)
         self.videoPlayer.alpha = 0
-        self.userAvatar.setImage(string: post.user!.avatar!)
+        self.userAvatar.setComplexImage(url: post.user?.avatar ?? "", placeholder: UIImage(named: "personicon") ?? UIImage())
         self.userAvatar.round()
-        self.usernameLbl.text = post.user!.username!
+        self.usernameLbl.text = post.user?.username ?? ""
         self.usernameLbl.textDropShadow()
         self.captionLbl.text = post.caption!.removeTags()
         self.captionLbl.textDropShadow()
@@ -234,9 +234,11 @@ class CardCollectionViewCell: CardCell {
     
     @IBAction func tappedFollow() {
         addHaptic(style: .medium)
-        BMUser.me()?.followUser(user: self.post!.user!)
-        self.setFollow(user: self.post!.user!)
-        BMUser.save(user: &self.post!.user!)
+        if var user = self.post.user {
+            BMUser.me()?.followUser(user: user)
+            self.setFollow(user: user)
+            BMUser.save(user: &user)
+        }
 //        ProfileService.make().followUser(user: self.post!.user!) { (response, u) in
 //            BMUser.save(user: &ProfileService.make().user!)
 //        }

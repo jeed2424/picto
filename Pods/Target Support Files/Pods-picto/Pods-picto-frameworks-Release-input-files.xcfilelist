@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-picto/Pods-picto-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/AppCheckCore/AppCheckCore.framework
 ${BUILT_PRODUCTS_DIR}/CDAlertView/CDAlertView.framework
 ${BUILT_PRODUCTS_DIR}/CameraManager/CameraManager.framework
 ${BUILT_PRODUCTS_DIR}/DTPhotoViewerController/DTPhotoViewerController.framework

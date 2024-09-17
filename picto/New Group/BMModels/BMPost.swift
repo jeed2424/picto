@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import Alamofire
 import ObjectMapper
+import SupabaseManager
 
 enum PostContentType {
     case photo
@@ -37,7 +38,7 @@ public class BMPost: BMSerializedObject, Comparable {
     var medias = [BMPostMedia]()
     var comments = [BMPostComment]()
     
-    init(identifier: Int8? = nil, createdAt: Date? = nil, user: BMUser, caption: String? = nil, location: String? = nil, category: BMCategory? = nil, commentCount: Int8? = nil, likeCount: Int8? = nil, comments: [BMPostComment]? = nil, medias: [BMPostMedia]? = nil) {
+    init(identifier: Int8? = nil, createdAt: Date? = nil, user: BMUser?, userID: UUID? = nil, caption: String? = nil, location: String? = nil, category: BMCategory? = nil, commentCount: Int8? = nil, likeCount: Int8? = nil, comments: [BMPostComment]? = nil, medias: [BMPostMedia]? = nil) {
         super.init()
         self.postID = identifier
         self.userData = user
@@ -56,6 +57,14 @@ public class BMPost: BMSerializedObject, Comparable {
         if let medias = medias {
             self.medias = medias
         }
+
+//        if user == nil {
+//            if let userID = userID {
+//                self.getUserForPost(user: userID, completion: { bmUser in
+//                    self.user = user
+//                })
+//            }
+//        }
     }
 
     // Mappable
@@ -145,6 +154,21 @@ public class BMPost: BMSerializedObject, Comparable {
     
     static public func save(post: inout BMPost) {
         ObjectLoader.shared.cacheObject(post, key: BMPost.identifier)
+    }
+
+    private func getUserForPost(user: UUID, completion: @escaping (BMUser?) -> ()) {
+        Task {
+            do {
+                if let dbUser = try await SupabaseAuthenticationManager.sharedInstance.getUserForPost(user: user) {
+                    let bmUser = BMUser(id: dbUser.id, username: dbUser.username, firstName: dbUser.firstName, lastName: dbUser.lastName, email: dbUser.email, bio: dbUser.bio, website: dbUser.website, showFullName: dbUser.showFullName, avatar: dbUser.avatar, posts: [])
+                    completion(bmUser)
+                } else {
+                    completion(nil)
+                }
+            } catch {
+                completion(nil)
+            }
+        }
     }
 }
 
