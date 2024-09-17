@@ -42,7 +42,7 @@ class PostCommentTableViewCell: UITableViewCell {
         self.avatarLeading.constant = leading
 //        self.avatar.setImage(string: me.avatar!)
         self.avatar.round()
-        self.usernameLbl.text = "Username appears here"
+        self.usernameLbl.text = BMUser.me()?.username ?? "Username appears here"
         self.usernameLbl.textColor = .clear
         self.setNoMessage()
         self.nameReplyLbl.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
