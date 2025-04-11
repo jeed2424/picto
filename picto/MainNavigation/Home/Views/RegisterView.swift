@@ -245,7 +245,9 @@ extension RegisterView {
     @objc func verifyEmail(_ textfield: UITextField) {
         if let text = textfield.text {
             if let floatingLabelTextField = textfield as? SkyFloatingLabelTextField {
-                if(text.count < 3 || !text.contains("@")) {
+                if text.isEmpty {
+                    floatingLabelTextField.errorMessage = ""
+                } else if(text.count < 3 || !text.contains("@")) {
                     floatingLabelTextField.errorMessage = "Invalid email"
                 } else if !text.contains(".") {
                     floatingLabelTextField.errorMessage = "Invalid email"

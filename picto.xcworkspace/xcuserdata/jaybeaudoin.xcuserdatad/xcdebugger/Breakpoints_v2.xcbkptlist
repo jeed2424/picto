@@ -220,36 +220,6 @@
             endingLineNumber = "354"
             landmarkName = "loadPosts(user:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "68F3B6CD-4684-42F4-88D5-F6AD16982920 - 9526fb33e74c7372"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "354"
-                  endingLineNumber = "354">
-               </Location>
-               <Location
-                  uuid = "68F3B6CD-4684-42F4-88D5-F6AD16982920 - 9526fb33e74c7372"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "354"
-                  endingLineNumber = "354">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,50 +252,6 @@
             endingLineNumber = "352"
             landmarkName = "loadPosts(user:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6DB76BE7-9DA5-4D9B-8BB7-9150FA681FD4 - 9526fb33e74c733c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352">
-               </Location>
-               <Location
-                  uuid = "6DB76BE7-9DA5-4D9B-8BB7-9150FA681FD4 - 8ba94700102d1be3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (picto.BMPost) -&gt; Swift.Bool in picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352">
-               </Location>
-               <Location
-                  uuid = "6DB76BE7-9DA5-4D9B-8BB7-9150FA681FD4 - 9526fb33e74c733c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "352"
-                  endingLineNumber = "352">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -343,20 +269,6 @@
             landmarkName = "loadPosts(user:)"
             landmarkType = "7">
             <Locations>
-               <Location
-                  uuid = "92D0935B-5EAA-4E70-A0C6-71F233433EA9 - 9526fb33e74c7353"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "picto.UserProfileViewController.loadPosts(user: picto.BMUser) -&gt; ()"
-                  moduleName = "picto"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jaybeaudoin/Documents/GitHub/picto/picto/MainNavigation/Profile/UserProfileViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "353"
-                  endingLineNumber = "353">
-               </Location>
                <Location
                   uuid = "92D0935B-5EAA-4E70-A0C6-71F233433EA9 - 9526fb33e74c7353"
                   shouldBeEnabled = "Yes"
